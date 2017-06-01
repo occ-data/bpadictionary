@@ -522,8 +522,7 @@ properties:
     description: "Datetime at which the sample was processed."
     type: string
   sample_type:
-    term:
-      $ref: "_terms.yaml#/sample_type"
+    description: "Characterization of the sample as either clinical or contrived."
     enum:
       - Additional Metastatic
       - Additional - New Primary
