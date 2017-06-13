@@ -1,5 +1,5 @@
 {
-    "type": "experimental_metadata",
+    "type": "protocol",
     "submitter_id": "experiment XML from SRA XML",
     "file_name": "experiment.xml",
     "file_size": 21234,
