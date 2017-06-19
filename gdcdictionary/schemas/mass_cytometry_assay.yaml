@@ -29,7 +29,7 @@ links:
   - name: analytes
     backref: mass_cytometry_assays 
     label: data_from
-    target_type: analytes
+    target_type: analyte
     multiplicity: one_to_one
     required: true
 
