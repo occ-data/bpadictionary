@@ -359,6 +359,7 @@ properties:
       - Streck
       - Acid Citrate Dextrose (ACD)
       - Not Applicable
+      - Unknown
   clinical_site:
     description: "The name or identifier for the clinical site at which the biospecimen was taken from the patient."
     type: string
