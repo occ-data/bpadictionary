@@ -228,6 +228,16 @@ analyte_volume:
     cde_version: null
     term_url: null
 
+anatomic_site_of_last_procedure:
+  description: >
+    Text term that represents the name of the anatomic site of the patient's last biopsy or surgical procedure.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
 ann_arbor_b_symptoms:
   description: >
     Text term to signify whether lymphoma B-symptoms are present as noted in the patient's medical
@@ -438,6 +448,16 @@ concentration:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432594&version=1.0"
 
+concomitant_medications:
+  description: >
+    Array of text terms that describe the non-cancer-directed medications that the patient is taking at the time of biospecimen collection (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.).
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
 creation_datetime:
   description: >
     The datetime of portion creation encoded as seconds from epoch.
@@ -627,6 +647,26 @@ dlco_ref_predictive_percent:
     cde_id: 2180255
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2180255&version=1.0"
+
+dose:
+  description: >
+    A numerical representation of the dose administered for a therapeutic agent (see also: 'dose_units').
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+dose_units:
+  description: >
+    The text term describing the units corresponding to the dose administered for a therapeutic agent (see also: 'dose').
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
 
 encoding:
   description: >
@@ -1603,6 +1643,96 @@ time_between_excision_and_freezing:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432612&version=1.0"
 
+time_from_alcohol:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last consumed alcohol.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_exercise:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last exercised.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_food:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last consumed food.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_last_procedure:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last underwent a biopsy or surgical procedure.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_medication:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last took non-cancer-directed medications (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.)
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_non_rx_treatment:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used a non-prescribed treatment, including herbal supplements, vitamins, chiropractic adjustments, traditional medicine procedures such as cupping or acupuncture.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_physical_trauma:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last experienced physical trauma.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_recreational_drugs:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used recreational drugs.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
+time_from_tobacco:
+  description: >
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used tobacco.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
+
 tissue_or_organ_of_origin:
   description: >
     Text term that describes the anatomic site of the tumor or disease.
@@ -1763,6 +1893,16 @@ tumor_stage:
     cde_id: C16899
     cde_version: null
     term_url: "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C16899"
+
+type_of_non_rx_treatment:
+  description: >
+    Text term that represents the last used non-prescribed treatment.
+  termDef:
+    term:
+    source:
+    cde_id:
+    cde_version:
+    term_url:
 
 universal_molecular_identifier:
   description: >

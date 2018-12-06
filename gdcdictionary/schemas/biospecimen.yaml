@@ -52,6 +52,85 @@ uniqueKeys:
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  anatomic_site_of_last_procedure: #patient context variable
+    term:
+      $ref: "_terms.yaml#/anatomic_site_of_last_procedure"
+    enum:
+      - Abdomen, total
+      - Arm
+      - Ascites
+      - Axillary
+      - Body, total
+      - Bone
+      - Bone, non-spine
+      - Brain, focal
+      - Brain, whole
+      - Brain-C2
+      - Breast
+      - Cervical
+      - Chest Wall
+      - Effusion
+      - Epitrochlear
+      - Eye
+      - Femoral
+      - Gastrointestinal, Colon
+      - Gastrointestinal, Gallbladder
+      - Gastrointestinal, Intestine
+      - Gastrointestinal, Liver
+      - Gastrointestinal, NOS
+      - Gastrointestinal, Pancreas
+      - Gastrointestinal, Rectum
+      - Gastrointestinal, Stomach
+      - Genitourinary, Bladder
+      - Genitourinary, Kidney
+      - Genitourinary, NOS
+      - Genitourinary, Prostate
+      - Genitourinary, Prostate and Seminal Vesicles
+      - Head
+      - Head, Face, or Neck
+      - Hilar
+      - Iliac-common
+      - Iliac-external
+      - Inguinal
+      - Internal Mammary Nodes
+      - Leg
+      - Lung
+      - Lymph Nodes
+      - Lymph node, distant (specify site)
+      - Lymph node, locoregional (specify site)
+      - Mantle
+      - Mediastinal
+      - Mediastinum
+      - Mesenteric
+      - Occipital
+      - Other
+      - Paraaortic
+      - Parametrium
+      - Parotid
+      - Pelvis
+      - Popliteal
+      - Primary tumor site
+      - Prostate
+      - Prostate Bed
+      - Prostate, Seminal Vesicles and Lymph Nodes
+      - Rectum
+      - Retroperitoneal
+      - Sacrum
+      - Seminal vesicles
+      - Shoulder
+      - Skin, lower extremity, local
+      - Skin, total
+      - Skin, trunk, local
+      - Skin, upper extremity, local
+      - Spine
+      - Spine, whole
+      - Splenic
+      - Submandibular
+      - Supraclavicular
+      - Supraclavicular/Axillary Level 3
+      - Thorax
+      - Trunk
+      - Unknown
   biospecimen_anatomic_site:
     term:
       $ref: "_terms.yaml#/biospecimen_anatomic_site"
@@ -369,6 +448,10 @@ properties:
       provided here to tie those together. Work with your collaborators assure the same id is used
       in all projects.
     type: string
+  concomitant_medications:
+    term:
+      $ref: "_terms.yaml#/concomitant_medications"
+    type: array
   days_to_collection:
     description: >
       The number of days between the index date and the date the biospecimen was collected at the
@@ -493,6 +576,42 @@ properties:
       The temperature, in centigrade, at which the biospecimen was kept while it was being
       transported from the procurement site to its processing destination.
     type: number
+  time_from_alcohol: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_alcohol"
+    type: number
+  time_from_exercise: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_exercise"
+    type: number
+  time_from_food: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_food"
+    type: number
+  time_from_last_procedure: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_last_procedure"
+    type: number
+  time_from_medication:
+    term:
+      $ref: "_terms.yaml#/time_from_medication"
+    type: number
+  time_from_non_rx_treatment: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_non_rx_treatment"
+    type: number
+  time_from_physical_trauma: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_trauma"
+    type: number
+  time_from_recreational_drugs: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_recreational_drugs"
+    type: number
+  time_from_tobacco: #patient context variable
+    term:
+      $ref: "_terms.yaml#/time_from_tobacco"
+    type: number
   tissue_type:
     term:
       $ref: "_terms.yaml#/tissue_type"
@@ -578,6 +697,9 @@ properties:
       The specific description of the tumor morphology. Please use the ICD-0-3 code name (e.g.
       "Neoplasm, benign", "Carcinoma, Nos", or "Hepatocellular adenoma").
     type: string
-
+  type_of_non_rx_treatment: #patient context variable
+    term:
+      $ref: "_terms.yaml#/type_of_non_rx_treatment"
+    type: string
   cases:
     $ref: "_definitions.yaml#/to_one"

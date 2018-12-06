@@ -8,8 +8,7 @@ category: clinical
 program: '*'
 project: '*'
 description: >
-  Record of the administration and intention of therapeutic agents provided to a patient to alter
-  the course of a pathologic process.
+  Record of the administration and intention of therapeutic agents or procedures provided to a patient, including both cancer-directed and non-cancer directed treatments.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,12 +21,21 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: diagnoses
-    backref: treatments
-    label: describes #need better term here
-    target_type: diagnosis
-    multiplicity: many_to_one
+  - exclusive: false
     required: true
+    subgroup:
+      - name: cases
+        backref: treatments
+        label: describes
+        target_type: case
+        multiplicity: many_to_one
+        required: false
+      - name: diagnoses
+        backref: treatments
+        label: describes
+        target_type: diagnosis
+        multiplicity: many_to_one
+        required: false
 
 uniqueKeys:
   - [id]
@@ -43,6 +51,14 @@ properties:
   days_to_treatment_start:
     term:
       $ref: "_terms.yaml#/days_to_treatment_start"
+    type: number
+  dose:
+    term:
+      $ref: "_terms.yaml#/dose"
+    type: number
+  dose_units:
+    term:
+      $ref: "_terms.yaml#/dose_units"
     type: number
   regimen_or_line_of_therapy:
     description: >
@@ -132,6 +148,14 @@ properties:
       - Thorax
       - Trunk
       - Unknown
+  treatment_class:
+    term:
+      $ref: "_terms.yaml#/treatment_class"
+    enum:
+      - "Cancer Treatment"
+      - "Cancer Supportive Care"
+      - "Non-cancer Treatment"
+      - "Over-the-counter Agent"
   treatment_intent_type:
     term:
       $ref: "_terms.yaml#/treatment_intent_type"
@@ -165,5 +189,7 @@ properties:
       - Targeted Molecular Therapy
       - Unknown
 
+  cases:
+    $ref: "_definitions.yaml#/to_one"
   diagnoses:
     $ref: "_definitions.yaml#/to_one"
