@@ -56,12 +56,12 @@ properties:
 
   dosage:
     term:
-      $ref: "_terms.yaml#/dose"
+      $ref: "_terms.yaml#/dosage"
     type: number
 
   dosage_units:
     term:
-      $ref: "_terms.yaml#/dose_units"
+      $ref: "_terms.yaml#/dosage_units"
     type: number
 
   regimen_or_line_of_therapy:

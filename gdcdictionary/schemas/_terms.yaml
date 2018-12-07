@@ -650,7 +650,7 @@ dlco_ref_predictive_percent:
 
 dosage:
   description: >
-    A numerical representation of the dose administered for a therapeutic agent (see also: 'dose_units').
+    A numerical representation of the dose administered for a therapeutic agent (see also: 'dosage_units').
   termDef:
     term: Dosage of Therapeutic Agent
     source: null
@@ -661,7 +661,7 @@ dosage:
 
 dosage_units:
   description: >
-    The text term describing the units corresponding to the dose administered for a therapeutic agent (see also: 'dose').
+    The text term describing the units corresponding to the dose administered for a therapeutic agent (see also: 'dosage').
   termDef:
     term: Dosage Units
     source: null
