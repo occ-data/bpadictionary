@@ -39,12 +39,8 @@ links:
 
 required:
   - submitter_id
-  - days_to_treatment_end
   - days_to_treatment_start
-  - dosage
-  - dosage_units
   - treatment_class
-  - therapeutic_agents
 
 uniqueKeys:
   - [id]
@@ -58,21 +54,18 @@ properties:
       $ref: "_terms.yaml#/days_to_treatment_end"
     type:
       - number
-      - "null"
 
   days_to_treatment_start:
     term:
       $ref: "_terms.yaml#/days_to_treatment_start"
     type:
       - number
-      - "null"
 
   dosage:
     term:
       $ref: "_terms.yaml#/dosage"
     type:
       - number
-      - "null"
 
   dosage_units:
     term:

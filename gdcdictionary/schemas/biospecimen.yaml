@@ -469,67 +469,29 @@ properties:
   comorbidities:
     description: >
       Text terms to identify coexistent diseases (other than the primary diagnosis) or conditions in a person that may influence the composition of a blood sample. If there is more than one comorbidity, submit terms as a comma-separated list.
-    type:
-      - array
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: array
-
+    type: string
 
   concomitant_medications:
     term:
       $ref: "_terms.yaml#/concomitant_medications"
-    type:
-      - array
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: array
+    type: string
 
   days_to_collection:
     description: >
-      The number of days between the index date and the date the biospecimen was collected at the
-      laboratory. Use Unknown if the date of the event is not known. Use Not Applicable if the event
-      never happened.
-    type:
-      - integer
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: integer
+      The number of days between the index date and the date the biospecimen was collected at the laboratory.
+    type: integer
 
   days_to_comorbidities:
     description: >
       The number of days between the case index date and the date that a patient was diagnosed with a comorbidity (see also 'comorbidities'). If more than one comorbidity was submitted, separate number of days for each as a comma-separated list.
-    type:
-      - array
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: array
+    type: integer
 
   days_to_procurement:
     description: >
       The number of days between the index date and the date the biospecimen was taken from the
       patient (such as the blood draw). Use Unknown if the date of the event is not known. Use Not
       Applicable if the event never happened."
-    type:
-      - integer
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: integer
+    type: integer
 
   disease_type:
     description: "The primary disease of the patient from which the biospecimen was taken."
@@ -628,149 +590,63 @@ properties:
 
   procurement_temperature:
     description: >
-      The temperature, in centigrade, at which the biospecimen was kept after procuring it from the
-      patient. Use 20 for room temperature; 0 for on ice.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+      The temperature, in centigrade, at which the biospecimen was kept after procuring it from the patient. Use 20 for room temperature; 0 for on ice.
+    type: number
 
   shipping_temperature:
     description: >
-      The temperature, in centigrade, at which the biospecimen was kept while it was being
-      transported from the procurement site to its processing destination.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+      The temperature, in centigrade, at which the biospecimen was kept while it was being transported from the procurement site to its processing destination.
+    type: number
 
   time_from_alcohol: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_alcohol"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_exercise: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_exercise"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_food: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_food"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_last_procedure: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_last_procedure"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_medication:
     term:
       $ref: "_terms.yaml#/time_from_medication"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_non_rx_treatment: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_non_rx_treatment"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_physical_trauma: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_physical_trauma"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_recreational_drugs: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_recreational_drugs"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_tobacco: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_tobacco"
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   time_from_treatment: #patient context variable
     description: >
       Time interval from the date of the start of cancer-directed treatment to the biospecimen collection, represented as a calculated number of days (see also: 'treatment_type').
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: number
+    type: number
 
   tissue_type:
     term:
@@ -785,13 +661,7 @@ properties:
   treatment_type:
     description: >
       Text term that describes the kind of cancer-directed treatment administered.
-    type:
-      - string
-    oneOf:
-      - enum:
-          - "Not Applicable"
-          - "Unknown"
-      - type: string
+    type: string
 
   tumor_code:
     term:
