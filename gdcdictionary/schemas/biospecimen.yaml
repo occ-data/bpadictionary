@@ -49,6 +49,10 @@ required:
   - cases
   - concomitant_medications
   - time_from_medication
+  - treatment_type
+  - time_from_treatment
+  - comorbidities
+  - days_to_comorbidities
 
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
@@ -462,6 +466,19 @@ properties:
       In cases where the same biospecimen is used by multiple institutions, a deidenfitied id may be provided here to tie those together. Work with your collaborators assure the same id is used in all projects.
     type: string
 
+  comorbidities:
+    description: >
+      Text terms to identify coexistent diseases (other than the primary diagnosis) or conditions in a person that may influence the composition of a blood sample. If there is more than one comorbidity, submit terms as a comma-separated list.
+    type:
+      - array
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: array
+
+
   concomitant_medications:
     term:
       $ref: "_terms.yaml#/concomitant_medications"
@@ -487,6 +504,18 @@ properties:
           - "Not Applicable"
           - "Unknown"
       - type: integer
+
+  days_to_comorbidities:
+    description: >
+      The number of days between the case index date and the date that a patient was diagnosed with a comorbidity (see also 'comorbidities'). If more than one comorbidity was submitted, separate number of days for each as a comma-separated list.
+    type:
+      - array
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: array
 
   days_to_procurement:
     description: >
@@ -731,6 +760,18 @@ properties:
           - "Unknown"
       - type: number
 
+  time_from_treatment: #patient context variable
+    description: >
+      Time interval from the date of the start of cancer-directed treatment to the biospecimen collection, represented as a calculated number of days (see also: 'treatment_type').
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
+
   tissue_type:
     term:
       $ref: "_terms.yaml#/tissue_type"
@@ -740,6 +781,17 @@ properties:
       - "Abnormal"
       - "Peritumoral"
       - "Unknown"
+
+  treatment_type:
+    description: >
+      Text term that describes the kind of cancer-directed treatment administered.
+    type:
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: string
 
   tumor_code:
     term:
