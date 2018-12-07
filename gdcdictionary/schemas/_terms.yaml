@@ -232,11 +232,11 @@ anatomic_site_of_last_procedure:
   description: >
     Text term that represents the name of the anatomic site of the patient's last biopsy or surgical procedure.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Anatomic Site of Last Biopsy or Surgical Procedure
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 ann_arbor_b_symptoms:
   description: >
@@ -452,11 +452,11 @@ concomitant_medications:
   description: >
     Array of text terms that describe the non-cancer-directed medications that the patient is taking at the time of biospecimen collection (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.).
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Concomitant Medications
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 creation_datetime:
   description: >
@@ -648,25 +648,26 @@ dlco_ref_predictive_percent:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2180255&version=1.0"
 
-dose:
+dosage:
   description: >
     A numerical representation of the dose administered for a therapeutic agent (see also: 'dose_units').
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Dosage of Therapeutic Agent
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
-dose_units:
+
+dosage_units:
   description: >
     The text term describing the units corresponding to the dose administered for a therapeutic agent (see also: 'dose').
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Dosage Units
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 encoding:
   description: >
@@ -1647,91 +1648,91 @@ time_from_alcohol:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last consumed alcohol.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Alcohol Consumption
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_exercise:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last exercised.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Exercise
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_food:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last consumed food.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Food Consumed
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_last_procedure:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last underwent a biopsy or surgical procedure.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Biopsy or Surgical Procedure
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_medication:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last took non-cancer-directed medications (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.)
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Non-cancer-directed Medication
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_non_rx_treatment:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used a non-prescribed treatment, including herbal supplements, vitamins, chiropractic adjustments, traditional medicine procedures such as cupping or acupuncture.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Non-prescribed Treatment
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_physical_trauma:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last experienced physical trauma.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Physical Trauma Experience
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_recreational_drugs:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used recreational drugs.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Recreational Drug Use
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 time_from_tobacco:
   description: >
     Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last used tobacco.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: Time from Last Tobacco Use
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 tissue_or_organ_of_origin:
   description: >
@@ -1804,6 +1805,16 @@ treatment_anatomic_site:
     The anatomic site or field targeted by a treatment regimen or single agent therapy.
   termDef:
     term: Treatment Anatomic Site
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+treatment_class:
+  description: >
+    Text term that describes the general classification of the treatment, i.e., whether the treatment is cancer directed, in support of cancer care, prescribed for some condition other than cancer, or is an over-the-counter agent.
+  termDef:
+    term: Treatment Class
     source: null
     cde_id: null
     cde_version: null
@@ -1898,11 +1909,11 @@ type_of_non_rx_treatment:
   description: >
     Text term that represents the last used non-prescribed treatment.
   termDef:
-    term:
-    source:
-    cde_id:
-    cde_version:
-    term_url:
+    term: The Type of Last Used Non-prescribed Treatment
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 universal_molecular_identifier:
   description: >
