@@ -174,9 +174,9 @@ properties:
     term:
       $ref: "_terms.yaml#/treatment_class"
     enum:
-      - "Cancer-directed Treatment"
-      - "Cancer-related Supportive Care"
-      - "Non-cancer-related, Prescribed Treatment"
+      - "Cancer-directed"
+      - "Indirectly Cancer-related, Supportive Care"
+      - "Non-cancer-related"
       - "Over-the-counter Agent"
 
   treatment_intent_type:

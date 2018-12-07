@@ -3,12 +3,18 @@
     "submitter_id": "E9EDB78B-6897-4205-B9AA-0CEF8AAB5A1F_treatment",
     "days_to_treatment_end": 14,
     "days_to_treatment_start": 25,
+    "dosage": 125,
+    "dosage_units": "mg/day",
     "regimen_or_line_of_therapy":"First Line of Therapy",
-    "therapeutic_agents": "",
-    "treatment_anatomic_site": "Arm", 
-    "treatment_intent_type": "",
+    "therapeutic_agents": "medicine1",
+    "treatment_anatomic_site": "Arm",
+    "treatment_class":"Cancer-directed",
+    "treatment_intent_type": "Inhibition of tumor growth",
     "treatment_type": "Other",
     "diagnoses": {
         "submitter_id": "E9EDB78B-6897-4205-B9AA-0CEF8AAB5A1F_diagnosis"
+    },
+    "cases": {
+        "submitter_id": "case-12345"
     }
 }
