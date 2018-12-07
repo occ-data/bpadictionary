@@ -37,6 +37,15 @@ links:
         multiplicity: many_to_one
         required: false
 
+required:
+  - submitter_id
+  - days_to_treatment_end
+  - days_to_treatment_start
+  - dosage
+  - dosage_units
+  - treatment_class
+  - therapeutic_agents
+
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
@@ -47,22 +56,28 @@ properties:
   days_to_treatment_end:
     term:
       $ref: "_terms.yaml#/days_to_treatment_end"
-    type: number
+    type:
+      - number
+      - "null"
 
   days_to_treatment_start:
     term:
       $ref: "_terms.yaml#/days_to_treatment_start"
-    type: number
+    type:
+      - number
+      - "null"
 
   dosage:
     term:
       $ref: "_terms.yaml#/dosage"
-    type: number
+    type:
+      - number
+      - "null"
 
   dosage_units:
     term:
       $ref: "_terms.yaml#/dosage_units"
-    type: number
+    type: string
 
   regimen_or_line_of_therapy:
     description: >
@@ -159,9 +174,9 @@ properties:
     term:
       $ref: "_terms.yaml#/treatment_class"
     enum:
-      - "Cancer Treatment"
-      - "Cancer Supportive Care"
-      - "Non-cancer Treatment"
+      - "Cancer-directed Treatment"
+      - "Cancer-related Supportive Care"
+      - "Non-cancer-related, Prescribed Treatment"
       - "Over-the-counter Agent"
 
   treatment_intent_type:

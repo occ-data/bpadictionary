@@ -450,7 +450,7 @@ concentration:
 
 concomitant_medications:
   description: >
-    Array of text terms that describe the non-cancer-directed medications that the patient is taking at the time of biospecimen collection (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.).
+    Array of text terms that describe the non-cancer-directed, prescription medications that the patient is taking at the time of biospecimen collection, e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc., (see also: "time_from_medication").
   termDef:
     term: Concomitant Medications
     source: null
@@ -1686,7 +1686,7 @@ time_from_last_procedure:
 
 time_from_medication:
   description: >
-    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last took non-cancer-directed medications (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.)
+    Numeric representation of the elapsed time in hours between biospecimen collection and time the patient last took non-cancer-directed, prescription medications (e.g., Antiemetics, Antibiotics, Steroids, NSAIDs, etc.)
   termDef:
     term: Time from Last Non-cancer-directed Medication
     source: null

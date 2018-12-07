@@ -25,18 +25,6 @@ systemProperties:
   - created_datetime
   - updated_datetime
 
-required:
-  - submitter_id
-  - biospecimen_type
-  - biospecimen_anatomic_site
-  - blood_tube_type
-  - days_to_collection
-  - days_to_procurement
-  - method_of_procurement
-  - procured_or_purchased
-  - tissue_type
-  - cases
-
 links:
   - name: cases
     backref: biospecimens
@@ -48,6 +36,19 @@ links:
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
+
+required:
+  - biospecimen_type
+  - biospecimen_anatomic_site
+  - blood_tube_type
+  - days_to_collection
+  - days_to_procurement
+  - method_of_procurement
+  - procured_or_purchased
+  - tissue_type
+  - cases
+  - concomitant_medications
+  - time_from_medication
 
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
@@ -102,6 +103,7 @@ properties:
       - "Mediastinal"
       - "Mediastinum"
       - "Mesenteric"
+      - "Not Applicable"
       - "Occipital"
       - "Other"
       - "Paraaortic"
@@ -127,7 +129,7 @@ properties:
       - "Splenic"
       - "Submandibular"
       - "Supraclavicular"
-      - "Supraclavicular"/Axillary Level 3
+      - "Supraclavicular/Axillary Level 3"
       - "Thorax"
       - "Trunk"
       - "Unknown"
@@ -417,17 +419,20 @@ properties:
       - "Unknown"
 
   biospecimen_type:
-    description: "A top level description of the biospecimen. Is the biospecimen a fluid or solid tissue?"
+    description: >
+      A top level description of the biospecimen. Is the biospecimen a fluid or solid tissue?
     enum:
       - "Fluid"
       - "Solid Tissue"
 
   biospecimen_volume:
-    description: "For fluid biospecimens this is the total volume in milliliters."
+    description: >
+      For fluid biospecimens this is the total volume in milliliters.
     type: number
 
   biospecimen_weight:
-    description: "For solid tissue biospecimens this is the total weight in milligrams."
+    description: >
+      For solid tissue biospecimens this is the total weight in milligrams.
     type: number
 
   blood_draw_method:
@@ -437,7 +442,8 @@ properties:
     type: string
 
   blood_tube_type:
-    description: "The kind of tube used to collect the sample(s) taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes."
+    description: >
+      The kind of tube used to collect the sample(s) taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes.
     enum:
       - "EDTA"
       - "CellSave"
@@ -447,20 +453,26 @@ properties:
       - "Unknown"
 
   clinical_site:
-    description: "The name or identifier for the clinical site at which the biospecimen was taken from the patient."
+    description: >
+      The name or identifier for the clinical site at which the biospecimen was taken from the patient.
     type: string
 
   collaboration_id:
     description: >
-      In cases where the same biospecimen is used by multiple institutions, a deidenfitied id may be
-      provided here to tie those together. Work with your collaborators assure the same id is used
-      in all projects.
+      In cases where the same biospecimen is used by multiple institutions, a deidenfitied id may be provided here to tie those together. Work with your collaborators assure the same id is used in all projects.
     type: string
 
   concomitant_medications:
     term:
       $ref: "_terms.yaml#/concomitant_medications"
-    type: array
+    type:
+      - array
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: array
 
   days_to_collection:
     description: >
@@ -589,58 +601,135 @@ properties:
     description: >
       The temperature, in centigrade, at which the biospecimen was kept after procuring it from the
       patient. Use 20 for room temperature; 0 for on ice.
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   shipping_temperature:
     description: >
       The temperature, in centigrade, at which the biospecimen was kept while it was being
       transported from the procurement site to its processing destination.
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_alcohol: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_alcohol"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_exercise: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_exercise"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_food: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_food"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_last_procedure: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_last_procedure"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_medication:
     term:
       $ref: "_terms.yaml#/time_from_medication"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_non_rx_treatment: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_non_rx_treatment"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_physical_trauma: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_physical_trauma"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_recreational_drugs: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_recreational_drugs"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   time_from_tobacco: #patient context variable
     term:
       $ref: "_terms.yaml#/time_from_tobacco"
-    type: number
+    type:
+      - number
+      - string
+    oneOf:
+      - enum:
+          - "Not Applicable"
+          - "Unknown"
+      - type: number
 
   tissue_type:
     term:
