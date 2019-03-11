@@ -48,6 +48,7 @@ properties:
     enum:
       - ABI QuantStudio
       - Agilent TapeStation
+      - Applied Biosystems Real-Time PCR System
       - BioTek
       - CytoTrapNano CTC Platform
       - Epic Sciences CTC Platform
@@ -58,6 +59,7 @@ properties:
   assay_instrument_model:
     description: "The specific model of instrument used to perform the assay."
     enum:
+      - ABI 7500 Fast Dx Real-Time PCR
       - ABI QuantStudio 5
       - Advanced Analytical Fragment Analyzer
       - Agilent 2200 TapeStation
