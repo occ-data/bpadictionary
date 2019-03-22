@@ -55,17 +55,8 @@ required:
   - method_of_procurement
   - procured_or_purchased
   - tissue_type
-allOf:
-- oneOf:
-  - required:
-    - days_to_collection
-  - required:
-    - days_to_collection_not_reported
-- oneOf:
-  - required:
-    - days_to_procurement
-  - required:
-    - days_to_procurement_not_reported
+  - days_to_collection_not_reported
+  - days_to_procurement_not_reported
 
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
@@ -399,22 +390,22 @@ properties:
 
   days_to_collection:
     description: >
-      The number of days between the index date and the date the biospecimen was collected at laboratory.
+      The number of days between the index date and the date the biospecimen was received at laboratory that will be processing the biospecimen. If this information is missing, please indicate 'TRUE' for 'days_to_collection_not_reported'. If this information is available, then answer 'FALSE' for 'days_to_collection_not_reported'.
     type: integer
 
   days_to_collection_not_reported:
     description: >
-      True/False indicator of whether the number of days between the index date and the date the biospecimen was collected at laboratory is reported.
+      True/False indicator of whether the number of days between the index date and the date the biospecimen was collected at laboratory is reported. If 'days_to_collection' data is available, please answer 'FALSE' and fill in 'days_to_collection'. If the data are not available, answer 'TRUE'.
     type: boolean
 
   days_to_procurement:
     description: >
-      The number of days between the index date and the date the biospecimen was taken from the patient (such as the blood draw).
+      The number of days between the index date and the date the biospecimen was taken from the patient (such as the blood draw). If this information is missing, please indicate 'TRUE' for 'days_to_procurement_not_reported'. If this information is available, then answer 'FALSE' for 'days_to_procurement_not_reported'.
     type: integer
 
   days_to_procurement_not_reported:
     description: >
-      True/False indicator of whether the number of days between the index date and the date the biospecimen was taken from the patient is reported.
+      True/False indicator of whether the number of days between the index date and the date the biospecimen was taken from the patient is reported.  If 'days_to_procurement' data is available, please answer 'FALSE' and fill in 'days_to_procurement'. If the data are not available, answer 'TRUE'.
     type: boolean
 
   disease_type:
