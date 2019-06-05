@@ -30,7 +30,7 @@ links:
         backref: slide_images
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: aliquots
         backref: slide_images

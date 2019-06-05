@@ -30,7 +30,7 @@ links:
         backref: quantification_assay_qcs
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: quantification_assays
         backref: quantification_assay_qcs

@@ -33,13 +33,13 @@ links:
         backref: mass_cytometry_assays
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: analytes
         backref: mass_cytometry_assays
         label: data_from
         target_type: analyte
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
 
 required:

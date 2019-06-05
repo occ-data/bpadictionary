@@ -32,7 +32,7 @@ links:
         backref: mass_cytometry_images
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: mass_cytometry_assays
         backref: mass_cytometry_images
