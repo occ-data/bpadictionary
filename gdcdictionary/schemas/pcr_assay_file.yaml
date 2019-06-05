@@ -28,7 +28,7 @@ links:
         backref: pcr_assay_files
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: pcr_assays
         backref: pcr_assay_files
