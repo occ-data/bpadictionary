@@ -29,7 +29,7 @@ links:
         backref: aligned_reads_indexes
         label: data_from
         target_type: core_metadata_collection
-        multiplicity: one_to_one
+        multiplicity: many_to_one
         required: false
       - name: submitted_aligned_reads_files
         backref: aligned_reads_indexes
