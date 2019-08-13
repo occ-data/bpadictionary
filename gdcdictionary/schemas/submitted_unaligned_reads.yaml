@@ -3,11 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "submitted_unaligned_reads"
 title: Submitted Unaligned Reads
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: data_file
 program: '*'
 project: '*'
-description: "Data file containing unaligned reads that have not been GDC Harmonized."
+description: Data file containing unaligned reads that have not been GDC Harmonized.
 additionalProperties: false
 submittable: true
 validators: null
@@ -15,6 +16,7 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
   - state
@@ -48,44 +50,51 @@ required:
   - data_type
   - data_format
   - experimental_strategy
-
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
+
   data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    enum:
-      - Sequencing Reads
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Unaligned Reads
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_category"
+    enumTerms:
+      Sequencing Reads: null
+
   data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - BAM
-      - FASTQ
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_format"
+    enumTerms:
+      BAM: null
+      FASTQ: null
+
+  data_type:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_type"
+    enumTerms:
+      Unaligned Reads: null
+
   experimental_strategy:
-    term:
-      $ref: "_terms.yaml#/experimental_strategy"
-    enum:
-      - WGS
-      - WXS
-      - Low Pass WGS
-      - Validation
-      - RNA-Seq
-      - miRNA-Seq
-      - Total RNA-Seq
-      - DNA Panel
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/experimental_strategy"
+    enumTerms:
+      DNA Panel: null
+      Low Pass WGS: null
+      RNA-Seq: null
+      Total RNA-Seq: null
+      Validation: null
+      WGS: null
+      WXS: null
+      miRNA-Seq: null
 
   read_groups:
-    $ref: "_definitions.yaml#/to_one"
-  core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

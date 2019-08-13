@@ -1,14 +1,15 @@
-schema: "http://json-schema.org/draft-04/schema#"
+$schema: "http://json-schema.org/draft-04/schema#"
 
 id: "comorbidity"
 title: Comorbidity
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Diagnosed medical conditions that are not directly related to or pre-date a patient's oncologic history.
+description: Diagnosed medical conditions that are not directly related to or pre-date
+  a patient's oncologic history.
 additionalProperties: false
 submittable: true
 validators: null
@@ -33,6 +34,12 @@ links:
     target_type: followup
     multiplicity: many_to_one
     required: false
+  - name: followups
+    backref: comorbidities
+    label: describes
+    target_type: followup
+    multiplicity: many_to_one
+    required: false
 
 required:
   - submitter_id
@@ -40,119 +47,120 @@ required:
   - cases
   - comorbidity
   - days_to_comorbidity
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
-
-  comorbidity:
-    description: >
-      Text term to identify a coexistent disease or condition in a person.
-    enum:
-      - Acute renal failure
-      - Adrenocortical Insufficiency
-      - Allergies
-      - Anemia
-      - Anxiety
-      - Arrhythmia
-      - Arthritis
-      - Asthma
-      - Atrial Fibrillation
-      - Avascular Necrosis
-      - Basal Cell Carcinoma
-      - Blood Clots
-      - Bone Fracture(s)
-      - Bronchitis
-      - Calcium Channel Blockers
-      - Cancer
-      - Cataracts
-      - Cerebrovascular Disease
-      - Chronic renal failure
-      - Congestive Heart Failure (CHF)
-      - Connective Tissue Disorder
-      - COPD
-      - Coronary Artery Disease
-      - Cryptogenic Organizing Pneumonia
-      - Deep vein thrombosis / Thromboembolism
-      - Depression
-      - Diabetes
-      - Diabetic Neuropathy
-      - Diet controlled Diabetes
-      - DVT/PE
-      - Dyslipidemia
-      - Epilepsy
-      - Gastroesophageal reflux disease
-      - GERD
-      - Glaucoma
-      - Gout
-      - Gonadal dysfunction
-      - Headache
-      - Heart disease
-      - Hemorrhagic Cystitis
-      - Hepatitis
-      - Hepatitis B Infection
-      - Hepatitis C Infection
-      - HIV / AIDS
-      - HUS/TTP
-      - Hypercholesterolemia
-      - Hypercalcemia
-      - Hyperglycemia
-      - Hyperlipidemia
-      - Hypertension
-      - Hypothyroidism
-      - Inflammatory Bowel Disease
-      - Insulin controlled Diabetes
-      - Interstitial Pneumontis or ARDS
-      - Iron Overload
-      - Ischemic heart disease
-      - ITP
-      - Joint replacement
-      - Kidney Disease
-      - Liver Cirrhosis (Liver Disease)
-      - Liver toxicity (non-infectious)
-      - Lupus
-      - MAI
-      - Myocardial Infarction
-      - None
-      - Obesity
-      - Organ transplant (site)
-      - Osteoarthritis
-      - Osteoporosis or Osteopenia
-      - Other
-      - Other cancer within 5 years
-      - Other nonmalignant systemic disease
-      - Other pulmonary complications
-      - Pancreatitis
-      - Pain (various)
-      - Peptic Ulcer (Ulcer)
-      - Peripheral neuropathy
-      - Peripheral Vascular Disease
-      - Pregnancy in patient or partner
-      - Psoriasis
-      - Pulmonary Fibrosis
-      - Pulmonary Hemorrhage
-      - Renal failure (requiring dialysis)
-      - Renal dialysis
-      - Renal Insufficiency
-      - Rheumatologic Disease
-      - Sarcoidosis
-      - Seizure
-      - Sleep apnea
-      - Smoking
-      - Stroke
-      - Transient ischemic attack
-      - Tuberculosis
-      - Ulcerative Colitis
-
-  days_to_comorbidity:
-    description: >
-      Number of days between the date used for index and the date the patient was diagnosed with a comorbidity.
-    type: integer
 
   cases:
     $ref: "_definitions.yaml#/to_one"
+
+  comorbidity:
+    description: Text term to identify a coexistent disease or condition in a person.
+    terms: null
+    enumTerms:
+      Acute renal failure: null
+      Adrenocortical Insufficiency: null
+      Allergies: null
+      Anemia: null
+      Anxiety: null
+      Arrhythmia: null
+      Arthritis: null
+      Asthma: null
+      Atrial Fibrillation: null
+      Avascular Necrosis: null
+      Basal Cell Carcinoma: null
+      Blood Clots: null
+      Bone Fracture(s): null
+      Bronchitis: null
+      COPD: null
+      Calcium Channel Blockers: null
+      Cancer: null
+      Cataracts: null
+      Cerebrovascular Disease: null
+      Chronic renal failure: null
+      Congestive Heart Failure (CHF): null
+      Connective Tissue Disorder: null
+      Coronary Artery Disease: null
+      Cryptogenic Organizing Pneumonia: null
+      DVT/PE: null
+      Deep vein thrombosis / Thromboembolism: null
+      Depression: null
+      Diabetes: null
+      Diabetic Neuropathy: null
+      Diet controlled Diabetes: null
+      Dyslipidemia: null
+      Epilepsy: null
+      GERD: null
+      Gastroesophageal reflux disease: null
+      Glaucoma: null
+      Gonadal dysfunction: null
+      Gout: null
+      HIV / AIDS: null
+      HUS/TTP: null
+      Headache: null
+      Heart disease: null
+      Hemorrhagic Cystitis: null
+      Hepatitis: null
+      Hepatitis B Infection: null
+      Hepatitis C Infection: null
+      Hypercalcemia: null
+      Hypercholesterolemia: null
+      Hyperglycemia: null
+      Hyperlipidemia: null
+      Hypertension: null
+      Hypothyroidism: null
+      ITP: null
+      Inflammatory Bowel Disease: null
+      Insulin controlled Diabetes: null
+      Interstitial Pneumontis or ARDS: null
+      Iron Overload: null
+      Ischemic heart disease: null
+      Joint replacement: null
+      Kidney Disease: null
+      Liver Cirrhosis (Liver Disease): null
+      Liver toxicity (non-infectious): null
+      Lupus: null
+      MAI: null
+      Myocardial Infarction: null
+      None: null
+      Obesity: null
+      Organ transplant (site): null
+      Osteoarthritis: null
+      Osteoporosis or Osteopenia: null
+      Other: null
+      Other cancer within 5 years: null
+      Other nonmalignant systemic disease: null
+      Other pulmonary complications: null
+      Pain (various): null
+      Pancreatitis: null
+      Peptic Ulcer (Ulcer): null
+      Peripheral Vascular Disease: null
+      Peripheral neuropathy: null
+      Pregnancy in patient or partner: null
+      Psoriasis: null
+      Pulmonary Fibrosis: null
+      Pulmonary Hemorrhage: null
+      Renal Insufficiency: null
+      Renal dialysis: null
+      Renal failure (requiring dialysis): null
+      Rheumatologic Disease: null
+      Sarcoidosis: null
+      Seizure: null
+      Sleep apnea: null
+      Smoking: null
+      Stroke: null
+      Transient ischemic attack: null
+      Tuberculosis: null
+      Ulcerative Colitis: null
+
+  days_to_comorbidity:
+    description: Number of days between the date used for index and the date the patient
+      was diagnosed with a comorbidity.
+    terms: null
+    type: integer
+
   followups:
     $ref: "_definitions.yaml#/to_one"

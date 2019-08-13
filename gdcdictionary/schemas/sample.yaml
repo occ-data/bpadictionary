@@ -3,14 +3,15 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "sample"
 title: Sample
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: biospecimen
 program: '*'
 project: '*'
-description: >
-  Any part of the biological whole of the biospecimen. In the case of solid tissue, this would be a
-  particular set of cells. In the case of fluids, such as blood, this can refer to the plasma,
-  peripheral blood components, or any combination therein.
+description: Any part of the biological whole of the biospecimen. In the case of solid
+  tissue, this would be a particular set of cells. In the case of fluids, such as
+  blood, this can refer to the plasma, peripheral blood components, or any combination
+  therein.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,16 +23,6 @@ systemProperties:
   - created_datetime
   - updated_datetime
 
-required:
-  - submitter_id
-  - type
-  - composition
-  - biospecimens
-
-uniqueKeys:
-  - [id]
-  - [project_id, submitter_id]
-
 links:
   - name: biospecimens
     backref: samples
@@ -40,96 +31,98 @@ links:
     multiplicity: many_to_many
     required: true
 
+required:
+  - submitter_id
+  - type
+  - composition
+  - biospecimens
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
-
-  blood_fractionation_method:
-    description: >
-      The name or description of the method used to obtain the blood fraction sample. (e.g. Ficoll
-      Method, Novartis Protocol #001, 2000 g centrifuge at 4C with gentle deceleration). Alternatively,
-      if you have provided a detailed protocol, enter its file_name here.
-    type: string
-
-  composition:
-    term:
-      $ref: "_terms.yaml#/composition"
-    enum:
-      - Buccal Cells
-      - Buffy Coat
-      - Bone Marrow Components
-      - Bone Marrow Components NOS
-      - Control Analyte
-      - Cell
-      - Circulating Tumor Cell (CTC)
-      - Derived Cell Line
-      - EBV Immortalized
-      - Fibroblasts from Bone Marrow Normal
-      - Granulocytes
-      - Human Original Cells
-      - Lymphocytes
-      - Mononuclear Cells from Bone Marrow Normal
-      - Peripheral Blood Components NOS
-      - Peripheral Blood Nucleated Cells
-      - Pleural Effusion
-      - Plasma
-      - Peripheral Whole Blood
-      - Serum
-      - Saliva
-      - Sputum
-      - Solid Tissue
-      - Whole Bone Marrow
-      - Unknown
-
-  hours_to_fractionation_lower:
-    description: >
-      The lower limit on the amount of time, in hours, between the blood draw and the fractionation
-      into its components. If the exact time is known, make this value equal to that of the upper
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
-
-  hours_to_fractionation_upper:
-    description: >
-      The upper limit on the amount of time, in hours, between the blood draw and the fractionation
-      into its components. If the exact time is known, make this value equal to that of the lower
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
-
-  sample_quantity:
-    description: "For solid samples, the mass of the sample in milligrams (mg)."
-    type: number
-
-  sample_volume:
-    description: "For liquid samples, the volume of the sample in millilitres (mL)."
-    type: number
-
-  storage_agitation_hours:
-    description: >
-      The number of hours samples were agitated during storage; if a number is given here, also answer 'Yes' to 'storage_agitation'.
-    type: number
-
-  storage_agitation:
-    description: >
-      Indicate whether samples were agitated during storage.
-    enum:
-      - "Yes"
-      - "No"
-      - "Unknown"
 
   biospecimens:
     $ref: "_definitions.yaml#/to_many"
+
+  blood_fractionation_method:
+    description: 'The name or description of the method used to obtain the blood fraction
+      sample. (e.g. Ficoll Method, Novartis Protocol #001, 2000 g centrifuge at 4C
+      with gentle deceleration). Alternatively, if you have provided a detailed protocol,
+      enter its file_name here.'
+    terms: null
+    type: string
+
+  composition:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/composition"
+    enumTerms:
+      Bone Marrow Components: null
+      Bone Marrow Components NOS: null
+      Buccal Cells: null
+      Buffy Coat: null
+      Cell: null
+      Circulating Tumor Cell (CTC): null
+      Control Analyte: null
+      Derived Cell Line: null
+      EBV Immortalized: null
+      Fibroblasts from Bone Marrow Normal: null
+      Granulocytes: null
+      Human Original Cells: null
+      Lymphocytes: null
+      Mononuclear Cells from Bone Marrow Normal: null
+      Peripheral Blood Components NOS: null
+      Peripheral Blood Nucleated Cells: null
+      Peripheral Whole Blood: null
+      Plasma: null
+      Pleural Effusion: null
+      Saliva: null
+      Serum: null
+      Solid Tissue: null
+      Sputum: null
+      Unknown: null
+      Whole Bone Marrow: null
+
+  hours_to_fractionation_lower:
+    description: The lower limit on the amount of time, in hours, between the blood
+      draw and the fractionation into its components. If the exact time is known,
+      make this value equal to that of the upper limit. If the time is completely
+      unknown, enter Unknown. If no fractionation was performed on this sample, enter
+      Not Applicable.
+    terms: null
+    type: "['number', 'string']"
+
+  hours_to_fractionation_upper:
+    description: The upper limit on the amount of time, in hours, between the blood
+      draw and the fractionation into its components. If the exact time is known,
+      make this value equal to that of the lower limit. If the time is completely
+      unknown, enter Unknown. If no fractionation was performed on this sample, enter
+      Not Applicable.
+    terms: null
+    type: "['number', 'string']"
+
+  sample_quantity:
+    description: For solid samples, the mass of the sample in milligrams (mg).
+    terms: null
+    type: number
+
+  sample_volume:
+    description: For liquid samples, the volume of the sample in millilitres (mL).
+    terms: null
+    type: number
+
+  storage_agitation:
+    description: Indicate whether samples were agitated during storage.
+    terms: null
+    enumTerms:
+      No: null
+      Unknown: null
+      Yes: null
+
+  storage_agitation_hours:
+    description: The number of hours samples were agitated during storage; if a number
+      is given here, also answer 'Yes' to 'storage_agitation'.
+    terms: null
+    type: number

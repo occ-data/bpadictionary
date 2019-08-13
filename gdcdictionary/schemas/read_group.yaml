@@ -3,11 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "read_group"
 title: Read Group
 type: object
-description: "Sequencing reads from one lane of an NGS experiment."
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: biospecimen
-project: '*'
 program: '*'
+project: '*'
+description: Sequencing reads from one lane of an NGS experiment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -15,17 +16,17 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
 
 links:
   - name: analytes
+    backref: read_groups
     label: derived_from
     target_type: analyte
     multiplicity: many_to_one
     required: true
-    backref: read_groups
 
 required:
   - submitter_id
@@ -37,164 +38,221 @@ required:
   - read_length_lower
   - read_length_upper
   - analytes
-
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  adapter_sequence:
-    term:
-      $ref: "_terms.yaml#/adapter_sequence"
-    type: string
-  barcoding_applied:
-    description: "True/False: was barcoding applied?"
-    type: boolean
-  coverage:
-    description:  "Sequencing coverage used in the assay (e.g., 75 PE)."
-    type: string
-  customization:
-    description: "A description of any special setup or customization not documented elsewhere."
-    type: string
-  cycles:
-    description: "The number of cycles used in the assay (e.g., 50,000x per sample)."
-    type: string
-  flow_cell_barcode:
-    term:
-      $ref: "_terms.yaml#/flow_cell_barcode"
-    type: string
-  instrument_model:
-    terms:
-      $ref: "_terms.yaml#/instrument_model"
-    enum:
-      - 454 GS FLX Titanium
-      - AB SOLiD 4
-      - AB SOLiD 2
-      - AB SOLiD 3
-      - Complete Genomics
-      - Illumina HiSeq X Ten
-      - Illumina HiSeq X Five
-      - Illumina Genome Analyzer II
-      - Illumina Genome Analyzer IIx
-      - Illumina HiSeq 2000
-      - Illumina HiSeq 2500
-      - Illumina HiSeq 4000
-      - Illumina MiniSeq
-      - Illumina MiSeq
-      - Illumina NextSeq
-      - Ion Torrent PGM
-      - Ion Torrent Proton
-      - PacBio RS
-      - Ion S5 XL System, Ion 530 Chip
-      - Other
-  is_paired_end:
-    term:
-      $ref: "_terms.yaml#/is_paired_end"
-    type: boolean
-  library_name:
-    term:
-      $ref: "_terms.yaml#/library_name"
-    type: string
-  library_preparation_kit_name:
-    term:
-      $ref: "_terms.yaml#/library_preparation_kit_name"
-    type: string
-  library_preparation_kit_vendor:
-    term:
-      $ref: "_terms.yaml#/library_preparation_kit_vendor"
-    type: string
-  library_preparation_kit_catalog_number:
-    term:
-      $ref: "_terms.yaml#/library_preparation_kit_catalog_number"
-    type: string
-  library_preparation_kit_version:
-    term:
-      $ref: "_terms.yaml#/library_preparation_kit_version"
-    type: string
-  library_selection:
-    term:
-      $ref: "_terms.yaml#/library_selection"
-    enum:
-      - Amplicon
-      - Hybrid Selection
-      - PCR
-      - Affinity Enrichment
-      - Poly-T Enrichment
-      - RNA Depletion
-      - Targeted Sequencing
-      - Other
-  library_strand:
-    term:
-      $ref: "_terms.yaml#/library_strand"
-    enum:
-      - Unstranded
-      - First Stranded
-      - Second Stranded
-  library_strategy:
-    term:
-      $ref: "_terms.yaml#/library_strategy"
-    enum:
-      - WGS
-      - WXS
-      - RNA-Seq
-      - ChIP-Seq
-      - miRNA-Seq
-      - Bisulfite-Seq
-      - Validation
-      - Amplicon
-      - Other
-  platform:
-    term:
-      $ref: "_terms.yaml#/platform"
-    enum:
-      - Illumina
-      - SOLiD
-      - LS454
-      - Ion Torrent
-      - Complete Genomics
-      - PacBio
-      - Other
-  read_group_name:
-    description: "The name given to this read group. Should match what is provided in the headers of associated files."
-    type: string
-  read_length_lower:
-    description: "The lower limit for the length of reads used in the sequencing experiment."
-    type: integer
-  read_length_upper:
-    description: "The upper limit for the length of reads used in the sequencing experiment."
-    type: integer
   RIN:
-    term:
-      $ref: "_terms.yaml#/RIN"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/RIN"
     type: number
-  sequencing_center:
-    term:
-      $ref: "_terms.yaml#/sequencing_center"
+
+  adapter_sequence:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/adapter_sequence"
     type: string
-  target_capture_kit_name:
-    term:
-      $ref: "_terms.yaml#/target_capture_kit_name"
-    type: string
-  target_capture_kit_vendor:
-    term:
-      $ref: "_terms.yaml#/target_capture_kit_vendor"
-    type: string
-  target_capture_kit_catalog_number:
-    term:
-      $ref: "_terms.yaml#/target_capture_kit_catalog_number"
-    type: string
-  target_capture_kit_version:
-    term:
-      $ref: "_terms.yaml#/target_capture_kit_version"
-    type: string
-  target_capture_kit_target_region:
-    term:
-      $ref: "_terms.yaml#/target_capture_kit_target_region"
-    type: string
-  universal_molecular_identifier:
-    description: "Short sequences or barcodes added to each read for next generation sequencing protocols used to detect and quantify unique transcripts."
-    type: string
+
   analytes:
     $ref: "_definitions.yaml#/to_one"
+
+  barcoding_applied:
+    description: True/False- was barcoding applied?
+    terms: null
+    type: boolean
+
+  coverage:
+    description: Sequencing coverage used in the assay (e.g., 75 PE).
+    terms: null
+    type: string
+
+  customization:
+    description: A description of any special setup or customization not documented
+      elsewhere.
+    terms: null
+    type: string
+
+  cycles:
+    description: The number of cycles used in the assay (e.g., 50,000x per sample).
+    terms: null
+    type: string
+
+  flow_cell_barcode:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/flow_cell_barcode"
+    type: string
+
+  instrument_model:
+    description: null
+    terms: null
+    enumTerms:
+      454 GS FLX Titanium: null
+      AB SOLiD 2: null
+      AB SOLiD 3: null
+      AB SOLiD 4: null
+      Complete Genomics: null
+      Illumina Genome Analyzer II: null
+      Illumina Genome Analyzer IIx: null
+      Illumina HiSeq 2000: null
+      Illumina HiSeq 2500: null
+      Illumina HiSeq 4000: null
+      Illumina HiSeq X Five: null
+      Illumina HiSeq X Ten: null
+      Illumina MiSeq: null
+      Illumina MiniSeq: null
+      Illumina NextSeq: null
+      Ion S5 XL System, Ion 530 Chip: null
+      Ion Torrent PGM: null
+      Ion Torrent Proton: null
+      Other: null
+      PacBio RS: null
+
+  is_paired_end:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/is_paired_end"
+    type: boolean
+
+  library_name:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_name"
+    type: string
+
+  library_preparation_kit_catalog_number:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_preparation_kit_catalog_number"
+    type: string
+
+  library_preparation_kit_name:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_preparation_kit_name"
+    type: string
+
+  library_preparation_kit_vendor:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_preparation_kit_vendor"
+    type: string
+
+  library_preparation_kit_version:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_preparation_kit_version"
+    type: string
+
+  library_selection:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_selection"
+    enumTerms:
+      Affinity Enrichment: null
+      Amplicon: null
+      Hybrid Selection: null
+      Other: null
+      PCR: null
+      Poly-T Enrichment: null
+      RNA Depletion: null
+      Targeted Sequencing: null
+
+  library_strand:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_strand"
+    enumTerms:
+      First Stranded: null
+      Second Stranded: null
+      Unstranded: null
+
+  library_strategy:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/library_strategy"
+    enumTerms:
+      Amplicon: null
+      Bisulfite-Seq: null
+      ChIP-Seq: null
+      Other: null
+      RNA-Seq: null
+      Validation: null
+      WGS: null
+      WXS: null
+      miRNA-Seq: null
+
+  platform:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/platform"
+    enumTerms:
+      Complete Genomics: null
+      Illumina: null
+      Ion Torrent: null
+      LS454: null
+      Other: null
+      PacBio: null
+      SOLiD: null
+
+  read_group_name:
+    description: The name given to this read group. Should match what is provided
+      in the headers of associated files.
+    terms: null
+    type: string
+
+  read_length_lower:
+    description: The lower limit for the length of reads used in the sequencing experiment.
+    terms: null
+    type: integer
+
+  read_length_upper:
+    description: The upper limit for the length of reads used in the sequencing experiment.
+    terms: null
+    type: integer
+
+  sequencing_center:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/sequencing_center"
+    type: string
+
+  target_capture_kit_catalog_number:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/target_capture_kit_catalog_number"
+    type: string
+
+  target_capture_kit_name:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/target_capture_kit_name"
+    type: string
+
+  target_capture_kit_target_region:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/target_capture_kit_target_region"
+    type: string
+
+  target_capture_kit_vendor:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/target_capture_kit_vendor"
+    type: string
+
+  target_capture_kit_version:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/target_capture_kit_version"
+    type: string
+
+  universal_molecular_identifier:
+    description: Short sequences or barcodes added to each read for next generation
+      sequencing protocols used to detect and quantify unique transcripts.
+    terms: null
+    type: string

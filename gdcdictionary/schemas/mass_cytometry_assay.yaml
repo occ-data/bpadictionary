@@ -3,15 +3,15 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "mass_cytometry_assay"
 title: Mass Cytometry Assay
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Mass cytometry is a variation of flow cytometry in which antibodies are labeled with heavy metal
-  ion tags rather than fluorochromes. Readout is by time-of-flight mass spectrometry. This allows
-  for the combination of many more antibody specificities in a single samples, without significant
-  spillover between channels.
+description: Mass cytometry is a variation of flow cytometry in which antibodies are
+  labeled with heavy metal ion tags rather than fluorochromes. Readout is by time-of-flight
+  mass spectrometry. This allows for the combination of many more antibody specificities
+  in a single samples, without significant spillover between channels.
 additionalProperties: false
 submittable: true
 validators: null
@@ -19,6 +19,7 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
   - state
@@ -54,48 +55,66 @@ required:
   - assay_method
   - assay_instrument
   - assay_instrument_model
-
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
-  $ref: "_definitions.yaml#/data_file_properties"
 
-  data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    enum:
-      - Mass Cytometry
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Raw IMC Data
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - TXT
-  assay_method:
-    enum:
-      - Imaging Mass Cytometry
-  assay_instrument:
-    type: string
-  assay_instrument_model:
-    type: string
-  panel_used:
-    description: >
-      The name or general description of the panel used for this mass cytometry assay.
-      Alternatively, if you have provided a protocol containing the panel, enter its file_name here.
-    type: string
-  protocol_used:
-    description: >
-      The name or general description of the protocol used to run the mass cytometry assay.
-      Alternatively, if you have provided a protocol, enter its file_name here.
-    type: string
+  $ref: "_definitions.yaml#/data_file_properties"
 
   analytes:
     $ref: "_definitions.yaml#/to_one"
+
+  assay_instrument:
+    description: null
+    terms: null
+    type: string
+
+  assay_instrument_model:
+    description: null
+    terms: null
+    type: string
+
+  assay_method:
+    description: null
+    terms: null
+    enumTerms:
+      Imaging Mass Cytometry: null
+
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
+
+  data_category:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_category"
+    enumTerms:
+      Mass Cytometry: null
+
+  data_format:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_format"
+    enumTerms:
+      TXT: null
+
+  data_type:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_type"
+    enumTerms:
+      Raw IMC Data: null
+
+  panel_used:
+    description: The name or general description of the panel used for this mass cytometry
+      assay. Alternatively, if you have provided a protocol containing the panel,
+      enter its file_name here.
+    terms: null
+    type: string
+
+  protocol_used:
+    description: The name or general description of the protocol used to run the mass
+      cytometry assay. Alternatively, if you have provided a protocol, enter its file_name
+      here.
+    terms: null
+    type: string

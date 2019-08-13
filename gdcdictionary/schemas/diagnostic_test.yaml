@@ -1,14 +1,16 @@
-schema: "http://json-schema.org/draft-04/schema#"
+$schema: "http://json-schema.org/draft-04/schema#"
 
 id: "diagnostic_test"
 title: Diagnostic Test
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  The result of a standard clinical test that is performed for diagnostic or health monitoring purposes, including biopsies and other small surgical procedures, biomarker assays, and imaging tests.
+description: The result of a standard clinical test that is performed for diagnostic
+  or health monitoring purposes, including biopsies and other small surgical procedures,
+  biomarker assays, and imaging tests.
 additionalProperties: false
 submittable: true
 validators: null
@@ -39,6 +41,24 @@ links:
     target_type: diagnosis
     multiplicity: many_to_one
     required: false
+  - name: followups
+    backref: diagnostic_tests
+    label: describes
+    target_type: followup
+    multiplicity: many_to_one
+    required: false
+  - name: diagnoses
+    backref: diagnostic_tests
+    label: describes
+    target_type: diagnosis
+    multiplicity: many_to_one
+    required: false
+  - name: diagnoses
+    backref: diagnostic_tests
+    label: describes
+    target_type: diagnosis
+    multiplicity: many_to_one
+    required: false
 
 required:
   - submitter_id
@@ -46,467 +66,479 @@ required:
   - cases
   - days_to_test
   - test_type
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   analyte_name:
-    description: >
-      The name of analyte or biomarker tested in the case that the test is a quantitative assay.
+    description: The name of analyte or biomarker tested in the case that the test
+      is a quantitative assay.
+    terms: null
     type: string
 
   assay_kit_name:
-    description: >
-      The name of the kit used for the test or assay; please also indicate the kit vendor and version in 'assay_kit_vendor' and 'assay_kit_version'.
+    description: The name of the kit used for the test or assay; please also indicate
+      the kit vendor and version in 'assay_kit_vendor' and 'assay_kit_version'.
+    terms: null
     type: string
 
   assay_kit_vendor:
-    description: >
-      The name of the vendor or manufacturer of the kit used for the test; please also indicate the kit name and version in 'assay_kit_name' and 'assay_kit_version'.
+    description: The name of the vendor or manufacturer of the kit used for the test;
+      please also indicate the kit name and version in 'assay_kit_name' and 'assay_kit_version'.
+    terms: null
     type: string
 
   assay_kit_version:
-    description: >
-      The version of the kit used for the test; please also indicate the kit name and vendor in 'assay_kit_name' and 'assay_kit_vendor'.
+    description: The version of the kit used for the test; please also indicate the
+      kit name and vendor in 'assay_kit_name' and 'assay_kit_vendor'.
+    terms: null
     type: string
-
-  days_to_test:
-    description: >
-      Number of days between the date used for index and the date the patient was diagnosed with a comorbidity.
-    type: integer
-
-  equipment_manufacturer:
-    description: >
-      The name of the manufacturer of the equipment used for the test; please also indicate the model number in 'equipment_model'.
-    type: string
-
-  equipment_model:
-    description: >
-      The equipment name and model number used for the test; please also indicate the manufacturer name in 'equipment_manufacturer'.
-    type: string
-
-  test_anatomic_site:
-    description: >
-      Indicate the anatomic site of the biopsy, image or other diagnostic test
-    enum:
-      - "Abdomen"
-      - "Abdominal Wall"
-      - "Acetabulum"
-      - "Adenoid"
-      - "Adipose"
-      - "Adrenal"
-      - "Alveolar Ridge"
-      - "Amniotic Fluid"
-      - "Ampulla of Vater"
-      - "Anal Sphincter"
-      - "Ankle"
-      - "Anorectum"
-      - "Antecubital Fossa"
-      - "Antrum"
-      - "Anus"
-      - "Aorta"
-      - "Aortic Body"
-      - "Appendix"
-      - "Aqueous Fluid"
-      - "Arm"
-      - "Artery"
-      - "Ascending Colon"
-      - "Ascending Colon Hepatic Flexure"
-      - "Auditory Canal"
-      - "Autonomic Nervous System"
-      - "Axilla"
-      - "Back"
-      - "Bile Duct"
-      - "Bladder"
-      - "Blood"
-      - "Blood Vessel"
-      - "Bone"
-      - "Bone Marrow"
-      - "Bowel"
-      - "Brain"
-      - "Brain Stem"
-      - "Breast"
-      - "Broad Ligament"
-      - "Bronchiole"
-      - "Bronchus"
-      - "Brow"
-      - "Buccal Cavity"
-      - "Buccal Mucosa"
-      - "Buttock"
-      - "Calf"
-      - "Capillary"
-      - "Cardia"
-      - "Carina"
-      - "Carotid Artery"
-      - "Carotid Body"
-      - "Cartilage"
-      - "Cecum"
-      - "Cell-Line"
-      - "Central Nervous System"
-      - "Cerebellum"
-      - "Cerebral Cortex"
-      - "Cerebrospinal Fluid"
-      - "Cerebrum"
-      - "Cervical Spine"
-      - "Cervix"
-      - "Chest"
-      - "Chest Wall"
-      - "Chin"
-      - "Clavicle"
-      - "Clitoris"
-      - "Colon"
-      - "Colon (Mucosa Only)"
-      - "Common Duct"
-      - "Conjunctiva"
-      - "Connective Tissue"
-      - "Dermal"
-      - "Descending Colon"
-      - "Diaphragm"
-      - "Duodenum"
-      - "Ear"
-      - "Ear Canal"
-      - "Ear, Pinna (External)"
-      - "Effusion"
-      - "Elbow"
-      - "Endocrine Gland"
-      - "Epididymis"
-      - "Epidural Space"
-      - "Esophagogastric Junction"
-      - "Esophagus"
-      - "Esophagus (Mucosa Only)"
-      - "Eye"
-      - "Fallopian Tube"
-      - "Femoral Artery"
-      - "Femoral Vein"
-      - "Femur"
-      - "Fibroblasts"
-      - "Fibula"
-      - "Finger"
-      - "Floor of Mouth"
-      - "Fluid"
-      - "Foot"
-      - "Forearm"
-      - "Forehead"
-      - "Foreskin"
-      - "Frontal Cortex"
-      - "Frontal Lobe"
-      - "Fundus of Stomach"
-      - "Gallbladder"
-      - "Ganglia"
-      - "Gastroesophageal Junction"
-      - "Gastrointestinal Tract"
-      - "Groin"
-      - "Gum"
-      - "Hand"
-      - "Hard Palate"
-      - "Head and Neck"
-      - "Head (Face Or Neck) NOS"
-      - "Heart"
-      - "Hepatic"
-      - "Hepatic Duct"
-      - "Hepatic Vein"
-      - "Hip"
-      - "Hippocampus"
-      - "Humerus"
-      - "Hypopharynx"
-      - "Ileum"
-      - "Ilium"
-      - "Index Finger"
-      - "Ischium"
-      - "Islet Cells"
-      - "Jaw"
-      - "Jejunum"
-      - "Joint"
-      - "Kidney"
-      - "Knee"
-      - "Lacrimal Gland"
-      - "Large Bowel"
-      - "Laryngopharynx"
-      - "Larynx"
-      - "Leg"
-      - "Leptomeninges"
-      - "Ligament"
-      - "Lip"
-      - "Liver"
-      - "Lumbar Spine"
-      - "Lung"
-      - "Lymph Node"
-      - "Lymph Node(s) Axilla"
-      - "Lymph Node(s) Cervical"
-      - "Lymph Node(s) Distant"
-      - "Lymph Node(s) Epitrochlear"
-      - "Lymph Node(s) Femoral"
-      - "Lymph Node(s) Hilar"
-      - "Lymph Node(s) Iliac-Common"
-      - "Lymph Node(s) Iliac-External"
-      - "Lymph Node(s) Inguinal"
-      - "Lymph Node(s) Internal Mammary"
-      - "Lymph Node(s) Mammary"
-      - "Lymph Node(s) Mesenteric"
-      - "Lymph Node(s) Occipital"
-      - "Lymph Node(s) Paraaortic"
-      - "Lymph Node(s) Parotid"
-      - "Lymph Node(s) Pelvic"
-      - "Lymph Node(s) Popliteal"
-      - "Lymph Node(s) Regional"
-      - "Lymph Node(s) Retroperitoneal"
-      - "Lymph Node(s) Scalene"
-      - "Lymph Node(s) Splenic"
-      - "Lymph Node(s) Subclavicular"
-      - "Lymph Node(s) Submandibular"
-      - "Lymph Node(s) Supraclavicular"
-      - "Lymph Nodes(s) Mediastinal"
-      - "Mandible"
-      - "Maxilla"
-      - "Mediastinal Soft Tissue"
-      - "Mediastinum"
-      - "Mesentery"
-      - "Mesothelium"
-      - "Middle Finger"
-      - "Mitochondria"
-      - "Muscle"
-      - "Nails"
-      - "Nasal Cavity"
-      - "Nasal Soft Tissue"
-      - "Nasopharynx"
-      - "Neck"
-      - "Nerve"
-      - "Nerve(s) Cranial"
-      - "Occipital Cortex"
-      - "Ocular Orbits"
-      - "Omentum"
-      - "Oral Cavity"
-      - "Oral Cavity (Mucosa Only)"
-      - "Oropharynx"
-      - "Other"
-      - "Ovary"
-      - "Palate"
-      - "Pancreas"
-      - "Paraspinal Ganglion"
-      - "Parathyroid"
-      - "Parotid Gland"
-      - "Patella"
-      - "Pelvis"
-      - "Penis"
-      - "Pericardium"
-      - "Periorbital Soft Tissue"
-      - "Peritoneal Cavity"
-      - "Peritoneum"
-      - "Pharynx"
-      - "Pineal"
-      - "Pineal Gland"
-      - "Pituitary Gland"
-      - "Placenta"
-      - "Pleura"
-      - "Popliteal Fossa"
-      - "Prostate"
-      - "Pylorus"
-      - "Rectosigmoid Junction"
-      - "Rectum"
-      - "Retina"
-      - "Retro-Orbital Region"
-      - "Retroperitoneum"
-      - "Rib"
-      - "Ring Finger"
-      - "Round Ligament"
-      - "Sacrum"
-      - "Salivary Gland"
-      - "Scalp"
-      - "Scapula"
-      - "Sciatic Nerve"
-      - "Scrotum"
-      - "Seminal Vesicle"
-      - "Shoulder"
-      - "Sigmoid Colon"
-      - "Sinus"
-      - "Sinus(es), Maxillary"
-      - "Skeletal Muscle"
-      - "Skin"
-      - "Skull"
-      - "Small Bowel"
-      - "Small Bowel (Mucosa Only)"
-      - "Small Finger"
-      - "Soft Tissue"
-      - "Spinal Column"
-      - "Spinal Cord"
-      - "Spleen"
-      - "Splenic Flexure"
-      - "Sternum"
-      - "Stomach"
-      - "Stomach (Mucosa Only)"
-      - "Subcutaneous Tissue"
-      - "Synovium"
-      - "Temporal Cortex"
-      - "Tendon"
-      - "Testis"
-      - "Thigh"
-      - "Thoracic Spine"
-      - "Thorax"
-      - "Throat"
-      - "Thumb"
-      - "Thymus"
-      - "Thyroid"
-      - "Tibia"
-      - "Tongue"
-      - "Tonsil"
-      - "Tonsil (Pharyngeal)"
-      - "Trachea Major Bronchi"
-      - "Transverse Colon"
-      - "Trunk"
-      - "Umbilical Cord"
-      - "Ureter"
-      - "Urethra"
-      - "Urinary Tract"
-      - "Uterus"
-      - "Uvula"
-      - "Vagina"
-      - "Vas Deferens"
-      - "Vein"
-      - "Venous"
-      - "Vertebra"
-      - "Vulva"
-      - "White Blood Cells"
-      - "Wrist"
-      - "Unknown"
-
-  test_sample_composition:
-    description: >
-      Indicate the composition or type of biological sample used for the test (e.g., blood, urine, solid tissue, saliva, etc.)
-    enum:
-      - "Buccal Cells"
-      - "Buffy Coat"
-      - "Bone Marrow Components"
-      - "Bone Marrow Components NOS"
-      - "Cerebrospinal Fluid (CSF)"
-      - "Control Analyte"
-      - "Cell"
-      - "Circulating Tumor Cell (CTC)"
-      - "Derived Cell Line"
-      - "EBV Immortalized"
-      - "Fibroblasts from Bone Marrow Normal"
-      - "Granulocytes"
-      - "Human Original Cells"
-      - "Lymphocytes"
-      - "Mononuclear Cells from Bone Marrow Normal"
-      - "Not Applicable"
-      - "Oral Swab"
-      - "Other (specify)"
-      - "Peripheral Blood Components NOS"
-      - "Peripheral Blood Nucleated Cells"
-      - "Pleural Effusion"
-      - "Plasma"
-      - "Peripheral Whole Blood"
-      - "Serum"
-      - "Saliva"
-      - "Sputum"
-      - "Solid Normal Tissue"
-      - "Solid Tumor Tissue"
-      - "Whole Bone Marrow"
-      - "Whole Blood"
-      - "Unknown"
-      - "Urine"
-
-  test_sample_composition_other:
-    desciption: >
-      If 'Other (specify)' was chosen for 'test_sample_composition', enter a description of the sample used for the test here
-    type: string
-
-  test_result:
-    description: >
-      The categorical result of the laboratory test.
-    enum:
-      - "1 plus"
-      - "2 plus"
-      - "3 plus"
-      - "Abnormal"
-      - "Anisocytosis"
-      - "Clinically Significant Abnormal"
-      - "Elliptocytosis"
-      - "Equivocal"
-      - "Hypochromic"
-      - "Microcytic"
-      - "Macrocytic"
-      - "Negative"
-      - "No"
-      - "Normal"
-      - "Normocytic"
-      - "Not Identified w/in stability"
-      - "Not Reported"
-      - "Polychromatophilia"
-      - "Poikilocytosis"
-      - "Positive"
-      - "Too Low"
-      - "Too High"
-      - "Trace"
-      - "Unknown"
-      - "Yes"
-
-  test_type:
-    description: >
-      The general type or category of the laboratory test
-    enum:
-      - "Abnormal Laboratory Test"
-      - "Biopsy"
-      - "Blood Chemistry Test"
-      - "Coagulation Panel"
-      - "Complete Blood Count"
-      - "Cultures"
-      - "Imaging"
-      - "Lipid Panel"
-      - "Liver Panel"
-      - "Prothrombin Time"
-      - "Serum Test"
-      - "Urinalysis"
-
-  test_units:
-    description: >
-      The units corresponding to a test_value for a test_analyte_type
-    enum:
-      - "Array Signal (log2)"
-      - "Average Ct"
-      - "copies/microliter"
-      - "cells/microliter"
-      - "Cell Count"
-      - "Coefficient of Variance (PCT)"
-      - "Copy Number per 25ng RNA"
-      - "counts"
-      - "Cycle threshold (Ct)"
-      - "katal"
-      - "mg/mL"
-      - "mg/dL"
-      - "micrograms/mL"
-      - "mM"
-      - "micromoles/g/h"
-      - "ng/mL"
-      - "nM"
-      - "Normalized Ion Intensity by Endogenous Arginine and Autoscaled"
-      - "Not Applicable"
-      - "Optical Density"
-      - "Other (specify)"
-      - "pg/mL"
-      - "SD"
-      - "Standard Deviation Ct"
-      - "U/mL"
-      - "uIU/mL"
-      - "Units of Activity"
-
-  test_units_other:
-    description: >
-      The units corresponding to a 'test_value' for an 'analyte_name' if 'Other (specify)' was chosen for 'test_units'
-    type: string
-
-  test_value:
-    description: >
-      The numerical value representing the diagnostic test measurement of the 'analyte_name'; also indicate the 'test_units'.
-    type: number
 
   cases:
     $ref: "_definitions.yaml#/to_one"
-  followups:
-    $ref: "_definitions.yaml#/to_one"
+
+  days_to_test:
+    description: Number of days between the date used for index and the date the patient
+      was diagnosed with a comorbidity.
+    terms: null
+    type: integer
+
   diagnoses:
     $ref: "_definitions.yaml#/to_one"
+
+  equipment_manufacturer:
+    description: The name of the manufacturer of the equipment used for the test;
+      please also indicate the model number in 'equipment_model'.
+    terms: null
+    type: string
+
+  equipment_model:
+    description: The equipment name and model number used for the test; please also
+      indicate the manufacturer name in 'equipment_manufacturer'.
+    terms: null
+    type: string
+
+  followups:
+    $ref: "_definitions.yaml#/to_one"
+
+  test_anatomic_site:
+    description: Indicate the anatomic site of the biopsy, image or other diagnostic
+      test
+    terms: null
+    enumTerms:
+      Abdomen: null
+      Abdominal Wall: null
+      Acetabulum: null
+      Adenoid: null
+      Adipose: null
+      Adrenal: null
+      Alveolar Ridge: null
+      Amniotic Fluid: null
+      Ampulla of Vater: null
+      Anal Sphincter: null
+      Ankle: null
+      Anorectum: null
+      Antecubital Fossa: null
+      Antrum: null
+      Anus: null
+      Aorta: null
+      Aortic Body: null
+      Appendix: null
+      Aqueous Fluid: null
+      Arm: null
+      Artery: null
+      Ascending Colon: null
+      Ascending Colon Hepatic Flexure: null
+      Auditory Canal: null
+      Autonomic Nervous System: null
+      Axilla: null
+      Back: null
+      Bile Duct: null
+      Bladder: null
+      Blood: null
+      Blood Vessel: null
+      Bone: null
+      Bone Marrow: null
+      Bowel: null
+      Brain: null
+      Brain Stem: null
+      Breast: null
+      Broad Ligament: null
+      Bronchiole: null
+      Bronchus: null
+      Brow: null
+      Buccal Cavity: null
+      Buccal Mucosa: null
+      Buttock: null
+      Calf: null
+      Capillary: null
+      Cardia: null
+      Carina: null
+      Carotid Artery: null
+      Carotid Body: null
+      Cartilage: null
+      Cecum: null
+      Cell-Line: null
+      Central Nervous System: null
+      Cerebellum: null
+      Cerebral Cortex: null
+      Cerebrospinal Fluid: null
+      Cerebrum: null
+      Cervical Spine: null
+      Cervix: null
+      Chest: null
+      Chest Wall: null
+      Chin: null
+      Clavicle: null
+      Clitoris: null
+      Colon: null
+      Colon (Mucosa Only): null
+      Common Duct: null
+      Conjunctiva: null
+      Connective Tissue: null
+      Dermal: null
+      Descending Colon: null
+      Diaphragm: null
+      Duodenum: null
+      Ear: null
+      Ear Canal: null
+      Ear, Pinna (External): null
+      Effusion: null
+      Elbow: null
+      Endocrine Gland: null
+      Epididymis: null
+      Epidural Space: null
+      Esophagogastric Junction: null
+      Esophagus: null
+      Esophagus (Mucosa Only): null
+      Eye: null
+      Fallopian Tube: null
+      Femoral Artery: null
+      Femoral Vein: null
+      Femur: null
+      Fibroblasts: null
+      Fibula: null
+      Finger: null
+      Floor of Mouth: null
+      Fluid: null
+      Foot: null
+      Forearm: null
+      Forehead: null
+      Foreskin: null
+      Frontal Cortex: null
+      Frontal Lobe: null
+      Fundus of Stomach: null
+      Gallbladder: null
+      Ganglia: null
+      Gastroesophageal Junction: null
+      Gastrointestinal Tract: null
+      Groin: null
+      Gum: null
+      Hand: null
+      Hard Palate: null
+      Head (Face Or Neck) NOS: null
+      Head and Neck: null
+      Heart: null
+      Hepatic: null
+      Hepatic Duct: null
+      Hepatic Vein: null
+      Hip: null
+      Hippocampus: null
+      Humerus: null
+      Hypopharynx: null
+      Ileum: null
+      Ilium: null
+      Index Finger: null
+      Ischium: null
+      Islet Cells: null
+      Jaw: null
+      Jejunum: null
+      Joint: null
+      Kidney: null
+      Knee: null
+      Lacrimal Gland: null
+      Large Bowel: null
+      Laryngopharynx: null
+      Larynx: null
+      Leg: null
+      Leptomeninges: null
+      Ligament: null
+      Lip: null
+      Liver: null
+      Lumbar Spine: null
+      Lung: null
+      Lymph Node: null
+      Lymph Node(s) Axilla: null
+      Lymph Node(s) Cervical: null
+      Lymph Node(s) Distant: null
+      Lymph Node(s) Epitrochlear: null
+      Lymph Node(s) Femoral: null
+      Lymph Node(s) Hilar: null
+      Lymph Node(s) Iliac-Common: null
+      Lymph Node(s) Iliac-External: null
+      Lymph Node(s) Inguinal: null
+      Lymph Node(s) Internal Mammary: null
+      Lymph Node(s) Mammary: null
+      Lymph Node(s) Mesenteric: null
+      Lymph Node(s) Occipital: null
+      Lymph Node(s) Paraaortic: null
+      Lymph Node(s) Parotid: null
+      Lymph Node(s) Pelvic: null
+      Lymph Node(s) Popliteal: null
+      Lymph Node(s) Regional: null
+      Lymph Node(s) Retroperitoneal: null
+      Lymph Node(s) Scalene: null
+      Lymph Node(s) Splenic: null
+      Lymph Node(s) Subclavicular: null
+      Lymph Node(s) Submandibular: null
+      Lymph Node(s) Supraclavicular: null
+      Lymph Nodes(s) Mediastinal: null
+      Mandible: null
+      Maxilla: null
+      Mediastinal Soft Tissue: null
+      Mediastinum: null
+      Mesentery: null
+      Mesothelium: null
+      Middle Finger: null
+      Mitochondria: null
+      Muscle: null
+      Nails: null
+      Nasal Cavity: null
+      Nasal Soft Tissue: null
+      Nasopharynx: null
+      Neck: null
+      Nerve: null
+      Nerve(s) Cranial: null
+      Occipital Cortex: null
+      Ocular Orbits: null
+      Omentum: null
+      Oral Cavity: null
+      Oral Cavity (Mucosa Only): null
+      Oropharynx: null
+      Other: null
+      Ovary: null
+      Palate: null
+      Pancreas: null
+      Paraspinal Ganglion: null
+      Parathyroid: null
+      Parotid Gland: null
+      Patella: null
+      Pelvis: null
+      Penis: null
+      Pericardium: null
+      Periorbital Soft Tissue: null
+      Peritoneal Cavity: null
+      Peritoneum: null
+      Pharynx: null
+      Pineal: null
+      Pineal Gland: null
+      Pituitary Gland: null
+      Placenta: null
+      Pleura: null
+      Popliteal Fossa: null
+      Prostate: null
+      Pylorus: null
+      Rectosigmoid Junction: null
+      Rectum: null
+      Retina: null
+      Retro-Orbital Region: null
+      Retroperitoneum: null
+      Rib: null
+      Ring Finger: null
+      Round Ligament: null
+      Sacrum: null
+      Salivary Gland: null
+      Scalp: null
+      Scapula: null
+      Sciatic Nerve: null
+      Scrotum: null
+      Seminal Vesicle: null
+      Shoulder: null
+      Sigmoid Colon: null
+      Sinus: null
+      Sinus(es), Maxillary: null
+      Skeletal Muscle: null
+      Skin: null
+      Skull: null
+      Small Bowel: null
+      Small Bowel (Mucosa Only): null
+      Small Finger: null
+      Soft Tissue: null
+      Spinal Column: null
+      Spinal Cord: null
+      Spleen: null
+      Splenic Flexure: null
+      Sternum: null
+      Stomach: null
+      Stomach (Mucosa Only): null
+      Subcutaneous Tissue: null
+      Synovium: null
+      Temporal Cortex: null
+      Tendon: null
+      Testis: null
+      Thigh: null
+      Thoracic Spine: null
+      Thorax: null
+      Throat: null
+      Thumb: null
+      Thymus: null
+      Thyroid: null
+      Tibia: null
+      Tongue: null
+      Tonsil: null
+      Tonsil (Pharyngeal): null
+      Trachea Major Bronchi: null
+      Transverse Colon: null
+      Trunk: null
+      Umbilical Cord: null
+      Unknown: null
+      Ureter: null
+      Urethra: null
+      Urinary Tract: null
+      Uterus: null
+      Uvula: null
+      Vagina: null
+      Vas Deferens: null
+      Vein: null
+      Venous: null
+      Vertebra: null
+      Vulva: null
+      White Blood Cells: null
+      Wrist: null
+
+  test_result:
+    description: The categorical result of the laboratory test.
+    terms: null
+    enumTerms:
+      1 plus: null
+      2 plus: null
+      3 plus: null
+      Abnormal: null
+      Anisocytosis: null
+      Clinically Significant Abnormal: null
+      Elliptocytosis: null
+      Equivocal: null
+      Hypochromic: null
+      Macrocytic: null
+      Microcytic: null
+      Negative: null
+      No: null
+      Normal: null
+      Normocytic: null
+      Not Identified w/in stability: null
+      Not Reported: null
+      Poikilocytosis: null
+      Polychromatophilia: null
+      Positive: null
+      Too High: null
+      Too Low: null
+      Trace: null
+      Unknown: null
+      Yes: null
+
+  test_sample_composition:
+    description: Indicate the composition or type of biological sample used for the
+      test (e.g., blood, urine, solid tissue, saliva, etc.)
+    terms: null
+    enumTerms:
+      Bone Marrow Components: null
+      Bone Marrow Components NOS: null
+      Buccal Cells: null
+      Buffy Coat: null
+      Cell: null
+      Cerebrospinal Fluid (CSF): null
+      Circulating Tumor Cell (CTC): null
+      Control Analyte: null
+      Derived Cell Line: null
+      EBV Immortalized: null
+      Fibroblasts from Bone Marrow Normal: null
+      Granulocytes: null
+      Human Original Cells: null
+      Lymphocytes: null
+      Mononuclear Cells from Bone Marrow Normal: null
+      Not Applicable: null
+      Oral Swab: null
+      Other (specify): null
+      Peripheral Blood Components NOS: null
+      Peripheral Blood Nucleated Cells: null
+      Peripheral Whole Blood: null
+      Plasma: null
+      Pleural Effusion: null
+      Saliva: null
+      Serum: null
+      Solid Normal Tissue: null
+      Solid Tumor Tissue: null
+      Sputum: null
+      Unknown: null
+      Urine: null
+      Whole Blood: null
+      Whole Bone Marrow: null
+
+  test_sample_composition_other:
+    description: null
+    terms: null
+    type: string
+
+  test_type:
+    description: The general type or category of the laboratory test
+    terms: null
+    enumTerms:
+      Abnormal Laboratory Test: null
+      Biopsy: null
+      Blood Chemistry Test: null
+      Coagulation Panel: null
+      Complete Blood Count: null
+      Cultures: null
+      Imaging: null
+      Lipid Panel: null
+      Liver Panel: null
+      Prothrombin Time: null
+      Serum Test: null
+      Urinalysis: null
+
+  test_units:
+    description: The units corresponding to a test_value for a test_analyte_type
+    terms: null
+    enumTerms:
+      Array Signal (log2): null
+      Average Ct: null
+      Cell Count: null
+      Coefficient of Variance (PCT): null
+      Copy Number per 25ng RNA: null
+      Cycle threshold (Ct): null
+      Normalized Ion Intensity by Endogenous Arginine and Autoscaled: null
+      Not Applicable: null
+      Optical Density: null
+      Other (specify): null
+      SD: null
+      Standard Deviation Ct: null
+      U/mL: null
+      Units of Activity: null
+      cells/microliter: null
+      copies/microliter: null
+      counts: null
+      katal: null
+      mM: null
+      mg/dL: null
+      mg/mL: null
+      micrograms/mL: null
+      micromoles/g/h: null
+      nM: null
+      ng/mL: null
+      pg/mL: null
+      uIU/mL: null
+
+  test_units_other:
+    description: The units corresponding to a 'test_value' for an 'analyte_name' if
+      'Other (specify)' was chosen for 'test_units
+    terms: null
+    type: string
+
+  test_value:
+    description: The numerical value representing the diagnostic test measurement
+      of the 'analyte_name'; also indicate the 'test_units'.
+    terms: null
+    type: number

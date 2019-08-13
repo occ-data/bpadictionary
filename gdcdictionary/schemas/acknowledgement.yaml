@@ -3,11 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "acknowledgement"
 title: Acknowledgement
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: administrative
 program: '*'
 project: '*'
-description: "Acknowledgement of an individual involved in a project."
+description: Acknowledgement of an individual involved in a project.
 additionalProperties: false
 submittable: true
 validators: null
@@ -27,43 +28,57 @@ links:
     multiplicity: many_to_many
     required: true
 
-uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
 required:
   - submitter_id
   - type
   - projects
-
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
 properties:
-  type:
-    enum: [ "acknowledgement" ]
 
-  id:
-    $ref: "_definitions.yaml#/UUID"
-    systemAlias: node_id
-
-  state:
-    $ref: "_definitions.yaml#/state"
-
-  submitter_id:
-    type:
-      - string
-      - "null"
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   acknowledgee:
-    description: "The individual or group being acknowledged by the project."
+    description: The individual or group being acknowledged by the project.
+    terms: null
+    type: string
+
+  created_datetime:
+    description: null
+    terms: null
+    type: null
+
+  id:
+    description: null
+    terms: null
+    type: null
+
+  project_id:
+    description: null
+    terms: null
     type: string
 
   projects:
     $ref: "_definitions.yaml#/to_many_project"
 
-  project_id:
-    type: string
+  state:
+    description: null
+    terms: null
+    type: null
 
-  created_datetime:
-    $ref: "_definitions.yaml#/datetime"
+  submitter_id:
+    description: null
+    terms: null
+    type: "['string', 'null']"
+
+  type:
+    description: null
+    terms: null
+    enumTerms:
+      acknowledgement: null
 
   updated_datetime:
-    $ref: "_definitions.yaml#/datetime"
+    description: null
+    terms: null
+    type: null

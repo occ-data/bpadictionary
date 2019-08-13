@@ -3,13 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "study"
 title: Study
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: administrative
 program: '*'
 project: '*'
-description: >
-  A coordinated set of actions and observations designed to generate data, with the ultimate goal
-  of discovery or hypothesis testing.
+description: A coordinated set of actions and observations designed to generate data,
+  with the ultimate goal of discovery or hypothesis testing.
 additionalProperties: false
 submittable: true
 validators: null
@@ -17,9 +17,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
 
 links:
   - name: projects
@@ -38,51 +38,62 @@ required:
   - study_objective
   - study_setup
   - projects
-
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
   associated_study:
-    description: "The submitter_id for any study with which this study is associated, paired, or matched."
+    description: The submitter_id for any study with which this study is associated,
+      paired, or matched.
+    terms: null
     type: string
+
   data_description:
-    description: "Brief description of the data being provided for this study. Free text"
+    description: Brief description of the data being provided for this study. Free
+      text
+    terms: null
     type: string
-  study_description:
-    description: "A brief description of the study being performed. Free text"
-    type: string
-  study_design:
-    description: >
-      Summary of the goals the study is designed to discover. General description of the
-      study's place in relation to a clinical application.
-    enum:
-      - Research/Early Development
-      - Pre-Analytical
-      - Analytical
-      - Clinical
-      - Clinical Assay
-      - Clinical Utility
-  study_objective:
-    description: >
-      The general objective of the study. What the study hopes to discover or determine
-      through testing.
-    enum:
-      - Accuracy
-      - Clinical Detection
-      - Interference
-      - Limit of Detection
-      - Precision (Repeatability)
-      - Precision (Reproducibility)
-      - Specificity/Sensitivity
-      - Stability
-  study_setup:
-    description: >
-      A high level description of the setup used to achieve the study objectives.
-    enum:
-      - Detection/Enumeration/Isolation
-      - Genetic Analysis
+
   projects:
     $ref: "_definitions.yaml#/to_one_project"
+
+  study_description:
+    description: A brief description of the study being performed. Free text
+    terms: null
+    type: string
+
+  study_design:
+    description: Summary of the goals the study is designed to discover. General description
+      of the study's place in relation to a clinical application.
+    terms: null
+    enumTerms:
+      Analytical: null
+      Clinical: null
+      Clinical Assay: null
+      Clinical Utility: null
+      Pre-Analytical: null
+      Research/Early Development: null
+
+  study_objective:
+    description: The general objective of the study. What the study hopes to discover
+      or determine through testing.
+    terms: null
+    enumTerms:
+      Accuracy: null
+      Clinical Detection: null
+      Interference: null
+      Limit of Detection: null
+      Precision (Repeatability): null
+      Precision (Reproducibility): null
+      Specificity/Sensitivity: null
+      Stability: null
+
+  study_setup:
+    description: A high level description of the setup used to achieve the study objectives.
+    terms: null
+    enumTerms:
+      Detection/Enumeration/Isolation: null
+      Genetic Analysis: null

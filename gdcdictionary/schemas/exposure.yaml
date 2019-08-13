@@ -3,12 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "exposure"
 title: Exposure
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Clinically relevant patient information not immediately resulting from genetic predispositions.
+description: Clinically relevant patient information not immediately resulting from
+  genetic predispositions.
 additionalProperties: false
 submittable: true
 validators: null
@@ -32,44 +33,52 @@ required:
   - submitter_id
   - type
   - cases
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   alcohol_history:
-    term:
-      $ref: "_terms.yaml#/alcohol_history"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/alcohol_history"
     type: string
+
   alcohol_intensity:
-    term:
-      $ref: "_terms.yaml#/alcohol_intensity"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/alcohol_intensity"
     type: string
-  cigarettes_per_day:
-    term:
-      $ref: "_terms.yaml#/cigarettes_per_day"
-    type: number
-  tobacco_smoking_status:
-    term:
-      $ref: "_terms.yaml#/tobacco_smoking_status"
-    enum:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
-      - "6"
-      - "7"
-      - Unknown
-  years_smoked:
-    term:
-      $ref: "_terms.yaml#/years_smoked"
-    type: number
-    maximum: 89
-    minimum: 0
 
   cases:
     $ref: "_definitions.yaml#/to_one"
+
+  cigarettes_per_day:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/cigarettes_per_day"
+    type: number
+
+  tobacco_smoking_status:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/tobacco_smoking_status"
+    enumTerms:
+      '1': null
+      '2': null
+      '3': null
+      '4': null
+      '5': null
+      '6': null
+      '7': null
+      Unknown: null
+
+  years_smoked:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/years_smoked"
+    type: number
+    maximum: 89
+    minimum: 0

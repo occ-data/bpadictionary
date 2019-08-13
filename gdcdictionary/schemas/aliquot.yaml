@@ -3,16 +3,16 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "aliquot"
 title: Aliquot
 type: object
-category: biospecimen
+nodeTerms: null
 namespace: https://www.bloodpac.org
+category: biospecimen
 program: '*'
 project: '*'
-description: >
-  Pertaining to a portion of the whole; any one of two or more samples of something, of the same
-  volume or weight.
+description: Pertaining to a portion of the whole; any one of two or more samples
+  of something, of the same volume or weight.
 additionalProperties: false
 submittable: true
-validators: []
+validators: null
 
 systemProperties:
   - id
@@ -20,6 +20,14 @@ systemProperties:
   - state
   - created_datetime
   - updated_datetime
+
+links:
+  - name: samples
+    backref: aliquots
+    label: derived_from
+    target_type: sample
+    multiplicity: many_to_many
+    required: true
 
 required:
   - submitter_id
@@ -31,91 +39,89 @@ required:
   - preservation_method
   - storage_temperature
   - samples
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
-links:
-  - name: samples
-    backref: aliquots
-    label: derived_from
-    multiplicity: many_to_many
-    target_type: sample
-    required: true
-
-constraints: null
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   aliquot_container:
-    description: "The device in which the final aliquot is held. Slides or vials."
-    enum:
-      - Serum Card
-      - Slide
-      - Vial
+    description: The device in which the final aliquot is held. Slides or vials.
+    terms: null
+    enumTerms:
+      Serum Card: null
+      Slide: null
+      Vial: null
+
   aliquot_quantity:
-    description: "The quantity in micrograms (ug) of the aliquot derived from the sample and used for experimentation."
-    type: number
-  aliquot_volume:
-    description: "The volume in microliters (uL) of the aliquot derived from the sample and used for experimentation."
-    type: number
-  clinical_or_contrived:
-    description: "Is the aliquot clinical or contrived?"
-    enum:
-      - Clinical
-      - Contrived
-  contrivance_method:
-    description: >
-      The name or general description of the contrivance(s) added to the biological aliquot.
-      Alternatively, if you have provided a contrivance protocol, enter its file_name here.
-    type: string
-  hours_to_freezer_lower:
-    description: >
-      The lower limit on the amount of time, in hours, that it took between the sample being
-      fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the upper limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
-  hours_to_freezer_upper:
-    description: >
-      The upper limit on the amount of time, in hours, that it took between the sample being
-      fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the lower limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
-  methanol_added:
-    description: "In the preparation of a slide, was methanol added as a fixative? True/False."
-    type: boolean
-  preservation_method:
-    term:
-      $ref: "_terms.yaml#/preservation_method"
-    enum:
-      - Cryopreserved
-      - FFPE
-      - Fresh
-      - OCT
-      - Snap Frozen
-      - Frozen
-      - Unknown
-  storage_temperature:
-    description: "The temperature, in centrigrade, at which the aliquot was preserved and/or stored."
+    description: The quantity in micrograms (ug) of the aliquot derived from the sample
+      and used for experimentation.
+    terms: null
     type: number
 
+  aliquot_volume:
+    description: The volume in microliters (uL) of the aliquot derived from the sample
+      and used for experimentation.
+    terms: null
+    type: number
+
+  clinical_or_contrived:
+    description: Is the aliquot clinical or contrived?
+    terms: null
+    enumTerms:
+      Clinical: null
+      Contrived: null
+
+  contrivance_method:
+    description: The name or general description of the contrivance(s) added to the
+      biological aliquot. Alternatively, if you have provided a contrivance protocol,
+      enter its file_name here.
+    terms: null
+    type: string
+
+  hours_to_freezer_lower:
+    description: The lower limit on the amount of time, in hours, that it took between
+      the sample being fractionated and the aliquot being frozen or otherwise preserved.
+      If the exact time is known, make this value equal to that of the upper limit.
+      If the time is completely unknown, enter Unknown. If no fractionation was performed
+      on this sample, enter Not Applicable.
+    terms: null
+    type: "['number', 'string']"
+
+  hours_to_freezer_upper:
+    description: The upper limit on the amount of time, in hours, that it took between
+      the sample being fractionated and the aliquot being frozen or otherwise preserved.
+      If the exact time is known, make this value equal to that of the lower limit.
+      If the time is completely unknown, enter Unknown. If no fractionation was performed
+      on this sample, enter Not Applicable.
+    terms: null
+    type: "['number', 'string']"
+
+  methanol_added:
+    description: In the preparation of a slide, was methanol added as a fixative?
+      True/False.
+    terms: null
+    type: boolean
+
+  preservation_method:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/preservation_method"
+    enumTerms:
+      Cryopreserved: null
+      FFPE: null
+      Fresh: null
+      Frozen: null
+      OCT: null
+      Snap Frozen: null
+      Unknown: null
+
   samples:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
+
+  storage_temperature:
+    description: The temperature, in centrigrade, at which the aliquot was preserved
+      and/or stored.
+    terms: null
+    type: number

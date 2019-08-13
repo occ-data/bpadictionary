@@ -3,13 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "protocol"
 title: Protocol
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: metadata_file
-project: '*'
 program: '*'
-description: >
-  Data file containing the metadata for the study performed. A space for protocols, panel data,
-  or any data related to the study design.
+project: '*'
+description: Data file containing the metadata for the study performed. A space for
+  protocols, panel data, or any data related to the study design.
 additionalProperties: false
 submittable: true
 validators: null
@@ -17,6 +17,7 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
   - state
@@ -47,37 +48,44 @@ required:
   - data_category
   - data_type
   - data_format
-
+  - file_size
+  - md5sum
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
+
   data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    enum:
-      - Experimental Metadata
-      - Biospecimen Metadata
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Collection and Shipping SOP
-      - Testing Protocol
-      - Testing Kit/Panel Information
-      - Sample Preparation SOP
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_category"
+    enumTerms:
+      Biospecimen Metadata: null
+      Experimental Metadata: null
+
   data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - EXCEL
-      - PDF
-      - TXT
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_format"
+    enumTerms:
+      EXCEL: null
+      PDF: null
+      TXT: null
+
+  data_type:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_type"
+    enumTerms:
+      Collection and Shipping SOP: null
+      Sample Preparation SOP: null
+      Testing Kit/Panel Information: null
+      Testing Protocol: null
 
   studies:
-    $ref: "_definitions.yaml#/to_many"
-  core_metadata_collections:
     $ref: "_definitions.yaml#/to_many"

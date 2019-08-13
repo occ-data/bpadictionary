@@ -3,14 +3,15 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "analyte"
 title: Analyte
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: biospecimen
 program: '*'
 project: '*'
-description: >
-  Any aspect of an aliquot used in an analysis or assay to characterize the sample. These aspects
-  range from molecules, such as DNA and RNA, that can be extracted from the aliquot to general
-  descriptions of the aliquot's components, such as cell count and morphology.
+description: Any aspect of an aliquot used in an analysis or assay to characterize
+  the sample. These aspects range from molecules, such as DNA and RNA, that can be
+  extracted from the aliquot to general descriptions of the aliquot's components,
+  such as cell count and morphology.
 additionalProperties: false
 submittable: true
 validators: null
@@ -21,13 +22,6 @@ systemProperties:
   - state
   - created_datetime
   - updated_datetime
-
-required:
-  - submitter_id
-  - type
-  - analyte_type
-  - analyte_isolation_method
-  - aliquots
 
 links:
   - name: aliquots
@@ -42,94 +36,107 @@ links:
     target_type: study
     multiplicity: many_to_many
     required: false
+  - name: studies
+    backref: analytes
+    label: analyzed_for
+    target_type: study
+    multiplicity: many_to_many
+    required: false
 
+required:
+  - submitter_id
+  - type
+  - analyte_type
+  - analyte_isolation_method
+  - aliquots
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
-  $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  analyte_isolation_method:
-    description: >
-      The name or general description of the method used to isolate the analyte. Alternatively, if
-      you have provided a protocol, put the file_name here.
-    type: string
-  analyte_type:
-    term:
-      $ref: "_terms.yaml#/analyte_type"
-    enum:
-      - DNA
-      - RNA
-      - Peptide
-      - Protein
-      - Morphology
-      - Cell Count
-  cell_type:
-    description: >
-      In the case of single cell analysis, this is the type of cell being analyzed.
-    enum:
-      - All CTC Populations
-      - Apoptotic CTC
-      - Biomarker Positive All CTC Populations
-      - Biomarker Positive Traditional CTC
-      - Cytokeratin Negative CTC
-      - Cytokeratin Negative CTC Cluster
-      - Cytokeratin Positive CTC
-      - Cytokeratin Positive CTC Cluster
-      - Nucleated Cell
-      - Small CTC
-      - Small CTC Cluster
-      - Traditional CTC
-      - Traditional CTC Cluster
-      - White Blood Cell
-  cell_identifier:
-    description: >
-      The identifying name or number for the cell being identified.
-    type: string
-  days_to_assay:
-    description: >
-      The amount of time, in days, between the date used for index and the assay used to address this analyte.
-    type: integer
-  frame_identifier:
-    description: >
-      In an analysis of a slide, the frame denotes the region of the slide that is being examined.
-      Within a frame are multiple cells.
-    type: string
-  llod:
-    description: >
-      The lower limit of detection. lowest quantity of a substance that can be distinguished from
-      the absence of that substance (a blank value) within a stated confidence limit (generally 1%).
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
-  run_identifier:
-    description: >
-      The identifier given to the run during which this particular analyte was tested or evaluated.
-      If you analyze multiple analytes through the same experimentation run, this is a good way to
-      keep track.
-    type: string
-  specificity:
-    description: "The true negative rate."
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
-  sensitivity:
-    description: "The true positive rate."
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
+  $ref: "_definitions.yaml#/ubiquitous_properties"
 
   aliquots:
     $ref: "_definitions.yaml#/to_many"
+
+  analyte_isolation_method:
+    description: The name or general description of the method used to isolate the
+      analyte. Alternatively, if you have provided a protocol, put the file_name here.
+    terms: null
+    type: string
+
+  analyte_type:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/analyte_type"
+    enumTerms:
+      Cell Count: null
+      DNA: null
+      Morphology: null
+      Peptide: null
+      Protein: null
+      RNA: null
+
+  cell_identifier:
+    description: The identifying name or number for the cell being identified.
+    terms: null
+    type: string
+
+  cell_type:
+    description: In the case of single cell analysis, this is the type of cell being
+      analyzed.
+    terms: null
+    enumTerms:
+      All CTC Populations: null
+      Apoptotic CTC: null
+      Biomarker Positive All CTC Populations: null
+      Biomarker Positive Traditional CTC: null
+      Cytokeratin Negative CTC: null
+      Cytokeratin Negative CTC Cluster: null
+      Cytokeratin Positive CTC: null
+      Cytokeratin Positive CTC Cluster: null
+      Nucleated Cell: null
+      Small CTC: null
+      Small CTC Cluster: null
+      Traditional CTC: null
+      Traditional CTC Cluster: null
+      White Blood Cell: null
+
+  days_to_assay:
+    description: The amount of time, in days, between the date used for index and
+      the assay used to address this analyte.
+    terms: null
+    type: integer
+
+  frame_identifier:
+    description: In an analysis of a slide, the frame denotes the region of the slide
+      that is being examined. Within a frame are multiple cells.
+    terms: null
+    type: string
+
+  llod:
+    description: The lower limit of detection. lowest quantity of a substance that
+      can be distinguished from the absence of that substance (a blank value) within
+      a stated confidence limit (generally 1%).
+    terms: null
+    type: "['number', 'string']"
+
+  run_identifier:
+    description: The identifier given to the run during which this particular analyte
+      was tested or evaluated. If you analyze multiple analytes through the same experimentation
+      run, this is a good way to keep track.
+    terms: null
+    type: string
+
+  sensitivity:
+    description: The true positive rate.
+    terms: null
+    type: "['number', 'string']"
+
+  specificity:
+    description: The true negative rate.
+    terms: null
+    type: "['number', 'string']"
+
   studies:
     $ref: "_definitions.yaml#/to_many"

@@ -3,12 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "quantification_assay_qc"
 title: Quantification Assay QC
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing the fragment analyzer or bioanalyzer trace from a quantification assay.
+description: Data file containing the fragment analyzer or bioanalyzer trace from
+  a quantification assay.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,6 +17,7 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
   - state
@@ -48,31 +50,36 @@ required:
   - data_category
   - data_type
   - data_format
-
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
-
+  - [id]
+  - [project_id, submitter_id]
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
+
   data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    enum:
-      - Fragment Analyzer Trace
-      - Bioanalyzer Trace
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Quantification Assay Trace
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_category"
+    enumTerms:
+      Bioanalyzer Trace: null
+      Fragment Analyzer Trace: null
+
   data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_format"
     type: string
 
+  data_type:
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/data_type"
+    enumTerms:
+      Quantification Assay Trace: null
+
   quantification_assays:
-    $ref: "_definitions.yaml#/to_one"
-  core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

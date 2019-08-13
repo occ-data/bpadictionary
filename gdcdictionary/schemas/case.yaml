@@ -3,12 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "case"
 title: Case
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: administrative
 program: '*'
 project: '*'
-description: >
-  The collection of all data related to a specific subject in the context of a specific experiment.
+description: The collection of all data related to a specific subject in the context
+  of a specific experiment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,9 +17,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
 
 links:
   - name: studies
@@ -33,40 +34,46 @@ required:
   - type
   - index_date
   - studies
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   collaboration_id:
-    description: >
-      For instances in which multiple institutions use the same patient for their respective studies,
-      this space is used as a place to enter in the de-identified barcode, id, or other identifier for
-      the patient. Work with your collaborators to decide on the patient's id.
+    description: For instances in which multiple institutions use the same patient
+      for their respective studies, this space is used as a place to enter in the
+      de-identified barcode, id, or other identifier for the patient. Work with your
+      collaborators to decide on the patient's id.
+    terms: null
     type: string
-  index_date:
-    description: >
-      The reference or anchor date used during date obfuscation, where a single date is obscured by
-      creating one or more date ranges in relation to this date.
-    enum:
-      - Diagnosis
-      - First Patient Visit
-      - Study Enrollment
-      - Not Applicable
-  lost_to_followup:
-    description: >
-      A yes/no indicator related to whether a patient was unable to be contacted for follow-up.
-    enum:
-      - "Yes"
-      - "No"
-      - Not Applicable
+
   days_to_lost_to_followup:
-    description: >
-      The number of days between the date used for index and the date the patient was lost to follow-up.
+    description: The number of days between the date used for index and the date the
+      patient was lost to follow-up.
+    terms: null
     type: integer
+
+  index_date:
+    description: The reference or anchor date used during date obfuscation, where
+      a single date is obscured by creating one or more date ranges in relation to
+      this date.
+    terms: null
+    enumTerms:
+      Diagnosis: null
+      First Patient Visit: null
+      Not Applicable: null
+      Study Enrollment: null
+
+  lost_to_followup:
+    description: A yes/no indicator related to whether a patient was unable to be
+      contacted for follow-up.
+    terms: null
+    enumTerms:
+      No: null
+      Not Applicable: null
+      Yes: null
 
   studies:
     $ref: "_definitions.yaml#/to_many"

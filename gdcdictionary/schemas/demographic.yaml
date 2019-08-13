@@ -3,13 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "demographic"
 title: Demographic
 type: object
+nodeTerms: null
 namespace: https://www.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Data for the characterization of the patient by means of segementing the population (e.g.,
-  characterization by age, sex, or race).
+description: Data for the characterization of the patient by means of segementing
+  the population (e.g., characterization by age, sex, or race).
 additionalProperties: false
 submittable: true
 validators: null
@@ -33,78 +33,86 @@ required:
   - submitter_id
   - type
   - cases
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  cases:
+    $ref: "_definitions.yaml#/to_one"
+
   cause_of_death:
-    description: >
-      Text term to identify the cause of patient death with respect to cancer.
-    enum:
-      - "Cancer Related"
-      - "Not Cancer Related"
-      - "Unknown"
+    description: Text term to identify the cause of patient death with respect to
+      cancer.
+    terms: null
+    enumTerms:
+      Cancer Related: null
+      Not Cancer Related: null
+      Unknown: null
 
   days_to_birth:
-    description: >
-      The number of days between the index date and the date of patient birth. If the number of days is greater than 32872 (89 years), then please use 'days_to_birth_gt89'.
+    description: The number of days between the index date and the date of patient
+      birth. If the number of days is greater than 32872 (89 years), then please use
+      'days_to_birth_gt89'.
+    terms: null
     type: integer
     maximum: 32872
     minimum: 0
 
   days_to_birth_gt89:
-    description: >
-      Indicate if the number of days between the index date and the date of patient birth is greater than 32872 (89 years).
-    enum:
-      - "Yes"
-      - "No"
+    description: Indicate if the number of days between the index date and the date
+      of patient birth is greater than 32872 (89 years).
+    terms: null
+    enumTerms:
+      No: null
+      Yes: null
 
   days_to_death:
-    description: >
-      The number of days between the index date and the date of patient death.
+    description: The number of days between the index date and the date of patient
+      death.
+    terms: null
     type: integer
 
   ethnicity:
-    term:
-      $ref: "_terms.yaml#/ethnicity"
-    enum:
-      - "Hispanic or Latino"
-      - "Not Hispanic or Latino"
-      - "Unknown"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/ethnicity"
+    enumTerms:
+      Hispanic or Latino: null
+      Not Hispanic or Latino: null
+      Unknown: null
 
   gender:
-    term:
-      $ref: "_terms.yaml#/gender"
-    enum:
-      - "Female"
-      - "Male"
-      - "Unknown"
-      - "Unspecified"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/gender"
+    enumTerms:
+      Female: null
+      Male: null
+      Unknown: null
+      Unspecified: null
 
   race:
-    term:
-      $ref: "_terms.yaml#/race"
-    enum:
-      - "White"
-      - "American Indian or Alaska Native"
-      - "Black or African American"
-      - "Asian"
-      - "Native Hawaiian or Other Pacific Islander"
-      - "Other"
-      - "Unknown"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/race"
+    enumTerms:
+      American Indian or Alaska Native: null
+      Asian: null
+      Black or African American: null
+      Native Hawaiian or Other Pacific Islander: null
+      Other: null
+      Unknown: null
+      White: null
 
   vital_status:
-    term:
-      $ref: "_terms.yaml#/vital_status"
-    enum:
-      - "Alive"
-      - "Dead"
-      - "Lost to Follow-up"
-      - "Unknown"
-
-  cases:
-    $ref: "_definitions.yaml#/to_one"
+    description: null
+    terms:
+      - $ref: "_terms.yaml#/vital_status"
+    enumTerms:
+      Alive: null
+      Dead: null
+      Lost to Follow-up: null
+      Unknown: null
