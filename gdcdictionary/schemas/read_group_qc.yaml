@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "read_group_qc"
 title: Read Group QC
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: notation
 project: '*'
 program: '*'

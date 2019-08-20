@@ -4,7 +4,7 @@ id: "aliquot"
 title: Aliquot
 type: object
 category: biospecimen
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 program: '*'
 project: '*'
 description: >
