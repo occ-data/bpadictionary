@@ -74,6 +74,7 @@ properties:
       - MX
       - cM0 (i+)
       - Unknown
+
   ajcc_clinical_n:
     term:
       $ref: "_terms.yaml#/ajcc_clinical_n"
@@ -103,6 +104,7 @@ properties:
       - N4
       - NX
       - Unknown
+
   ajcc_clinical_stage:
     term:
       $ref: "_terms.yaml#/ajcc_clinical_stage"
@@ -136,6 +138,7 @@ properties:
       - Stage Tis
       - Stage X
       - Unknown
+
   ajcc_clinical_t:
     term:
       $ref: "_terms.yaml#/ajcc_clinical_t"
@@ -175,6 +178,7 @@ properties:
       - Tis (LCIS)
       - Tis (Paget's)
       - Unknown
+
   ajcc_pathologic_m:
     term:
       $ref: "_terms.yaml#/ajcc_pathologic_m"
@@ -188,6 +192,7 @@ properties:
       - MX
       - cM0 (i+)
       - Unknown
+
   ajcc_pathologic_n:
     term:
       $ref: "_terms.yaml#/ajcc_pathologic_n"
