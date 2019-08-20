@@ -67,28 +67,35 @@ properties:
       $ref: "_terms.yaml#/data_category"
     enum:
       - Mass Cytometry
+
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
       - Raw IMC Data
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
     enum:
       - TXT
+
   assay_method:
     enum:
       - Imaging Mass Cytometry
+
   assay_instrument:
     type: string
+
   assay_instrument_model:
     type: string
+
   panel_used:
     description: >
       The name or general description of the panel used for this mass cytometry assay.
       Alternatively, if you have provided a protocol containing the panel, enter its file_name here.
     type: string
+
   protocol_used:
     description: >
       The name or general description of the protocol used to run the mass cytometry assay.

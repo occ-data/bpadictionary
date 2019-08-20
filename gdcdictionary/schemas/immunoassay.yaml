@@ -47,40 +47,56 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   assay_instrument:
-    description: "The specific instrument type used to perform the assay."
+    term:
+      $ref: "_terms.yaml#/assay_instrument"
     enum:
       - Bruker Mass Spectrometer
       - CytoTrapNano CTC Platform
       - Epic Sciences CTC Platform
       - HD-SCA Platform
       - Multi-Array Assay, Meso Scale Discovery
+
   assay_instrument_model:
-    description: "The specific model of instrument used to perform the assay."
+    term:
+      $ref: "_terms.yaml#/assay_instrument_model"
     type: string
+
   assay_kit_name:
-    description: "Name of the assay kit used."
+    term:
+      $ref: "_terms.yaml#/assay_kit_name"
     type: string
+
   assay_kit_vendor:
-    description: "Vendor that provided the assay kit."
+    term:
+      $ref: "_terms.yaml#/assay_kit_vendor"
     type: string
+
   assay_kit_version:
-    description: "Version of the assay kit used."
+    term:
+      $ref: "_terms.yaml#/assay_kit_version"
     type: string
+
   assay_method:
-    description: "General methodology used to perform the assay."
+    term:
+      $ref: "_terms.yaml#/assay_method"
     enum:
       - Enzyme-Linked Immunosorbent Assay (ELISA)
       - Immunohistochemistry
       - MALDI-TOF Mass Spectrometry
+
   assay_target:
-    description: "Target for the assay: can be a specific gene, protein, or otherwise."
+    term:
+      $ref: "_terms.yaml#/assay_target"
     type: string
+
   target_localization:
     description: "The observed location of the assay target."
     type: string
+
   target_measurement:
     description: "Measurement for the assay target. Specify target_measurement_units as well."
     type: number
+
   target_measurement_units:
     description: "Units of measurement used when evaluating the assay target."
     type: string

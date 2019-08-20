@@ -60,18 +60,18 @@ properties:
     type: string
 
   assay_kit_name:
-    description: >
-      The name of the kit used for the test or assay; please also indicate the kit vendor and version in 'assay_kit_vendor' and 'assay_kit_version'.
+    term:
+      $ref: "_terms.yaml#/assay_kit_name"
     type: string
 
   assay_kit_vendor:
-    description: >
-      The name of the vendor or manufacturer of the kit used for the test; please also indicate the kit name and version in 'assay_kit_name' and 'assay_kit_version'.
+    term:
+      $ref: "_terms.yaml#/assay_kit_vendor"
     type: string
 
   assay_kit_version:
-    description: >
-      The version of the kit used for the test; please also indicate the kit name and vendor in 'assay_kit_name' and 'assay_kit_vendor'.
+    term:
+      $ref: "_terms.yaml#/assay_kit_version"
     type: string
 
   days_to_test:
@@ -80,13 +80,13 @@ properties:
     type: integer
 
   equipment_manufacturer:
-    description: >
-      The name of the manufacturer of the equipment used for the test; please also indicate the model number in 'equipment_model'.
+    term:
+      $ref: "_terms.yaml#/equipment_manufacturer"
     type: string
 
   equipment_model:
-    description: >
-      The equipment name and model number used for the test; please also indicate the manufacturer name in 'equipment_manufacturer'.
+    term:
+      $ref: "_terms.yaml#/equipment_model"
     type: string
 
   test_anatomic_site:
