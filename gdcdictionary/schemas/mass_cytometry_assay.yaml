@@ -81,13 +81,19 @@ properties:
       - TXT
 
   assay_method:
+    term:
+      $ref: "_terms.yaml#/assay_method"
     enum:
       - Imaging Mass Cytometry
 
   assay_instrument:
+    term:
+      $ref: "_terms.yaml#/assay_instrument"
     type: string
 
   assay_instrument_model:
+    term:
+      $ref: "_terms.yaml#/assay_instrument_model"
     type: string
 
   panel_used:

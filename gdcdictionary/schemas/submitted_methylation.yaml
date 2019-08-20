@@ -57,33 +57,45 @@ uniqueKeys:
 
 properties:
   $ref: "_definitions.yaml#/data_file_properties"
-  type:
-    enum: [ "submitted_methylation" ]
+
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
       - Methylation Data
+
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum: [ "Methylation Intensity Values" ]
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
     enum:
       - IDAT
+
   assay_method:
+    term:
+      $ref: "_terms.yaml#/assay_method"
     enum:
       - Methylation Array
+
   assay_instrument:
+    term:
+      $ref: "_terms.yaml#/assay_instrument"
     enum:
       - Illumina
+
   assay_instrument_model:
+    term:
+      $ref: "_terms.yaml#/assay_instrument_model"
     enum:
       - Illumina Infinium HumanMethylation450
       - Illumina Infinium HumanMethylation450K
+
   analytes:
     $ref: "_definitions.yaml#/to_one"
+
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
