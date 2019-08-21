@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "sequencing_assay"
 title: Sequencing Assay
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: notation
 program: '*'
 project: '*'
@@ -41,25 +41,33 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   assay_method:
-    description: "General name or description of the method used to characterize the analyte."
+    term:
+      $ref: "_terms.yaml#/assay_method"
     enum:
       - Targeted Sequencing
       - Copy Number Analysis
+
   assay_target:
-    description: "Gene of interest for the assay."
+    term:
+      $ref: "_terms.yaml#/assay_target"
     type: string
+
   assay_target_secondary:
     description: "Secondary gene of interest for the assay."
     type: string
+
   copies_unit:
     description: "The units for the copies measured (e.g. copies/xxx uL plasma)."
     type: string
+
   mutant_fraction_percent:
     description: "Percent of the target that is identified as mutant."
     type: number
+
   mutant_copies:
     description: "Mutant DNA absolute copies in the ctDNA. Requires copies_unit."
     type: integer
+
   mutation_result:
     description: "Observed mutation type."
     enum:
@@ -75,9 +83,11 @@ properties:
       - Splice Site
       - Unspecified
       - No Mutation Detected
+
   read_depth:
     description: "The read depth of the assay."
     type: integer
+
   target_chromosome:
     description: "The chromosome on which the gene of interest is located."
     enum:
@@ -105,6 +115,7 @@ properties:
       - "22"
       - X
       - Y
+
   target_chromosome_secondary:
     description: "The chromosome on which the secondary gene of interest is located."
     enum:
@@ -132,18 +143,23 @@ properties:
       - "22"
       - X
       - Y
+
   target_position:
     description: "The position on the chromosome on which the gene of interest is located."
     type: integer
+
   target_position_secondary:
     description: "The position on the chromosome on which the secondary gene of interest is located."
     type: integer
+
   target_ref:
     description: "The reference sequence for the genomic region that is being investigated."
     type: string
+
   target_alt:
     description: "The observed alternate sequence for the genomic region being investigated."
     type: string
+
   WT_copies:
     description: "WT DNA absolute coppies in the ctDNA. Requires copies_unit."
     type: integer

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "pcr_assay"
 title: PCR Assay
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: notation
 program: '*'
 project: '*'
@@ -44,39 +44,52 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   assay_instrument:
-    description: "The specific instrument type used to perform the assay."
+    term:
+      $ref: "_terms.yaml#/assay_instrument"
     enum:
       - BD Flow Cytometer
       - Bio-Rad
       - QuantStudio
       - Qiagen Rotor-Gene Q
+
   assay_instrument_model:
-    description: "The specific model of instrument used to perform the assay."
+    term:
+      $ref: "_terms.yaml#/assay_instrument_model"
     enum:
       - BD Accuri C6 Flow Cytometer
       - Bio-Rad QX100
       - Bio-Rad QX200
       - QuantStudio Dx
       - Qiagen Rotor-Gene Q 5plex HRM
+
   assay_kit_name:
-    description: "Name of the assay kit used."
+    term:
+      $ref: "_terms.yaml#/assay_kit_name"
     type: string
+
   assay_kit_vendor:
-    description: "Vendor that provided the assay kit."
+    term:
+      $ref: "_terms.yaml#/assay_kit_vendor"
     type: string
+
   assay_kit_version:
-    description: "Version of the assay kit used."
+    term:
+      $ref: "_terms.yaml#/assay_kit_version"
     type: string
+
   assay_method:
-    description: "General methodology used to perform the assay (e.g. PCR, Sequencing)."
+    term:
+      $ref: "_terms.yaml#/assay_method"
     enum:
       - Amplification-Refactory Mutation System
       - BEAMing Digital
       - Digital Droplet
       - TaqMan
+
   mutant_fraction_percent:
     description: "Percent of the target that is identified as mutant."
     type: number
+
   mutation_result:
     description: "Observed mutation type."
     enum:
@@ -89,12 +102,16 @@ properties:
       - Frameshift
       - Unspecified
       - No Mutation Detected
+
   mutant_copies:
     description: "Mutant DNA absolute copies in the ctDNA. Requires copies_unit."
     type: integer
+
   assay_target:
-    description: "Target for the assay: can be a gene, protein, or otherwise."
+    term:
+      $ref: "_terms.yaml#/assay_target"
     type: string
+
   target_chromosome:
     description: "The chromosome on which the gene of interest is located."
     enum:
@@ -122,12 +139,15 @@ properties:
       - "22"
       - X
       - Y
+
   target_position:
     description: "The position on the chromosome on which the gene of interest is located."
     type: integer
+
   target_ref:
     description: "The reference sequence for the genomic region that is being investigated."
     type: string
+
   target_alt:
     description: "The observed alternate sequence for the genomic region being investigated."
     type: string

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "case"
 title: Case
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: administrative
 program: '*'
 project: '*'
@@ -47,6 +47,7 @@ properties:
       this space is used as a place to enter in the de-identified barcode, id, or other identifier for
       the patient. Work with your collaborators to decide on the patient's id.
     type: string
+
   index_date:
     description: >
       The reference or anchor date used during date obfuscation, where a single date is obscured by
@@ -56,6 +57,7 @@ properties:
       - First Patient Visit
       - Study Enrollment
       - Not Applicable
+
   lost_to_followup:
     description: >
       A yes/no indicator related to whether a patient was unable to be contacted for follow-up.
@@ -63,6 +65,7 @@ properties:
       - "Yes"
       - "No"
       - Not Applicable
+
   days_to_lost_to_followup:
     description: >
       The number of days between the date used for index and the date the patient was lost to follow-up.

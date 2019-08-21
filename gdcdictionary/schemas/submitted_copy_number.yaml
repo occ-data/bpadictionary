@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "submitted_copy_number"
 title: Submitted Copy Number
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: data_file
 program: '*'
 project: '*'

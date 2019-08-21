@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "cell_image"
 title: Cell Image
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: data_file
 program: '*'
 project: '*'
@@ -61,11 +61,13 @@ properties:
       $ref: "_terms.yaml#/data_category"
     enum:
       - Slide Image
+
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
       - Single Cell Image
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
@@ -73,5 +75,6 @@ properties:
 
   analytes:
     $ref: "_definitions.yaml#/to_one"
+
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

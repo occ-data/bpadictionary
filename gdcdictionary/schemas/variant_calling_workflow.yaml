@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "variant_calling_workflow"
 title: Variant Calling Workflow
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: analysis
 program: '*'
 project: '*'

@@ -1,0 +1,77 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "fragment_analyzer_peak"
+title: Fragment Analyzer Peak
+type: object
+namespace: https://data.bloodpac.org
+category: notation
+program: '*'
+project: '*'
+description: >
+  The description of a single peak in a fragment analyzer trace file.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - created_datetime
+  - updated_datetime
+  - state
+
+links:
+  - name: fragment_analyzer_traces
+    backref: fragment_analyzer_peaks
+    label: data_from
+    target_type: fragment_analyzer_trace
+    multiplicity: many_to_one
+    required: true
+
+required:
+  - submitter_id
+  - type
+  - fragment_analyzer_traces
+
+uniqueKeys:
+  - [ id ]
+  - [ project_id, submitter_id ]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  kurtosis:
+    description: "Description of the kurtosis of a peak in a fragment analyzer trace."
+    type: string
+
+  peak_center:
+    description: "The center of a peak in a fragment analyzer trace. Report also the peak_center_units."
+    type: integer
+
+  peak_center_units:
+    description: "The units for the center of a peak in a fragment analyzer trace. Report also the peak_center."
+    enum:
+      - Size (bp)
+      - Size (nt)
+      - Time (seconds)
+
+  peak_height:
+    description: "The height of a peak in a fragment analyzer trace. Report also the peak_height_units."
+    type: integer
+
+  peak_height_units:
+    description: "The units for the height of a peak in a fragment analyzer trace. Report also the peak_height."
+    enum:
+      - Relative Fluorescence Units (RFU)
+      - Fluorescence Units (FU)
+
+  peak_width:
+    description: "The width of a peak in a fragment analyzer trace."
+    type: string
+
+  area_under_curve:
+    description: "The area under the curve for a peak in a fragment analyzer trace."
+    type: number
+
+  fragment_analyzer_traces:
+    $ref: "_definitions.yaml#/to_one"
