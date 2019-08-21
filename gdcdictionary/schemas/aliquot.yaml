@@ -80,17 +80,35 @@ properties:
     description: >
       The lower limit on the amount of time, in hours, that it took between the sample being
       fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the upper limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
+      make this value equal to that of the upper limit. If the time is completely unknown or if no
+      fractionation was performed on this sample, enter the appropriate value in hours_to_freezer_lower_other.
     type: number
 
   hours_to_freezer_upper:
     description: >
       The upper limit on the amount of time, in hours, that it took between the sample being
       fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the lower limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
+      make this value equal to that of the lower limit. If the time is completely unknown or if no
+      fractionation was performed on this sample, enter the appropriate value in hours_to_freezer_upper_other.
     type: number
+
+  hours_to_freezer_lower_other:
+    description: >
+      If the lower limit on the amount of time, in hours, that it took between the sample being
+      fractionated and the aliquot being frozen or otherwise preserved is completely unknown or
+      if no fractionation was performed on this sample, enter the appropriate value here.
+    enum:
+      - Not Applicable
+      - Unknown
+
+  hours_to_freezer_upper_other:
+    description: >
+      If the upper limit on the amount of time, in hours, that it took between the sample being
+      fractionated and the aliquot being frozen or otherwise preserved is completely unknown or
+      if no fractionation was performed on this sample, enter the appropriate value here.
+    enum:
+      - Not Applicable
+      - Unknown
 
   methanol_added:
     description: "In the preparation of a slide, was methanol added as a fixative? True/False."
