@@ -123,6 +123,19 @@ properties:
     description: "The true positive rate."
     type: number
 
+  specificity_WT:
+    description: "If the true negative rate is 'WT' enter true here."
+    type: boolean
+
+  sensitivity_WT:
+    description: "The true positive rate is 'WT' enter true here."
+    type: boolean
+
+  llod_WT:
+    description: >
+      If the lower limit of detection is 'WT' enter true here.
+    type: boolean
+
   aliquots:
     $ref: "_definitions.yaml#/to_many"
   studies:
