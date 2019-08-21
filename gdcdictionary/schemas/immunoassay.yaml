@@ -3,12 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "immunoassay"
 title: Immunoassay
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: notation
 program: '*'
 project: '*'
-description: >
-  Information pertaining to processed results obtained from a immunoassay.
+description: Information pertaining to processed results obtained from a immunoassay.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,9 +16,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
 
 links:
   - name: analytes
@@ -40,11 +40,15 @@ required:
   - analytes
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  analytes:
+    $ref: "_definitions.yaml#/to_one"
 
   assay_instrument:
     term:
@@ -90,16 +94,14 @@ properties:
     type: string
 
   target_localization:
-    description: "The observed location of the assay target."
+    description: The observed location of the assay target.
     type: string
 
   target_measurement:
-    description: "Measurement for the assay target. Specify target_measurement_units as well."
+    description: Measurement for the assay target. Specify target_measurement_units
+      as well.
     type: number
 
   target_measurement_units:
-    description: "Units of measurement used when evaluating the assay target."
+    description: Units of measurement used when evaluating the assay target.
     type: string
-
-  analytes:
-    $ref: "_definitions.yaml#/to_one"

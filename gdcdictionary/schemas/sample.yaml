@@ -3,14 +3,15 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "sample"
 title: Sample
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: biospecimen
 program: '*'
 project: '*'
-description: >
-  Any part of the biological whole of the biospecimen. In the case of solid tissue, this would be a
-  particular set of cells. In the case of fluids, such as blood, this can refer to the plasma,
-  peripheral blood components, or any combination therein.
+description: Any part of the biological whole of the biospecimen. In the case of solid
+  tissue, this would be a particular set of cells. In the case of fluids, such as
+  blood, this can refer to the plasma, peripheral blood components, or any combination
+  therein.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,6 +23,14 @@ systemProperties:
   - created_datetime
   - updated_datetime
 
+links:
+  - name: biospecimens
+    backref: samples
+    label: derived_from
+    target_type: biospecimen
+    multiplicity: many_to_many
+    required: true
+
 required:
   - submitter_id
   - type
@@ -32,35 +41,31 @@ uniqueKeys:
   - [id]
   - [project_id, submitter_id]
 
-links:
-  - name: biospecimens
-    backref: samples
-    label: derived_from
-    target_type: biospecimen
-    multiplicity: many_to_many
-    required: true
-
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  biospecimens:
+    $ref: "_definitions.yaml#/to_many"
+
   blood_fractionation_method:
-    description: >
-      The name or description of the method used to obtain the blood fraction sample. (e.g. Ficoll
-      Method, Novartis Protocol #001, 2000 g centrifuge at 4C with gentle deceleration). Alternatively,
-      if you have provided a detailed protocol, enter its file_name here.
+    description: 'The name or description of the method used to obtain the blood fraction
+      sample. (e.g. Ficoll Method, Novartis Protocol #001, 2000 g centrifuge at 4C
+      with gentle deceleration). Alternatively, if you have provided a detailed protocol,
+      enter its file_name here.'
     type: string
 
   composition:
     term:
       $ref: "_terms.yaml#/composition"
     enum:
-      - Buccal Cells
-      - Buffy Coat
       - Bone Marrow Components
       - Bone Marrow Components NOS
-      - Control Analyte
+      - Buccal Cells
+      - Buffy Coat
       - Cell
       - Circulating Tumor Cell (CTC)
+      - Control Analyte
       - Derived Cell Line
       - EBV Immortalized
       - Fibroblasts from Bone Marrow Normal
@@ -70,52 +75,48 @@ properties:
       - Mononuclear Cells from Bone Marrow Normal
       - Peripheral Blood Components NOS
       - Peripheral Blood Nucleated Cells
-      - Pleural Effusion
-      - Plasma
       - Peripheral Whole Blood
-      - Serum
+      - Plasma
+      - Pleural Effusion
       - Saliva
-      - Sputum
+      - Serum
       - Solid Tissue
-      - Whole Bone Marrow
+      - Sputum
       - Unknown
+      - Whole Bone Marrow
 
   hours_to_fractionation_lower:
-    description: >
-      The lower limit on the amount of time, in hours, between the blood draw and the fractionation
-      into its components. If the exact time is known, make this value equal to that of the upper
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
+    description: The lower limit on the amount of time, in hours, between the blood
+      draw and the fractionation into its components. If the exact time is known,
+      make this value equal to that of the upper limit. If the time is completely
+      unknown, enter Unknown. If no fractionation was performed on this sample, enter
+      Not Applicable.
     type: number
 
   hours_to_fractionation_upper:
-    description: >
-      The upper limit on the amount of time, in hours, between the blood draw and the fractionation
-      into its components. If the exact time is known, make this value equal to that of the lower
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
+    description: The upper limit on the amount of time, in hours, between the blood
+      draw and the fractionation into its components. If the exact time is known,
+      make this value equal to that of the lower limit. If the time is completely
+      unknown, enter Unknown. If no fractionation was performed on this sample, enter
+      Not Applicable.
     type: number
 
   sample_quantity:
-    description: "For solid samples, the mass of the sample in milligrams (mg)."
+    description: For solid samples, the mass of the sample in milligrams (mg).
     type: number
 
   sample_volume:
-    description: "For liquid samples, the volume of the sample in millilitres (mL)."
-    type: number
-
-  storage_agitation_hours:
-    description: >
-      The number of hours samples were agitated during storage; if a number is given here, also answer 'Yes' to 'storage_agitation'.
+    description: For liquid samples, the volume of the sample in millilitres (mL).
     type: number
 
   storage_agitation:
-    description: >
-      Indicate whether samples were agitated during storage.
+    description: Indicate whether samples were agitated during storage.
     enum:
-      - "Yes"
       - "No"
-      - "Unknown"
+      - Unknown
+      - "Yes"
 
-  biospecimens:
-    $ref: "_definitions.yaml#/to_many"
+  storage_agitation_hours:
+    description: The number of hours samples were agitated during storage; if a number
+      is given here, also answer 'Yes' to 'storage_agitation'.
+    type: number

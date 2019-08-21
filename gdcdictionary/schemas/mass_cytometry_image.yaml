@@ -3,13 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "mass_cytometry_image"
 title: Mass Cytometry Image
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Following an imaging mass cytometry experiment, the raw data output can be converted into
-  antibody-specific images.
+description: Following an imaging mass cytometry experiment, the raw data output can
+  be converted into antibody-specific images.
 additionalProperties: false
 submittable: true
 validators: null
@@ -17,12 +17,11 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
-
 
 links:
   - exclusive: false
@@ -53,11 +52,20 @@ required:
   - assay_target
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
+
+  assay_target:
+    term:
+      $ref: "_terms.yaml#/assay_target"
+    type: string
+
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
 
   data_category:
     term:
@@ -65,26 +73,19 @@ properties:
     enum:
       - Mass Cytometry
 
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    enum:
+      - JPG
+      - PNG
+      - TIF
+
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
       - Single Channel IMC Image
 
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - PNG
-      - JPG
-      - TIF
-
-  assay_target:
-    term:
-      $ref: "_terms.yaml#/assay_target"
-    type: string
-
   mass_cytometry_assays:
-    $ref: "_definitions.yaml#/to_one"
-  core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

@@ -3,12 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "quantification_assay"
 title: Quantification Assay
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: notation
 program: '*'
 project: '*'
-description: >
-  Information pertaining to processed results obtained from a quantification assay.
+description: Information pertaining to processed results obtained from a quantification
+  assay.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,9 +17,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
 
 links:
   - name: analytes
@@ -37,11 +38,15 @@ required:
   - analytes
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  analytes:
+    $ref: "_definitions.yaml#/to_one"
 
   assay_instrument:
     term:
@@ -57,6 +62,11 @@ properties:
       - HD-SCA Platform
       - Molecular Devices SpectraMax
       - Qubit
+
+  assay_instrument_mode:
+    term:
+      $ref: "_terms.yaml#/assay_instrument_mode"
+    type: string
 
   assay_instrument_model:
     term:
@@ -75,11 +85,6 @@ properties:
       - HDSCA Enumeration
       - Molecular Devices SpectraMax M2
       - Qubit 3.0
-
-  assay_instrument_mode:
-    term:
-      $ref: "_terms.yaml#/assay_instrument_mode"
-    type: string
 
   assay_kit_name:
     term:
@@ -105,28 +110,25 @@ properties:
       - Immunohistochemistry
       - qPCR
 
-  cell_count:
-    description: >
-      If the analyte is cell count, report total whole number of cells counted here.
-    type: integer
-
   cell_concentration:
-    description: >
-      If the analyte is cell count, report the concentrations of the cells in the aliquot (counted
-      cells per assay volume mL). Report the calculated concentration in cells per milliliters.
+    description: If the analyte is cell count, report the concentrations of the cells
+      in the aliquot (counted cells per assay volume mL). Report the calculated concentration
+      in cells per milliliters.
     type: number
 
+  cell_count:
+    description: If the analyte is cell count, report total whole number of cells
+      counted here.
+    type: integer
+
   experimental_step:
-    description: "A description of the experimental purpose or step for which the assay was performed."
+    description: A description of the experimental purpose or step for which the assay
+      was performed.
     enum:
       - DNA Extraction
       - Library Building
 
   molecular_concentration:
-    description: >
-      If the analyte is a molecule (e.g. DNA or RNA), report the observed concentration in nanograms
-      per microliters.
+    description: If the analyte is a molecule (e.g. DNA or RNA), report the observed
+      concentration in nanograms per microliters.
     type: number
-
-  analytes:
-    $ref: "_definitions.yaml#/to_one"

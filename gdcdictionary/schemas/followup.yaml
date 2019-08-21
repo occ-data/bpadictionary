@@ -1,18 +1,19 @@
-schema: "http://json-schema.org/draft-04/schema#"
+$schema: "http://json-schema.org/draft-04/schema#"
 
 id: "followup"
 title: Follow-Up
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  A visit by a patient or study participant to a medical professional. A clinical encounter that
-  encompasses planned and unplanned trial interventions, procedures and assessments that may be
-  performed on a subject. A visit has a start and an end, each described with a rule. The process
-  by which information about the health status of an individual is obtained before and after a study
-  has officially closed; an activity that continues something that has already begun or that repeats
+description: A visit by a patient or study participant to a medical professional.
+  A clinical encounter that encompasses planned and unplanned trial interventions,
+  procedures and assessments that may be performed on a subject. A visit has a start
+  and an end, each described with a rule. The process by which information about the
+  health status of an individual is obtained before and after a study has officially
+  closed; an activity that continues something that has already begun or that repeats
   something that has already been done.
 additionalProperties: false
 submittable: true
@@ -44,10 +45,12 @@ uniqueKeys:
   - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   adverse_event:
-    description: "Text that represents the Common Terminology Criteria for Adverse Events low level term name for an adverse event."
+    description: Text that represents the Common Terminology Criteria for Adverse
+      Events low level term name for an adverse event.
     enum:
       - Abdominal distension
       - Abdominal infection
@@ -146,6 +149,8 @@ properties:
       - Bullous dermatitis
       - Burn
       - Buttock pain
+      - CD4 lymphocytes decreased
+      - CPK increased
       - Capillary leak syndrome
       - Carbon monoxide diffusing capacity decreased
       - Cardiac arrest
@@ -154,7 +159,6 @@ properties:
       - Cardiac troponin T increased
       - Cataract
       - Catheter related infection
-      - CD4 lymphocytes decreased
       - Cecal hemorrhage
       - Cecal infection
       - Central nervous system necrosis
@@ -187,14 +191,13 @@ properties:
       - Corneal infection
       - Corneal ulcer
       - Cough
-      - CPK increased
       - Cranial nerve infection
       - Creatinine increased
       - Cushingoid
       - Cystitis noninfective
       - Cytokine release syndrome
-      - Death neonatal
       - Death NOS
+      - Death neonatal
       - Dehydration
       - Delayed orgasm
       - Delayed puberty
@@ -298,6 +301,7 @@ properties:
       - Flushing
       - Forced expiratory volume decreased
       - Fracture
+      - GGT increased
       - Gait disturbance
       - Gallbladder fistula
       - Gallbladder infection
@@ -323,7 +327,6 @@ properties:
       - General disorders and administration site conditions
       - Generalized muscle weakness
       - Genital edema
-      - GGT increased
       - Gingival pain
       - Glaucoma
       - Glossopharyngeal nerve disorder
@@ -388,6 +391,8 @@ properties:
       - Hypothermia
       - Hypothyroidism
       - Hypoxia
+      - INR increased
+      - IVth nerve disorder
       - Ileal fistula
       - Ileal hemorrhage
       - Ileal obstruction
@@ -406,7 +411,6 @@ properties:
       - Injury to jugular vein
       - Injury to superior vena cava
       - Injury, poisoning and procedural complications
-      - INR increased
       - Insomnia
       - Intestinal stoma leak
       - Intestinal stoma obstruction
@@ -437,7 +441,6 @@ properties:
       - Irregular menstruation
       - Irritability
       - Ischemia cerebrovascular
-      - IVth nerve disorder
       - Jejunal fistula
       - Jejunal hemorrhage
       - Jejunal obstruction
@@ -841,33 +844,42 @@ properties:
       - Wrist fracture
 
   bmi:
-    description: "The body mass divided by the square of the body height expressed in units of kg/m^2."
+    description: The body mass divided by the square of the body height expressed
+      in units of kg/m^2.
     type: number
 
+  cases:
+    $ref: "_definitions.yaml#/to_one"
+
   cause_of_response:
-    description: >
-      A specific regimen or line of therapy responsible for the patient's observed improvement
-      achived at a certain point in time during a patient's treatment protocol.
+    description: A specific regimen or line of therapy responsible for the patient's
+      observed improvement achived at a certain point in time during a patient's treatment
+      protocol.
     type: string
 
   days_to_adverse_event:
-    description: "Number of days between the date used for index and the date the patient had an adverse event."
+    description: Number of days between the date used for index and the date the patient
+      had an adverse event.
     type: integer
 
   days_to_followup:
-    description: "Number of days between the date used for index and the date the patient was seen or contacted at follow-up."
+    description: Number of days between the date used for index and the date the patient
+      was seen or contacted at follow-up.
     type: integer
 
   days_to_progression:
-    description: "Number of days between the date used for index and the date the patient was diagnosed with progression of disease."
+    description: Number of days between the date used for index and the date the patient
+      was diagnosed with progression of disease.
     type: integer
 
   days_to_recurrence:
-    description: "Number of days between the date used for index and the date the patient was diagnosed with a recurrent malignancy."
+    description: Number of days between the date used for index and the date the patient
+      was diagnosed with a recurrent malignancy.
     type: integer
 
   disease_response:
-    description: "The observed improvement achieved at a certain point in time during a patient's treatment protocol."
+    description: The observed improvement achieved at a certain point in time during
+      a patient's treatment protocol.
     enum:
       - AJ-Adjuvant Therapy
       - CPD-Clinical Progression
@@ -878,9 +890,9 @@ properties:
       - IPD-Immunoprogression
       - MR-Minimal/Marginal response
       - MX-Mixed response
-      - Non-CR/Non-PD-Non-CR/Non-PD
       - NPB-No Palliative Benefit
       - NR-NO RESPONSE
+      - Non-CR/Non-PD-Non-CR/Non-PD
       - PA-Palliative Therapy
       - PB-Palliative Benefit
       - PD-Progressive Disease
@@ -890,76 +902,70 @@ properties:
       - RD-Responsive Disease
       - RP-Response
       - RPD-Radiographic Progressive Disease
-      - sCR-Stringent Complete Response
       - SD-Stable Disease
       - SPD-Surgical progression
       - TE-Too early
       - VGPR-Very Good Partial Response
+      - sCR-Stringent Complete Response
 
   ecog_performance_status:
-    description: "The ECOG functional performance status of the patient/participant."
+    description: The ECOG functional performance status of the patient/participant.
     enum:
-      - "0"
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
 
   height:
-    description: "The height of the patient in centimeters."
+    description: The height of the patient in centimeters.
     type: number
 
   progression_or_recurrence:
-    description: "Indicator to identify whether a patient has had a recurrent or relapsed malignancy or a progression of disease."
+    description: Indicator to identify whether a patient has had a recurrent or relapsed
+      malignancy or a progression of disease.
     enum:
-      - "Yes"
       - "No"
       - Unknown
+      - "Yes"
 
   time_from_alcohol:
-    description: >
-      Hours since the patient last consumed alcohol.
-    type: number
-
-  time_from_exercise:
-    description: >
-      Hours since the patient last exercised.
-    type: number
-
-  time_from_food:
-    description: >
-      Hours since the patient last consumed food.
-    type: number
-
-  time_from_physical_trauma:
-    description: >
-      Hours since the patient last experienced physical trauma.
+    description: Hours since the patient last consumed alcohol.
     type: number
 
   time_from_biopsy:
-    description: >
-      Hours since the patient last underwent a biopsy; please record the biopsy information in the 'diagnostic_test' node and link that record to this followup record.
+    description: Hours since the patient last underwent a biopsy; please record the
+      biopsy information in the 'diagnostic_test' node and link that record to this
+      followup record.
+    type: number
+
+  time_from_exercise:
+    description: Hours since the patient last exercised.
+    type: number
+
+  time_from_food:
+    description: Hours since the patient last consumed food.
+    type: number
+
+  time_from_physical_trauma:
+    description: Hours since the patient last experienced physical trauma.
     type: number
 
   time_from_recreational_drugs:
-    description: >
-      Hours since the patient last used recreational drugs.
+    description: Hours since the patient last used recreational drugs.
     type: number
 
   time_from_tobacco:
-    description: >
-      Hours since the patient last used tobacco.
+    description: Hours since the patient last used tobacco.
     type: number
 
   time_from_treatment:
-    description: >
-      Hours since the patient received a treatment, including surgical procedures or medications; please record the treatment information in the 'treatment' node and link that record to this followup record.
+    description: Hours since the patient received a treatment, including surgical
+      procedures or medications; please record the treatment information in the 'treatment'
+      node and link that record to this followup record.
     type: number
 
   weight:
-    description: "The weight of the patient measured in kilograms."
+    description: The weight of the patient measured in kilograms.
     type: number
-
-  cases:
-    $ref: "_definitions.yaml#/to_one"

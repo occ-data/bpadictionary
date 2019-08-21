@@ -3,14 +3,14 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "diagnosis"
 title: Diagnosis
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Data from the investigation, analysis and recognition of the presence and nature of disease,
-  condition, or injury from expressed signs and symptoms; also, the scientific determination of any
-  kind; the concise results of such an investigation.
+description: Data from the investigation, analysis and recognition of the presence
+  and nature of disease, condition, or injury from expressed signs and symptoms; also,
+  the scientific determination of any kind; the concise results of such an investigation.
 additionalProperties: false
 submittable: true
 validators: null
@@ -40,12 +40,12 @@ required:
   - tissue_or_organ_of_origin
   - tumor_grade
 
-
 uniqueKeys:
   - [id]
   - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   age_at_diagnosis:
@@ -59,8 +59,8 @@ properties:
     term:
       $ref: "_terms.yaml#/age_at_diagnosis_gt89"
     enum:
-      - "Yes"
       - "No"
+      - "Yes"
 
   ajcc_clinical_m:
     term:
@@ -72,8 +72,8 @@ properties:
       - M1b
       - M1c
       - MX
-      - cM0 (i+)
       - Unknown
+      - cM0 (i+)
 
   ajcc_clinical_n:
     term:
@@ -190,8 +190,8 @@ properties:
       - M1c
       - M2
       - MX
-      - cM0 (i+)
       - Unknown
+      - cM0 (i+)
 
   ajcc_pathologic_n:
     term:
@@ -222,6 +222,7 @@ properties:
       - N4
       - NX
       - Unknown
+
   ajcc_pathologic_stage:
     term:
       $ref: "_terms.yaml#/ajcc_pathologic_stage"
@@ -253,6 +254,7 @@ properties:
       - Stage IVC
       - Stage Tis
       - Stage X
+
   ajcc_pathologic_t:
     term:
       $ref: "_terms.yaml#/ajcc_pathologic_t"
@@ -292,8 +294,10 @@ properties:
       - Tis (LCIS)
       - Tis (Paget's)
       - Unknown
+
   best_overall_response:
-    description: "The best improvement achieved throughout the entire course of protocol treatment."
+    description: The best improvement achieved throughout the entire course of protocol
+      treatment.
     enum:
       - AJ-Adjuvant Therapy
       - CPD-Clinical Progression
@@ -304,9 +308,9 @@ properties:
       - IPD-Immunoprogression
       - MR-Minimal/Marginal response
       - MX-Mixed response
-      - Non-CR/Non-PD-Non-CR/Non-PD
       - NPB-No Palliative Benefit
       - NR-NO RESPONSE
+      - Non-CR/Non-PD-Non-CR/Non-PD
       - PA-Palliative Therapy
       - PB-Palliative Benefit
       - PD-Progressive Disease
@@ -316,26 +320,35 @@ properties:
       - RD-Responsive Disease
       - RP-Response
       - RPD-Radiographic Progressive Disease
-      - sCR-Stringent Complete Response
       - SD-Stable Disease
       - SPD-Surgical progression
       - TE-Too early
       - VGPR-Very Good Partial Response
+      - sCR-Stringent Complete Response
+
+  cases:
+    $ref: "_definitions.yaml#/to_one"
+
   classification_of_tumor:
     term:
       $ref: "_terms.yaml#/classification_of_tumor"
     enum:
-      - Primary
       - Metastasis
-      - Recurrence
       - Other
+      - Primary
+      - Recurrence
       - Unknown
+
   days_to_best_overall_response:
-    description: "Number of days between the date used for index and the date of the patient's best overall response."
+    description: Number of days between the date used for index and the date of the
+      patient's best overall response.
     type: integer
+
   days_to_diagnosis:
-    description: "Number of days between the date used for index and the date of the patient's diagnosis."
+    description: Number of days between the date used for index and the date of the
+      patient's diagnosis.
     type: integer
+
   method_of_diagnosis:
     term:
       $ref: "_terms.yaml#/method_of_diagnosis"
@@ -357,6 +370,7 @@ properties:
       - Surgical Resection
       - Ultrasound Guided Biopsy
       - Unknown
+
   morphology:
     term:
       $ref: "_terms.yaml#/morphology"
@@ -1441,15 +1455,22 @@ properties:
       - 9989/3
       - 9991/3
       - 9992/3
-      - Unknown
       - Not Applicable
+      - Unknown
+
   overall_survival:
-    description: "Number of days between the date used for index and the patient's date of death or the date the patient was last known to be alive."
+    description: Number of days between the date used for index and the patient's
+      date of death or the date the patient was last known to be alive.
     type: integer
+
   primary_diagnosis:
     term:
       $ref: "_terms.yaml#/primary_diagnosis"
     enum:
+      - ACTH-producing tumor
+      - AIN III
+      - ALK positive large B-cell lymphoma
+      - AML M6
       - Abdominal desmoid
       - Abdominal fibromatosis
       - Achromic nevus
@@ -1469,7 +1490,6 @@ properties:
       - Acoustic neuroma
       - Acquired tufted hemangioma
       - Acral lentiginous melanoma, malignant
-      - ACTH-producing tumor
       - Acute basophilic leukaemia
       - Acute bilineal leukemia
       - Acute biphenotypic leukemia
@@ -1480,11 +1500,11 @@ properties:
       - Acute leukemia, Burkitt type [obs]
       - Acute leukemia, NOS
       - Acute lymphatic leukemia
-      - Acute lymphoblastic leukemia-lymphoma, NOS
       - Acute lymphoblastic leukemia, L2 type, NOS
-      - Acute lymphoblastic leukemia, mature B-cell type
       - Acute lymphoblastic leukemia, NOS
+      - Acute lymphoblastic leukemia, mature B-cell type
       - Acute lymphoblastic leukemia, precursorcell type
+      - Acute lymphoblastic leukemia-lymphoma, NOS
       - Acute lymphocytic leukemia
       - Acute lymphoid leukemia
       - Acute megakaryoblastic leukaemia
@@ -1515,9 +1535,9 @@ properties:
       - Acute myeloid leukemia, AML1 (CBF-alpha)/ETO
       - Acute myeloid leukemia, CBF-beta/MYH11
       - Acute myeloid leukemia, M6 type
-      - Acute myeloid leukemia, minimal differentiation
       - Acute myeloid leukemia, NOS (FAB or WHO type not specified)
       - Acute myeloid leukemia, PML/RAR-alpha
+      - Acute myeloid leukemia, minimal differentiation
       - Acute myeloid leukemia, t(15;17) (q22;q11-12)
       - Acute myeloid leukemia, t(16;16)(p 13;q 11)
       - Acute myelomonocytic leukemia
@@ -1533,8 +1553,8 @@ properties:
       - Acute promyelocytic leukaemia, t(15;17) (q22;q11-12)
       - Acute promyelocytic leukemia, NOS
       - Adamantinoma of long bones
-      - Adamantinoma, malignant (except of long bones)
       - Adamantinoma, NOS (except of long bones)
+      - Adamantinoma, malignant (except of long bones)
       - Adenoacanthoma
       - Adenoameloblastoma
       - Adenocarcinoid tumor
@@ -1564,13 +1584,13 @@ properties:
       - Adenocarcinoma with osseous metaplasia
       - Adenocarcinoma with spindle cell metaplasia
       - Adenocarcinoma with squamous metaplasia
+      - Adenocarcinoma, NOS
       - Adenocarcinoma, cribriform comedo-type
       - Adenocarcinoma, cylindroid
       - Adenocarcinoma, diffuse type
       - Adenocarcinoma, endocervical type
       - Adenocarcinoma, intestinal type
       - Adenocarcinoma, metastatic, NOS
-      - Adenocarcinoma, NOS
       - Adenocarcinoma, pancreatobiliary type
       - Adenocystic carcinoma
       - Adenofibroma, NOS
@@ -1592,34 +1612,33 @@ properties:
       - Adnexal carcinoma
       - Adnexal tumor, benign
       - Adrenal cortical adenocarcinoma
+      - Adrenal cortical adenoma, NOS
       - Adrenal cortical adenoma, clear cell
       - Adrenal cortical adenoma, compact cell
       - Adrenal cortical adenoma, glomerulosa cell
       - Adrenal cortical adenoma, mixed cell
-      - Adrenal cortical adenoma, NOS
       - Adrenal cortical adenoma, pigmented
       - Adrenal cortical carcinoma
+      - Adrenal cortical tumor, NOS
       - Adrenal cortical tumor, benign
       - Adrenal cortical tumor, malignant
-      - Adrenal cortical tumor, NOS
       - Adrenal medullary paraganglioma
       - Adrenal medullary paraganglioma, malignant
       - Adrenal rest tumor
-      - Adult cystic teratoma
-      - Adult rhabdomyoma
       - Adult T-cell leukemia
       - Adult T-cell leukemia/lymphoma (HTLV-1 positive) (includes all variants)
       - Adult T-cell lymphoma
       - Adult T-cell lymphoma/leukemia
+      - Adult cystic teratoma
+      - Adult rhabdomyoma
       - Adult teratoma, NOS
+      - Aggressive NK-cell leukaemia
       - Aggressive angiomyxoma
       - Aggressive digital papillary adenoma
       - Aggressive fibromatosis
-      - Aggressive NK-cell leukaemia
       - Aggressive osteoblastoma
       - Aggressive systemic mastocytosis
       - Agnogenic myeloid metaplasia
-      - AIN III
       - Aleukemic granulocytic leukemia [obs]
       - Aleukemic leukemia, NOS [obs]
       - Aleukemic lymphatic leukemia [obs]
@@ -1628,9 +1647,8 @@ properties:
       - Aleukemic monocytic leukemia [obs]
       - Aleukemic myelogenous leukemia [obs]
       - Aleukemic myeloid leukemia [obs]
-      - ALK positive large B-cell lymphoma
-      - Alpha cell tumor, malignant
       - Alpha cell tumor, NOS
+      - Alpha cell tumor, malignant
       - Alpha heavy chain disease
       - Alveolar adenocarcinoma
       - Alveolar adenoma
@@ -1648,9 +1666,8 @@ properties:
       - Ameloblastic fibrosarcoma
       - Ameloblastic odontosarcoma
       - Ameloblastic sarcoma
-      - Ameloblastoma, malignant
       - Ameloblastoma, NOS
-      - AML M6
+      - Ameloblastoma, malignant
       - Anal intraepithelial neoplasia, grade III
       - Anal intraepithelial neoplasia, low grade
       - Anaplastic large B-cell lymphoma
@@ -1662,20 +1679,20 @@ properties:
       - Anaplastic medulloblastoma
       - Anaplastic oligoastrocytoma
       - Ancient schwannoma
+      - Androblastoma, NOS
       - Androblastoma, benign
       - Androblastoma, malignant
-      - Androblastoma, NOS
       - Angioblastic meningioma [obs]
       - Angioblastoma
+      - Angiocentric T-cell lymphoma [obs]
       - Angiocentric glioma
       - Angiocentric immunoproliferative lesion
-      - Angiocentric T-cell lymphoma [obs]
       - Angioendothelioma
       - Angioendotheliomatosis
       - Angiofibroma, NOS
+      - Angioimmunoblastic T-cell lymphoma
       - Angioimmunoblastic lymphadenopathy
       - Angioimmunoblastic lymphoma [obs]
-      - Angioimmunoblastic T-cell lymphoma
       - Angiokeratoma
       - Angioleiomyoma
       - Angiolipoma, NOS
@@ -1696,18 +1713,18 @@ properties:
       - Apocrine adenoma
       - Apocrine cystadenoma
       - Apudoma
-      - Argentaffinoma, malignant
       - Argentaffinoma, NOS [obs]
+      - Argentaffinoma, malignant
+      - Arrhenoblastoma, NOS
       - Arrhenoblastoma, benign
       - Arrhenoblastoma, malignant
-      - Arrhenoblastoma, NOS
       - Arteriovenous hemangioma
       - Askin tumor
       - Astroblastoma
       - Astrocytic glioma
+      - Astrocytoma, NOS
       - Astrocytoma, anaplastic
       - Astrocytoma, low grade
-      - Astrocytoma, NOS
       - Astroglioma
       - Atypical adenoma
       - Atypical carcinoid tumor
@@ -1731,27 +1748,29 @@ properties:
       - B cell lymphoma, NOS
       - B lymphoblastic leukemia/lymphoma with hyperdiploidy
       - B lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL)
-      - B lymphoblastic leukemia/lymphoma with t(1;19) (q23;p13.3); E2A-PBX1 (TCF3-PBX1)
       - B lymphoblastic leukemia/lymphoma with t(12;21) (p13;q22); TEL-AML1 (ETV6-RUNX1)
+      - B lymphoblastic leukemia/lymphoma with t(1;19) (q23;p13.3); E2A-PBX1 (TCF3-PBX1)
       - B lymphoblastic leukemia/lymphoma with t(5;14) (q31;q32); IL3-IGH
       - B lymphoblastic leukemia/lymphoma with t(9;22) (q34;q11.2); BCR-ABL1
       - B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged
       - B lymphoblastic leukemia/lymphoma, NOS
       - B-ALL [obs]
       - B-cell lymphocytic leukemia/small lymphocytic lymphoma
-      - B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma
-      - B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and classical Hodgkin lymphoma
+      - B-cell lymphoma, unclassifiable, with features intermediate between diffuse
+        large B-cell lymphoma and Burkitt lymphoma
+      - B-cell lymphoma, unclassifiable, with features intermediate between diffuse
+        large B-cell lymphoma and classical Hodgkin lymphoma
+      - BALT lymphoma
       - Balloon cell melanoma
       - Balloon cell nevus
-      - BALT lymphoma
       - Basal cell adenocarcinoma
       - Basal cell adenoma
+      - Basal cell carcinoma, NOS
       - Basal cell carcinoma, desmoplastic type
       - Basal cell carcinoma, fibroepithelial
       - Basal cell carcinoma, micronodular
       - Basal cell carcinoma, morpheic
       - Basal cell carcinoma, nodular
-      - Basal cell carcinoma, NOS
       - Basal cell epithelioma
       - Basal cell tumor
       - Basaloid carcinoma
@@ -1781,17 +1800,17 @@ properties:
       - Blastic NK cell lymphoma [obs]
       - Blastic plasmacytoid dendritic cell neoplasm
       - Blastoma, NOS
-      - Blue nevus, malignant
       - Blue nevus, NOS
+      - Blue nevus, malignant
       - Botryoid sarcoma
       - Bowen disease
+      - Brenner tumor, NOS
       - Brenner tumor, borderline malignancy
       - Brenner tumor, malignant
-      - Brenner tumor, NOS
       - Brenner tumor, proliferating
+      - Bronchial adenoma, NOS
       - Bronchial adenoma, carcinoid
       - Bronchial adenoma, cylindroid
-      - Bronchial adenoma, NOS
       - Bronchial-associated lymphoid tussue lymphoma
       - Bronchio-alveolar carcinoma, mixed mucinous and non-mucinous
       - Bronchio-alveolar carcinoma, mucinous
@@ -1800,10 +1819,10 @@ properties:
       - Bronchiolo-alveolar adenocarcinoma, NOS
       - Bronchiolo-alveolar carcinoma, Clara cell
       - Bronchiolo-alveolar carcinoma, Clara cell and goblet cell type
+      - Bronchiolo-alveolar carcinoma, NOS
       - Bronchiolo-alveolar carcinoma, goblet cell type
       - Bronchiolo-alveolar carcinoma, indeterminate type
       - Bronchiolo-alveolar carcinoma, non-mucinous
-      - Bronchiolo-alveolar carcinoma, NOS
       - Bronchiolo-alveolar carcinoma, type II pneumocyte and goblet cell type
       - Bronchiolo-alveolar carcinoma; type II pneumocyte
       - Brooke tumor
@@ -1813,7 +1832,9 @@ properties:
       - Burkitt tumor [obs]
       - Burkitt-like lymphoma
       - C cell carcinoma
-      - c-ALL
+      - CASTLE
+      - CIN III with severe dysplasia
+      - CPNET
       - Calcifying epithelial odontogenic tumor
       - Calcifying epithelioma of Malherbe
       - Calcifying nested epithelial stromal tumor
@@ -1824,10 +1845,10 @@ properties:
       - Capillary lymphangioma
       - Carcinofibroma
       - Carcinoid tumor of uncertain malignant potential
-      - Carcinoid tumor, argentaffin, malignant
-      - Carcinoid tumor, argentaffin, NOS
       - Carcinoid tumor, NOS
       - Carcinoid tumor, NOS, of appendix
+      - Carcinoid tumor, argentaffin, NOS
+      - Carcinoid tumor, argentaffin, malignant
       - Carcinoid, NOS
       - Carcinoid, NOS, of appendix
       - Carcinoma in a polyp, NOS
@@ -1843,19 +1864,18 @@ properties:
       - Carcinoma with neuroendocrine differentiation
       - Carcinoma with osteoclast-like giant cells
       - Carcinoma with productive fibrosis
+      - Carcinoma, NOS
       - Carcinoma, anaplastic, NOS
       - Carcinoma, diffuse type
       - Carcinoma, intestinal type
       - Carcinoma, metastatic, NOS
-      - Carcinoma, NOS
       - Carcinoma, undifferentiated, NOS
       - Carcinomatosis
-      - Carcinosarcoma, embryonal
       - Carcinosarcoma, NOS
+      - Carcinosarcoma, embryonal
       - Carotid body paraganglioma
       - Carotid body tumor
       - Cartilaginous exostosis
-      - CASTLE
       - Cavernous hemangioma
       - Cavernous lymphangioma
       - Cellular angiofibroma
@@ -1886,8 +1906,8 @@ properties:
       - Cholangiocarcinoma
       - Cholangioma
       - Chondroblastic osteosarcoma
-      - Chondroblastoma, malignant
       - Chondroblastoma, NOS
+      - Chondroblastoma, malignant
       - Chondroid chordoma
       - Chondroid lipoma
       - Chondroid syringoma
@@ -1910,9 +1930,9 @@ properties:
       - Chorioepithelioma
       - Chorionepithelioma
       - Choroid plexus carcinoma
+      - Choroid plexus papilloma, NOS
       - Choroid plexus papilloma, anaplastic
       - Choroid plexus papilloma, malignant
-      - Choroid plexus papilloma, NOS
       - Chromaffin paraganglioma
       - Chromaffin tumor
       - Chromaffinoma
@@ -1930,7 +1950,7 @@ properties:
       - Chronic leukemia, NOS [obs]
       - Chronic lymphatic leukemia
       - Chronic lymphocytic leukemia
-      - Chronic lymphocytic leukemia, B-cell type  (includes all variants of BCLL)
+      - Chronic lymphocytic leukemia, B-cell type (includes all variants of BCLL)
       - Chronic lymphoid leukemia
       - Chronic lymphoproliferative disorder of NK cells
       - Chronic monocytic leukemia [obs]
@@ -1946,7 +1966,6 @@ properties:
       - Chronic myeloproliferative disease, NOS
       - Chronic myeloproliferative disorder
       - Chronic neutrophilic leukemia
-      - CIN III with severe dysplasia
       - Cin III, NOS
       - Circumscribed arachnoidal cerebellar sarcoma
       - Classical Hodggkin lymphoma, lymphocyte depletion, diffuse fibrosis
@@ -1954,13 +1973,13 @@ properties:
       - Classical Hodgkin lymphoma, lymphocyte depletion, reticular
       - Classical Hodgkin lymphoma, lymphocyte-rich
       - Classical Hodgkin lymphoma, mixed cellularity, NOS
+      - Classical Hodgkin lymphoma, nodular sclerosis, NOS
       - Classical Hodgkin lymphoma, nodular sclerosis, cellular phase
       - Classical Hodgkin lymphoma, nodular sclerosis, grade 1
       - Classical Hodgkin lymphoma, nodular sclerosis, grade 2
-      - Classical Hodgkin lymphoma, nodular sclerosis, NOS
       - Clear cell adenocarcinofibroma
-      - Clear cell adenocarcinoma, mesonephroid
       - Clear cell adenocarcinoma, NOS
+      - Clear cell adenocarcinoma, mesonephroid
       - Clear cell adenofibroma
       - Clear cell adenofibroma of borderline malignancy
       - Clear cell adenoma
@@ -1993,14 +2012,14 @@ properties:
       - Combined small cell-large carcinoma
       - Combined small cell-squamous cell carcinoma
       - Combined/mixed carcinoid and adenocarcinoma
-      - Comedocarcinoma, noninfiltrating
       - Comedocarcinoma, NOS
+      - Comedocarcinoma, noninfiltrating
       - Common ALL
       - Common precursor B ALL
       - Complete hydatidiform mole
       - Complex odontoma
-      - Composite carcinoid
       - Composite Hodgkin and non-Hodgkin lymphoma
+      - Composite carcinoid
       - Compound nevus
       - Compound odontoma
       - Condylomatous carcinoma
@@ -2009,17 +2028,16 @@ properties:
       - Congenital peribronchial myofibroblastic tumor
       - Conventional central osteosarcoma
       - Cortical T ALL
-      - CPNET
       - Craniopharyngioma
       - Craniopharyngioma, adamantinomatous
       - Craniopharyngioma, papillary
       - Cribriform carcinoma in situ
       - Cribriform carcinoma, NOS
       - Cribriform comedo-type carcinoma
+      - Cutaneous T-cell lymphoma, NOS
       - Cutaneous histiocytoma, NOS
       - Cutaneous lymphoma, NOS
       - Cutaneous mastocytosis
-      - Cutaneous T-cell lymphoma, NOS
       - Cylindrical cell carcinoma
       - Cylindrical cell papilloma
       - Cylindroma of skin
@@ -2032,19 +2050,20 @@ properties:
       - Cystic hygroma
       - Cystic hypersecretory carcinoma
       - Cystic lymphangioma
-      - Cystic mesothelioma, benign
       - Cystic mesothelioma, NOS
+      - Cystic mesothelioma, benign
       - Cystic partially differentiated nephroblastoma
       - Cystic teratoma, NOS
       - Cystic tumor of atrio-ventricular node
       - Cystoma, NOS
+      - Cystosarcoma phyllodes, NOS
       - Cystosarcoma phyllodes, benign
       - Cystosarcoma phyllodes, malignant
-      - Cystosarcoma phyllodes, NOS
-      - Dabska tumor
-      - DCIS, comedo type
       - DCIS, NOS
+      - DCIS, comedo type
       - DCIS, papillary
+      - DIN 3
+      - Dabska tumor
       - Dedifferentiated chondrosarcoma
       - Dedifferentiated chordoma
       - Dedifferentiated liposarcoma
@@ -2084,20 +2103,19 @@ properties:
       - Digital papillary adenocarcinoma
       - Diktyoma, benign
       - Diktyoma, malignant
-      - DIN 3
       - Duct adenocarcinoma, NOS
       - Duct adenoma, NOS
-      - Duct carcinoma, desmoplastic type
       - Duct carcinoma, NOS
+      - Duct carcinoma, desmoplastic type
       - Duct cell carcinoma
+      - Ductal carcinoma in situ, NOS
       - Ductal carcinoma in situ, comedo type
       - Ductal carcinoma in situ, cribriform type
       - Ductal carcinoma in situ, micropapillary
-      - Ductal carcinoma in situ, NOS
       - Ductal carcinoma in situ, papillary
       - Ductal carcinoma in situ, solid type
-      - Ductal carcinoma, cribriform type
       - Ductal carcinoma, NOS
+      - Ductal carcinoma, cribriform type
       - Ductal intraepithelial neoplasia 3
       - Ductal papilloma
       - Dysembryoplastic neuroepithelial tumor
@@ -2106,6 +2124,8 @@ properties:
       - Dysplastic nevus
       - EBV positive diffuse large B-cell lymphoma of the elderly
       - EC cell carcinoid
+      - ECL cell carcinoid, NOS
+      - ECL cell carcinoid, malignant
       - Ecchondroma
       - Ecchondrosis
       - Eccrine acrospiroma
@@ -2117,15 +2137,13 @@ properties:
       - Eccrine poroma
       - Eccrine poroma, malignant
       - Eccrine spiradenoma
-      - ECL cell carcinoid, malignant
-      - ECL cell carcinoid, NOS
       - Ectomesenchymoma
       - Ectopic hamartomatous thymoma
       - Elastofibroma
       - Embryonal adenocarcinoma
       - Embryonal adenoma
-      - Embryonal carcinoma, infantile
       - Embryonal carcinoma, NOS
+      - Embryonal carcinoma, infantile
       - Embryonal carcinoma, polyembryonal type
       - Embryonal hepatoma
       - Embryonal rhabdomyosarcoma, NOS
@@ -2139,33 +2157,33 @@ properties:
       - Endolymphatic stromal myosis
       - Endometrial sarcoma, NOS
       - Endometrial stromal nodule
+      - Endometrial stromal sarcoma, NOS
       - Endometrial stromal sarcoma, high grade
       - Endometrial stromal sarcoma, low grade
-      - Endometrial stromal sarcoma, NOS
       - Endometrial stromatosis
-      - Endometrioid adenocarcinoma, ciliated cell variant
       - Endometrioid adenocarcinoma, NOS
+      - Endometrioid adenocarcinoma, ciliated cell variant
       - Endometrioid adenocarcinoma, secretory variant
+      - Endometrioid adenofibroma, NOS
       - Endometrioid adenofibroma, borderline malignancy
       - Endometrioid adenofibroma, malignant
-      - Endometrioid adenofibroma, NOS
-      - Endometrioid adenoma, borderline malignancy
       - Endometrioid adenoma, NOS
+      - Endometrioid adenoma, borderline malignancy
       - Endometrioid carcinoma, NOS
       - Endometrioid cystadenocarcinoma
+      - Endometrioid cystadenofibroma, NOS
       - Endometrioid cystadenofibroma, borderline malignancy
       - Endometrioid cystadenofibroma, malignant
-      - Endometrioid cystadenofibroma, NOS
-      - Endometrioid cystadenoma, borderline malignancy
       - Endometrioid cystadenoma, NOS
+      - Endometrioid cystadenoma, borderline malignancy
       - Endometrioid tumor of low malignant potential
       - Endotheliomatous meningioma
       - Endovascular papillary angioendothelioma
       - Enterochromaffin cell carcinoid
       - Enterochromaffin-like cell carcinoid, NOS
       - Enterochromaffin-like cell tumor, malignant
-      - Enteroglucagonoma, malignant
       - Enteroglucagonoma, NOS
+      - Enteroglucagonoma, malignant
       - Enteropathy associated T-cell lymphoma
       - Enteropathy type intestinal T-cell lymphoma
       - Eosinophil adenocarcinoma
@@ -2174,37 +2192,37 @@ properties:
       - Eosinophilic granuloma
       - Eosinophilic leukemia
       - Ependymoblastoma
-      - Ependymoma, anaplastic
       - Ependymoma, NOS
+      - Ependymoma, anaplastic
       - Epidermoid carcinoma in situ with questionable stromal invasion
       - Epidermoid carcinoma in situ, NOS
+      - Epidermoid carcinoma, NOS
       - Epidermoid carcinoma, keratinizing
       - Epidermoid carcinoma, large cell, nonkeratinizing
-      - Epidermoid carcinoma, NOS
       - Epidermoid carcinoma, small cell, nonkeratinizing
       - Epidermoid carcinoma, spindle cell
       - Epithelial ependymoma
       - Epithelial tumor, benign
       - Epithelial tumor, malignant
       - Epithelial-myoepithelial carcinoma
+      - Epithelioid MPNST
       - Epithelioid and spindle cell nevus
       - Epithelioid cell melanoma
       - Epithelioid cell nevus
       - Epithelioid cell sarcoma
-      - Epithelioid hemangioendothelioma, malignant
       - Epithelioid hemangioendothelioma, NOS
+      - Epithelioid hemangioendothelioma, malignant
       - Epithelioid hemangioma
       - Epithelioid leiomyoma
       - Epithelioid leiomyosarcoma
+      - Epithelioid mesothelioma, NOS
       - Epithelioid mesothelioma, benign
       - Epithelioid mesothelioma, malignant
-      - Epithelioid mesothelioma, NOS
-      - Epithelioid MPNST
       - Epithelioid sarcoma
       - Epithelioma adenoides cysticum
+      - Epithelioma, NOS
       - Epithelioma, benign
       - Epithelioma, malignant
-      - Epithelioma, NOS
       - Erythremic myelosis, NOS
       - Erythroleukemia
       - Esophageal glandular dysplasia (intraepithelial neoplasia), high grade
@@ -2220,11 +2238,11 @@ properties:
       - Ewing sarcoma
       - Ewing tumor
       - Extra-abdominal desmoid
-      - Extra-adrenal paraganglioma, malignant
       - Extra-adrenal paraganglioma, NOS
+      - Extra-adrenal paraganglioma, malignant
       - Extracutaneous mastocytoma
-      - Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue
       - Extranodal NK/T-cell lymphoma, nasal type
+      - Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue
       - Extraosseous plasmacytoma
       - Extraventricular neurocytoma
       - FAB L2
@@ -2276,71 +2294,74 @@ properties:
       - Fibrous histiocytoma of tendon sheath
       - Fibrous histiocytoma, NOS
       - Fibrous meningioma
+      - Fibrous mesothelioma, NOS
       - Fibrous mesothelioma, benign
       - Fibrous mesothelioma, malignant
-      - Fibrous mesothelioma, NOS
       - Fibrous papule of nose
-      - Fibroxanthoma, malignant
       - Fibroxanthoma, NOS
+      - Fibroxanthoma, malignant
       - Flat adenoma
       - Flat intraepithelial glandular neoplasia, high grade
       - Flat intraepithelial neoplasia (dysplasia), high grade
       - Flat intraepithelial neoplasia, high grade
       - Florid osseous dysplasia
-      - Follicular adenocarcinoma, moderately differentiated
       - Follicular adenocarcinoma, NOS
+      - Follicular adenocarcinoma, moderately differentiated
       - Follicular adenocarcinoma, trabecular
       - Follicular adenocarcinoma, well differentiated
       - Follicular adenoma
       - Follicular adenoma, oxyphilic cell
+      - Follicular carcinoma, NOS
       - Follicular carcinoma, encapsulated
       - Follicular carcinoma, minimally invasive
       - Follicular carcinoma, moderately differentiated
-      - Follicular carcinoma, NOS
       - Follicular carcinoma, oxyphilic cell
       - Follicular carcinoma, trabecular
       - Follicular carcinoma, well differentiated
       - Follicular dendritic cell sarcoma
       - Follicular dendritic cell tumor
       - Follicular fibroma
+      - Follicular lymphoma, NOS
       - Follicular lymphoma, grade 1
       - Follicular lymphoma, grade 2
       - Follicular lymphoma, grade 3
       - Follicular lymphoma, grade 3A
       - Follicular lymphoma, grade 3B
-      - Follicular lymphoma, NOS
       - Follicular lymphoma, small cleaved cell
       - Folliculome lipidique
       - Franklin disease
-      - G cell tumor, malignant
       - G cell tumor, NOS
+      - G cell tumor, malignant
+      - GANT
+      - GIST, NOS
+      - GIST, benign
+      - GIST, malignant
       - Gamma heavy chain disease
       - Gangliocytic paraganglioma
       - Gangliocytoma
-      - Ganglioglioma, anaplastic
       - Ganglioglioma, NOS
+      - Ganglioglioma, anaplastic
       - Ganglioneuroblastoma
       - Ganglioneuroma
       - Ganglioneuromatosis
-      - GANT
       - Gastrin cell tumor
       - Gastrin cell tumor, malignant
-      - Gastrinoma, malignant
       - Gastrinoma, NOS
+      - Gastrinoma, malignant
       - Gastrointestinal autonomic nerve tumor
       - Gastrointestinal pacemaker cell tumor
       - Gastrointestinal stromal sarcoma
+      - Gastrointestinal stromal tumor, NOS
       - Gastrointestinal stromal tumor, benign
       - Gastrointestinal stromal tumor, malignant
-      - Gastrointestinal stromal tumor, NOS
       - Gastrointestinal stromal tumor, uncertain malignant potential
       - Gelatinous adenocarcinoma [obs]
       - Gelatinous carcinoma [obs]
       - Gemistocytic astrocytoma
       - Gemistocytoma
       - Genital rhabdomyoma
-      - Germ cell tumor, nonseminomatous
       - Germ cell tumor, NOS
+      - Germ cell tumor, nonseminomatous
       - Germinoma
       - Giant cell and spindle cell carcinoma
       - Giant cell angiofibroma
@@ -2349,8 +2370,8 @@ properties:
       - Giant cell glioblastoma
       - Giant cell sarcoma (except of bone M-9250/3)
       - Giant cell sarcoma of bone
-      - Giant cell tumor of bone, malignant
       - Giant cell tumor of bone, NOS
+      - Giant cell tumor of bone, malignant
       - Giant cell tumor of soft parts, NOS
       - Giant cell tumor of tendon sheath
       - Giant cell tumor of tendon sheath, malignant
@@ -2358,9 +2379,6 @@ properties:
       - Giant osteoid osteoma
       - Giant pigmented nevus, NOS
       - Gigantiform cementoma
-      - GIST, benign
-      - GIST, malignant
-      - GIST, NOS
       - Glandular intraepithelial neoplasia, grade I
       - Glandular intraepithelial neoplasia, grade II
       - Glandular intraepithelial neoplasia, grade III
@@ -2372,8 +2390,8 @@ properties:
       - Glioblastoma multiforme
       - Glioblastoma with sarcomatous component
       - Gliofibroma
-      - Glioma, malignant
       - Glioma, NOS (except nasal glioma, not neoplastic)
+      - Glioma, malignant
       - Gliomatosis cerebri
       - Glioneuroma [obs]
       - Gliosarcoma
@@ -2382,11 +2400,11 @@ properties:
       - Glomangiosarcoma
       - Glomoid sarcoma
       - Glomus jugulare tumor, NOS
-      - Glomus tumor, malignant
       - Glomus tumor, NOS
+      - Glomus tumor, malignant
       - Glucagon-like peptide-producing tumor
-      - Glucagonoma, malignant
       - Glucagonoma, NOS
+      - Glucagonoma, malignant
       - Glycogen-rich carcinoma
       - Glycogenic rhabdomyoma
       - Goblet cell carcinoid
@@ -2395,18 +2413,18 @@ properties:
       - Gonocytoma
       - Granular cell adenocarcinoma
       - Granular cell carcinoma
-      - Granular cell myoblastoma, malignant
       - Granular cell myoblastoma, NOS
+      - Granular cell myoblastoma, malignant
       - Granular cell tumor of the sellar region
-      - Granular cell tumor, malignant
       - Granular cell tumor, NOS
+      - Granular cell tumor, malignant
       - Granulocytic leukemia, NOS
       - Granulocytic sarcoma
       - Granulosa cell carcinoma
+      - Granulosa cell tumor, NOS
       - Granulosa cell tumor, adult type
       - Granulosa cell tumor, juvenile
       - Granulosa cell tumor, malignant
-      - Granulosa cell tumor, NOS
       - Granulosa cell tumor, sarcomatoid
       - Granulosa cell-theca cell tumor
       - Grawitz tumor
@@ -2422,24 +2440,24 @@ properties:
       - Heavy chain disease, NOS
       - Hemangioblastic meningioma [obs]
       - Hemangioendothelial sarcoma
+      - Hemangioendothelioma, NOS
       - Hemangioendothelioma, benign
       - Hemangioendothelioma, malignant
-      - Hemangioendothelioma, NOS
       - Hemangioma simplex
       - Hemangioma, NOS
       - Hemangiopericytic meningioma
+      - Hemangiopericytoma, NOS
       - Hemangiopericytoma, benign
       - Hemangiopericytoma, malignant
-      - Hemangiopericytoma, NOS
       - Hemolymphangioma
       - Hepatoblastoma
       - Hepatoblastoma, epithelioid
       - Hepatoblastoma, mixed epithelial-mesenchymal
       - Hepatocarcinoma
       - Hepatocellular adenoma
+      - Hepatocellular carcinoma, NOS
       - Hepatocellular carcinoma, clear cell type
       - Hepatocellular carcinoma, fibrolamellar
-      - Hepatocellular carcinoma, NOS
       - Hepatocellular carcinoma, pleomorphic type
       - Hepatocellular carcinoma, sarcomatoid
       - Hepatocellular carcinoma, scirrhous
@@ -2448,9 +2466,9 @@ properties:
       - Hepatoid adenocarcinoma
       - Hepatoid carcinoma
       - Hepatoid yolk sac tumor
+      - Hepatoma, NOS
       - Hepatoma, benign
       - Hepatoma, malignant
-      - Hepatoma, NOS
       - Hepatosplenic T-cell lymphoma
       - Hepatosplenic gamma-delta cell lymphoma
       - Hibernoma
@@ -2467,30 +2485,30 @@ properties:
       - Histiocytoid hemangioma
       - Histiocytoma, NOS
       - Histiocytosis X, NOS
-      - Hodgkin disease, lymphocyte predominance, diffuse [obs]
+      - Hodgkin disease, NOS
       - Hodgkin disease, lymphocyte predominance, NOS [obs]
+      - Hodgkin disease, lymphocyte predominance, diffuse [obs]
       - Hodgkin disease, lymphocytic-histiocytic predominance [obs]
+      - Hodgkin disease, nodular sclerosis, NOS
       - Hodgkin disease, nodular sclerosis, lymphocyte depletion
       - Hodgkin disease, nodular sclerosis, lymphocyte predominance
       - Hodgkin disease, nodular sclerosis, mixed cellularity
-      - Hodgkin disease, nodular sclerosis, NOS
       - Hodgkin disease, nodular sclerosis, syncytial variant
-      - Hodgkin disease, NOS
       - Hodgkin granuloma [obs]
-      - Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis
+      - Hodgkin lymphoma, NOS
       - Hodgkin lymphoma, lymphocyte depletion, NOS
+      - Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis
       - Hodgkin lymphoma, lymphocyte depletion, reticular
       - Hodgkin lymphoma, lymphocyte predominance, nodular
       - Hodgkin lymphoma, lymphocyte-rich
       - Hodgkin lymphoma, mixed cellularity, NOS
       - Hodgkin lymphoma, nodular lymphocyte predominance
+      - Hodgkin lymphoma, nodular sclerosis, NOS
       - Hodgkin lymphoma, nodular sclerosis, cellular phase
       - Hodgkin lymphoma, nodular sclerosis, grade 1
       - Hodgkin lymphoma, nodular sclerosis, grade 2
-      - Hodgkin lymphoma, nodular sclerosis, NOS
-      - Hodgkin lymphoma, NOS
-      - Hodgkin paragranuloma, nodular [obs]
       - Hodgkin paragranuloma, NOS [obs]
+      - Hodgkin paragranuloma, nodular [obs]
       - Hodgkin sarcoma [obs]
       - Hurthle cell adenocarcinoma
       - Hurthle cell adenoma
@@ -2507,8 +2525,8 @@ properties:
       - Hypernephroma
       - Idiopathic hemorrhagic thrombocythaemia
       - Idiopathic thrombocythemia
-      - Immature teratoma, malignant
       - Immature teratoma, NOS
+      - Immature teratoma, malignant
       - Immunoblastic sarcoma [obs]
       - Immunocytoma [obs]
       - Immunoglobulin deposition disease
@@ -2521,8 +2539,8 @@ properties:
       - Infantile myofibromatosis
       - Infiltrating and papillary adenocarcinoma
       - Infiltrating angiolipoma
-      - Infiltrating basal cell carcinoma, non-sclerosing
       - Infiltrating basal cell carcinoma, NOS
+      - Infiltrating basal cell carcinoma, non-sclerosing
       - Infiltrating basal cell carcinoma, sclerosing
       - Infiltrating duct adenocarcinoma
       - Infiltrating duct and colloid carcinoma
@@ -2544,14 +2562,14 @@ properties:
       - Inflammatory liposarcoma
       - Inflammatory myofibroblastic tumor
       - Insular carcinoma
-      - Insulinoma, malignant
       - Insulinoma, NOS
+      - Insulinoma, malignant
       - Interdigitating cell sarcoma
       - Interdigitating dendritic cell sarcoma
       - Intermediate and giant congenital nevus
+      - Interstitial cell tumor, NOS
       - Interstitial cell tumor, benign
       - Interstitial cell tumor, malignant
-      - Interstitial cell tumor, NOS
       - Intestinal T-cell lymphoma
       - Intracanalicular fibroadenoma
       - Intracortical osteosarcoma
@@ -2570,9 +2588,9 @@ properties:
       - Intraductal adenocarcinoma, noninfiltrating, NOS
       - Intraductal and lobular carcinoma
       - Intraductal carcinoma and lobular carcinoma in situ
+      - Intraductal carcinoma, NOS
       - Intraductal carcinoma, clinging
       - Intraductal carcinoma, noninfiltrating, NOS
-      - Intraductal carcinoma, NOS
       - Intraductal carcinoma, solid type
       - Intraductal micropapillary carcinoma
       - Intraductal papillary adenocarcinoma with invasion
@@ -2626,8 +2644,8 @@ properties:
       - Islet cell adenoma
       - Islet cell adenomatosis
       - Islet cell carcinoma
-      - Islet cell tumor, benign
       - Islet cell tumor, NOS
+      - Islet cell tumor, benign
       - Jadassohn blue nevus
       - Jugular paraganglioma
       - Jugulotympanic paraganglioma
@@ -2654,14 +2672,15 @@ properties:
       - Krukenberg tumor
       - Kupffer cell sarcoma
       - L-cell tumor
+      - LCIS, NOS
       - Lactating adenoma
       - Langerhans cell granulomatosis
       - Langerhans cell granulomatosis, unifocal
+      - Langerhans cell histiocytosis, NOS
       - Langerhans cell histiocytosis, disseminated
       - Langerhans cell histiocytosis, generalized
       - Langerhans cell histiocytosis, mono-ostotic
       - Langerhans cell histiocytosis, multifocal
-      - Langerhans cell histiocytosis, NOS
       - Langerhans cell histiocytosis, poly-ostotic
       - Langerhans cell histiocytosis, unifocal
       - Langerhans cell sarcoma
@@ -2673,7 +2692,6 @@ properties:
       - Large cell medulloblastoma
       - Large cell neuroendocrine carcinoma
       - Large granular lymphocytosis, NOS
-      - LCIS, NOS
       - Leiomyoblastoma
       - Leiomyofibroma
       - Leiomyoma, NOS
@@ -2686,38 +2704,38 @@ properties:
       - Letterer-Siwe disease
       - Leukaemic reticuloendotheliosis
       - Leukemia, NOS
+      - Leydig cell tumor, NOS
       - Leydig cell tumor, benign
       - Leydig cell tumor, malignant
-      - Leydig cell tumor, NOS
       - Linitis plastica
       - Lipid cell tumor of ovary
-      - Lipid-rich carcinoma
       - Lipid-rich Sertoli cell tumor
+      - Lipid-rich carcinoma
       - Lipoadenoma
       - Lipoarcoma, well differentiated
       - Lipoblastoma
       - Lipoblastomatosis
       - Lipoid cell tumor of ovary
       - Lipoleiomyoma
-      - Lipoma-like liposarcoma
       - Lipoma, NOS
+      - Lipoma-like liposarcoma
       - Lipomatous medulloblastoma
-      - Liposarcoma, differentiated
       - Liposarcoma, NOS
+      - Liposarcoma, differentiated
       - Liver cell adenoma
       - Liver cell carcinoma
       - Lobular adenocarcinoma
       - Lobular and ductal carcinoma
       - Lobular carcinoma in situ, NOS
-      - Lobular carcinoma, noninfiltrating
       - Lobular carcinoma, NOS
+      - Lobular carcinoma, noninfiltrating
       - Localized fibrous tumor
       - Low grade appendiceal mucinous neoplasm
       - Luteinoma
       - Luteoma, NOS
       - Lymphangioendothelial sarcoma
-      - Lymphangioendothelioma, malignant
       - Lymphangioendothelioma, NOS
+      - Lymphangioendothelioma, malignant
       - Lymphangioleiomyomatosis
       - Lymphangioma, NOS
       - Lymphangiomyoma
@@ -2739,10 +2757,17 @@ properties:
       - Lymphoproliferative disease, NOS
       - Lymphoproliferative disorder, NOS
       - Lymphosarcoma cell leukemia [obs]
-      - Lymphosarcoma, diffuse [obs]
       - Lymphosarcoma, NOS [obs]
+      - Lymphosarcoma, diffuse [obs]
       - M6A
       - M6B
+      - MALT lymphoma
+      - MANEC
+      - MGUS
+      - MPNST with glandular differentiation
+      - MPNST with mesenchymal differentiation
+      - MPNST with rhabdomyoblastic differentiation
+      - MPNST, NOS
       - Macrofollicular adenoma
       - Magnocellular nevus
       - Malignancy
@@ -2753,48 +2778,49 @@ properties:
       - Malignant giant cell tumor of soft parts
       - Malignant histiocytosis
       - Malignant hydatidiform mole
+      - Malignant lymphoma, Hodgkin
+      - Malignant lymphoma, NOS
+      - Malignant lymphoma, centroblastic, NOS
       - Malignant lymphoma, centroblastic, diffuse
       - Malignant lymphoma, centroblastic, follicular
-      - Malignant lymphoma, centroblastic, NOS
+      - Malignant lymphoma, centroblasticcentrocytic, NOS [obs]
       - Malignant lymphoma, centroblasticcentrocytic, diffuse [obs]
       - Malignant lymphoma, centroblasticcentrocytic, follicular [obs]
-      - Malignant lymphoma, centroblasticcentrocytic, NOS [obs]
       - Malignant lymphoma, centrocytic [obs]
       - Malignant lymphoma, cleaved cell, NOS [obs]
       - Malignant lymphoma, convoluted cell [obs]
       - Malignant lymphoma, diffuse, NOS
-      - Malignant lymphoma, follicle center, follicular
       - Malignant lymphoma, follicle center, NOS
+      - Malignant lymphoma, follicle center, follicular
       - Malignant lymphoma, follicular, NOS
+      - Malignant lymphoma, histiocytic, NOS [obs]
       - Malignant lymphoma, histiocytic, diffuse
       - Malignant lymphoma, histiocytic, nodular [obs]
-      - Malignant lymphoma, histiocytic, NOS [obs]
-      - Malignant lymphoma, Hodgkin
       - Malignant lymphoma, immunoblastic, NOS
+      - Malignant lymphoma, large B-cell, NOS
+      - Malignant lymphoma, large B-cell, diffuse, NOS
       - Malignant lymphoma, large B-cell, diffuse, centroblastic, NOS
       - Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS
-      - Malignant lymphoma, large B-cell, diffuse, NOS
-      - Malignant lymphoma, large B-cell, NOS
+      - Malignant lymphoma, large cell, NOS
       - Malignant lymphoma, large cell, cleaved and noncleaved [obs]
-      - Malignant lymphoma, large cell, cleaved, diffuse
       - Malignant lymphoma, large cell, cleaved, NOS [obs]
+      - Malignant lymphoma, large cell, cleaved, diffuse
       - Malignant lymphoma, large cell, diffuse, NOS [obs]
       - Malignant lymphoma, large cell, follicular, NOS
       - Malignant lymphoma, large cell, immunoblastic
+      - Malignant lymphoma, large cell, noncleaved, NOS
       - Malignant lymphoma, large cell, noncleaved, diffuse
       - Malignant lymphoma, large cell, noncleaved, follicular [obs]
-      - Malignant lymphoma, large cell, noncleaved, NOS
-      - Malignant lymphoma, large cell, NOS
-      - Malignant lymphoma, large cleaved cell, follicular [obs]
       - Malignant lymphoma, large cleaved cell, NOS [obs]
+      - Malignant lymphoma, large cleaved cell, follicular [obs]
       - Malignant lymphoma, lymphoblastic, NOS
       - Malignant lymphoma, lymphocytec, nodular, NOS [obs]
       - Malignant lymphoma, lymphocytec, poorly differentiated, nodular [obs]
       - Malignant lymphoma, lymphocytec, well differentiated, nodular [obs]
+      - Malignant lymphoma, lymphocytic, NOS
       - Malignant lymphoma, lymphocytic, diffuse, NOS
       - Malignant lymphoma, lymphocytic, intermediate differentiation, diffuse [obs]
       - Malignant lymphoma, lymphocytic, intermediate differentiation, nodular [obs]
-      - Malignant lymphoma, lymphocytic, NOS
       - Malignant lymphoma, lymphocytic, poorly differentiated, diffuse [obs]
       - Malignant lymphoma, lymphocytic, well differentiated, diffuse
       - Malignant lymphoma, lymphoplasmacytic
@@ -2807,22 +2833,21 @@ properties:
       - Malignant lymphoma, mixed small and large cell, diffuse
       - Malignant lymphoma, mixed small cleaved and large cell, follicular [obs]
       - Malignant lymphoma, nodular, NOS [obs]
-      - Malignant lymphoma, non-cleaved cell, NOS
       - Malignant lymphoma, non-Hodgkin, NOS
+      - Malignant lymphoma, non-cleaved cell, NOS
       - Malignant lymphoma, noncleaved cell, follicular, NOS [obs]
-      - Malignant lymphoma, noncleaved, diffuse, NOS [obs]
       - Malignant lymphoma, noncleaved, NOS
-      - Malignant lymphoma, NOS
+      - Malignant lymphoma, noncleaved, diffuse, NOS [obs]
       - Malignant lymphoma, plasmacytoid [obs]
       - Malignant lymphoma, small B lymphocytic, NOS
       - Malignant lymphoma, small cell diffuse
-      - Malignant lymphoma, small cell, noncleaved, diffuse [obs]
       - Malignant lymphoma, small cell, NOS
+      - Malignant lymphoma, small cell, noncleaved, diffuse [obs]
+      - Malignant lymphoma, small cleaved cell, NOS [obs]
       - Malignant lymphoma, small cleaved cell, diffuse [obs]
       - Malignant lymphoma, small cleaved cell, follicular [obs]
-      - Malignant lymphoma, small cleaved cell, NOS [obs]
-      - Malignant lymphoma, small lymphocytic, diffuse
       - Malignant lymphoma, small lymphocytic, NOS
+      - Malignant lymphoma, small lymphocytic, diffuse
       - Malignant lymphoma, small noncleaved, Burkitt type [obs]
       - Malignant lymphoma, undifferentiated cell type, NOS [obs]
       - Malignant lymphoma, undifferentiated cell, non-Burkitt [obs]
@@ -2831,9 +2856,9 @@ properties:
       - Malignant mast cell tumor
       - Malignant mastocytoma
       - Malignant mastocytosis
+      - Malignant melanoma in Hutchinson melanotic freckle
       - Malignant melanoma in congenital melanocytic nevus
       - Malignant melanoma in giant pigmented nevus
-      - Malignant melanoma in Hutchinson melanotic freckle
       - Malignant melanoma in junctional nevus
       - Malignant melanoma in precancerous melanosis
       - Malignant melanoma, NOS (except juvenile melanoma)
@@ -2862,8 +2887,6 @@ properties:
       - Malignant tumor, glant cell type
       - Malignant tumor, small cell type
       - Malignant tumor, spindle cell type
-      - MALT lymphoma
-      - MANEC
       - Mantle cell lymphoma (Includes all variants; blastic, pleomorphic, small cell)
       - Mantle zone lymphoma [obs]
       - Marginal zone B-cell lymphoma, NOS
@@ -2887,20 +2910,20 @@ properties:
       - Medulloblastoma with extensive nodularity
       - Medulloblastoma, NOS
       - Medullocytoma
-      - Medulloepithelioma, benign
       - Medulloepithelioma, NOS
+      - Medulloepithelioma, benign
       - Medullomyoblastoma
       - Megakaryocytic leukemia
       - Megakaryocytic myelosclerosis
       - Melanoameloblastoma
       - Melanocytic nevus
-      - Melanocytoma, eyeball
       - Melanocytoma, NOS
+      - Melanocytoma, eyeball
       - Melanoma in situ
-      - Melanoma, malignant, of soft parts
       - Melanoma, NOS
-      - Melanotic medulloblastoma
+      - Melanoma, malignant, of soft parts
       - Melanotic MPNST
+      - Melanotic medulloblastoma
       - Melanotic neuroectodermal tumor
       - Melanotic neurofibroma
       - Melanotic progonoma
@@ -2910,9 +2933,9 @@ properties:
       - Meningeal melanomatosis
       - Meningeal sarcoma
       - Meningeal sarcomatosis
+      - Meningioma, NOS
       - Meningioma, anaplastic
       - Meningioma, malignant
-      - Meningioma, NOS
       - Meningiomatosis, NOS
       - Meningothelial meningioma
       - Meningothelial sarcoma
@@ -2920,31 +2943,30 @@ properties:
       - Merkel cell tumor
       - Mesenchymal chondrosarcoma
       - Mesenchymal tumor, malignant
+      - Mesenchymoma, NOS
       - Mesenchymoma, benign
       - Mesenchymoma, malignant
-      - Mesenchymoma, NOS
       - Mesenteric fibromatosis
       - Mesoblastic nephroma
       - Mesodermal mixed tumor
       - Mesonephric adenocarcinoma
       - Mesonephric adenoma
       - Mesonephric tumor, NOS
+      - Mesonephroma, NOS
       - Mesonephroma, benign
       - Mesonephroma, malignant
-      - Mesonephroma, NOS
       - Mesothelial papilloma
-      - Mesothelioma, benign
-      - Mesothelioma, biphasic, malignant
-      - Mesothelioma, biphasic, NOS
-      - Mesothelioma, malignant
       - Mesothelioma, NOS
+      - Mesothelioma, benign
+      - Mesothelioma, biphasic, NOS
+      - Mesothelioma, biphasic, malignant
+      - Mesothelioma, malignant
       - Metanephric adenoma
       - Metaplastic carcinoma, NOS
       - Metaplastic meningioma
       - Metastasizing leiomyoma
       - Metastatic signet ring cell carcinoma
       - Metatypical carcinoma
-      - MGUS
       - Microcystic adenoma
       - Microcystic adnexal carcinoma
       - Microcystic meningioma
@@ -2991,10 +3013,10 @@ properties:
       - Mixed squamous cell and glandular papilloma
       - Mixed subependymoma-ependymoma
       - Mixed teratoma and seminoma
-      - Mixed tumor, malignant, NOS
       - Mixed tumor, NOS
-      - Mixed tumor, salivary gland type, malignant
+      - Mixed tumor, malignant, NOS
       - Mixed tumor, salivary gland type, NOS
+      - Mixed tumor, salivary gland type, malignant
       - Mixed type rhabdomyosarcoma
       - Monoblastic leukemia, Nos
       - Monoclonal gammopathy of undetermined significance
@@ -3003,10 +3025,6 @@ properties:
       - Monocytoid B-cell lymphoma
       - Monomorphic adenoma
       - Monstrocellular sarcoma
-      - MPNST with glandular differentiation
-      - MPNST with mesenchymal differentiation
-      - MPNST with rhabdomyoblastic differentiation
-      - MPNST, NOS
       - Mu heavy chain disease
       - Mucin-producing adenocarcinoma
       - Mucin-producing carcinoma
@@ -3021,12 +3039,12 @@ properties:
       - Mucinous carcinoid
       - Mucinous carcinoma
       - Mucinous cystadenocarcinofibroma
-      - Mucinous cystadenocarcinoma, non-invasive
       - Mucinous cystadenocarcinoma, NOS
+      - Mucinous cystadenocarcinoma, non-invasive
       - Mucinous cystadenofibroma of borderline malignancy
       - Mucinous cystadenofibroma, NOS
-      - Mucinous cystadenoma, borderline malignancy
       - Mucinous cystadenoma, NOS
+      - Mucinous cystadenoma, borderline malignancy
       - Mucinous cystic neoplasm with an associated invasive carcinoma
       - Mucinous cystic neoplasm with high-grade dysplasia
       - Mucinous cystic neoplasm with high-grade intraepithelial neoplasia
@@ -3108,11 +3126,13 @@ properties:
       - Myxoma, NOS
       - Myxopapillary ependymoma
       - Myxosarcoma
+      - NK-cell large granular lymphocytic leukemia
+      - NK/T-cell lymphoma, nasal and nasal-type
+      - Neoplasm, NOS
       - Neoplasm, benign
       - Neoplasm, malignant
       - Neoplasm, malignant, uncertain whether primary or metastatic
       - Neoplasm, metastatic
-      - Neoplasm, NOS
       - Neoplasm, secondary
       - Neoplasm, uncertain whether benign or malignant
       - Nephroblastoma, NOS
@@ -3120,8 +3140,8 @@ properties:
       - Nephroma, NOS
       - Nerve sheath myxoma
       - Nesidioblastoma
-      - Neurilemoma, malignant [obs]
       - Neurilemoma, NOS
+      - Neurilemoma, malignant [obs]
       - Neurilemosarcoma [obs]
       - Neurinoma
       - Neurinomatosis
@@ -3129,9 +3149,9 @@ properties:
       - Neuroblastoma, NOS
       - Neurocytoma
       - Neuroectodermal tumor, NOS
+      - Neuroendocrine carcinoma, NOS
       - Neuroendocrine carcinoma, low grade
       - Neuroendocrine carcinoma, moderately differentiated
-      - Neuroendocrine carcinoma, NOS
       - Neuroendocrine carcinoma, well-differentiated
       - Neuroendocrine tumor, grade 1
       - Neuroendocrine tumor, grade 2
@@ -3147,8 +3167,6 @@ properties:
       - Neurothekeoma
       - Neurotropic melanoma, malignant
       - Nevus, NOS
-      - NK-cell large granular lymphocytic leukemia
-      - NK/T-cell lymphoma, nasal and nasal-type
       - Nodal marginal zone lymphoma
       - Nodular hidradenoma
       - Nodular hidradenoma, malignant
@@ -3156,8 +3174,8 @@ properties:
       - Non-Hodgkin lymphoma, NOS
       - Non-lymphocytic leukemia, NOS
       - Non-small cell carcinoma
-      - Nonchromaffin paraganglioma, malignant
       - Nonchromaffin paraganglioma, NOS
+      - Nonchromaffin paraganglioma, malignant
       - Nonencapsulated sclerosing adenocarcinoma
       - Nonencapsulated sclerosing carcinoma
       - Nonencapsulated sclerosing tumor
@@ -3165,9 +3183,11 @@ properties:
       - Noninfiltrating intraductal papillary adenocarcinoma
       - Noninfiltrating intraductal papillary carcinoma
       - Noninvasive pancreatobiliary papillary neoplasm with high grade dysplasia
-      - Noninvasive pancreatobiliary papillary neoplasm with high grade intraepithelial neoplasia
+      - Noninvasive pancreatobiliary papillary neoplasm with high grade intraepithelial
+        neoplasia
       - Noninvasive pancreatobiliary papillary neoplasm with low grade dysplasia
-      - Noninvasive pancreatobiliary papillary neoplasm with low grade intraepithelial neoplasia
+      - Noninvasive pancreatobiliary papillary neoplasm with low grade intraepithelial
+        neoplasia
       - Nonlipid reticuloendotheliosis
       - Nonpigmented nevus
       - Oat cell carcinoma
@@ -3180,9 +3200,9 @@ properties:
       - Odontogenic myxofibroma
       - Odontogenic myxoma
       - Odontogenic sarcoma
+      - Odontogenic tumor, NOS
       - Odontogenic tumor, benign
       - Odontogenic tumor, malignant
-      - Odontogenic tumor, NOS
       - Odontoma, NOS
       - Olfactory neuroblastoma
       - Olfactory neurocytoma
@@ -3190,20 +3210,20 @@ properties:
       - Olfactory neurogenic tumor
       - Oligoastrocytoma
       - Oligodendroblastoma
-      - Oligodendroglioma, anaplastic
       - Oligodendroglioma, NOS
+      - Oligodendroglioma, anaplastic
+      - Oncocytic Schneiderian papilloma
       - Oncocytic adenocarcinoma
       - Oncocytic adenoma
       - Oncocytic carcinoma
-      - Oncocytic Schneiderian papilloma
       - Oncocytoma
       - Orchioblastoma
       - Ossifying fibroma
       - Ossifying fibromyxoid tumor
       - Ossifying renal tumor
       - Osteoblastic sarcoma
-      - Osteoblastoma, malignant
       - Osteoblastoma, NOS
+      - Osteoblastoma, malignant
       - Osteocartilaginous exostosis
       - Osteochondroma
       - Osteochondromatosis, NOS
@@ -3218,6 +3238,11 @@ properties:
       - Ovarian stromal tumor
       - Oxyphilic adenocarcinoma
       - Oxyphilic adenoma
+      - PIN III
+      - PNET, NOS
+      - PP/PYY producing tumor
+      - PPNET
+      - PTLD, NOS
       - Pacinian tumor
       - Paget disease and infiltrating duct carcinoma of breast
       - Paget disease and intraductal carcinoma of breast
@@ -3225,34 +3250,35 @@ properties:
       - Paget disease, extramammary (except Paget disease of bone)
       - Paget disease, mammary
       - Pagetoid reticulosis
+      - Pancreatic endocrine tumor, NOS
       - Pancreatic endocrine tumor, benign
       - Pancreatic endocrine tumor, malignant
       - Pancreatic endocrine tumor, nonfunctioning
-      - Pancreatic endocrine tumor, NOS
       - Pancreatic microadenoma
-      - Pancreatic peptide and pancreatic peptide-like peptide within terminal tyrosine amide producing tumor
+      - Pancreatic peptide and pancreatic peptide-like peptide within terminal tyrosine
+        amide producing tumor
       - Pancreatobiliary neoplasm, non-invasive
       - Pancreatobiliary-type carcinoma
       - Pancreatoblastoma
-      - Papillary adenocarcinoma, follicular variant
       - Papillary adenocarcinoma, NOS
+      - Papillary adenocarcinoma, follicular variant
       - Papillary adenofibroma
       - Papillary adenoma, NOS
       - Papillary and follicular adenocarcinoma
       - Papillary and follicular carcinoma
       - Papillary carcinoma in situ
       - Papillary carcinoma of thyroid
+      - Papillary carcinoma, NOS
       - Papillary carcinoma, columnar cell
       - Papillary carcinoma, diffuse sclerosing
       - Papillary carcinoma, encapsulated
       - Papillary carcinoma, follicular variant
-      - Papillary carcinoma, NOS
       - Papillary carcinoma, oxyphilic cell
       - Papillary carcinoma, tall cell
       - Papillary cystadenocarcinoma, NOS
       - Papillary cystadenoma lymphomatosum
-      - Papillary cystadenoma, borderline malignancy
       - Papillary cystadenoma, NOS
+      - Papillary cystadenoma, borderline malignancy
       - Papillary cystic tumor
       - Papillary ependymoma
       - Papillary epidermoid carcinoma
@@ -3261,18 +3287,19 @@ properties:
       - Papillary meningioma
       - Papillary microcarcinoma
       - Papillary mucinous cystadenocarcinoma
-      - Papillary mucinous cystadenoma, borderline malignancy
       - Papillary mucinous cystadenoma, NOS
+      - Papillary mucinous cystadenoma, borderline malignancy
       - Papillary mucinous tumor of low malignant potential
-      - Papillary neoplasm, pancreatobiliary-type, with high grade intraepithelial neoplasia
+      - Papillary neoplasm, pancreatobiliary-type, with high grade intraepithelial
+        neoplasia
       - Papillary pseudomucinous cystadenocarcinoma
-      - Papillary pseudomucinous cystadenoma, borderline malignancy
       - Papillary pseudomucinous cystadenoma, NOS
+      - Papillary pseudomucinous cystadenoma, borderline malignancy
       - Papillary renal cell carcinoma
       - Papillary serous adenocarcinoma
       - Papillary serous cystadenocarcinoma
-      - Papillary serous cystadenoma, borderline malignancy
       - Papillary serous cystadenoma, NOS
+      - Papillary serous cystadenoma, borderline malignancy
       - Papillary serous tumor of low malignant potential
       - Papillary squamous cell carcinoma
       - Papillary squamous cell carcinoma in situ
@@ -3289,15 +3316,15 @@ properties:
       - Papillocystic adenocarcinoma
       - Papilloma of bladder
       - Papilloma, NOS (except papilloma of bladder M-8120/I)
-      - Papillomatosis, glandular
       - Papillomatosis, NOS
+      - Papillomatosis, glandular
       - Papillotubular adenocarcinoma
       - Papillotubular adenoma
       - Parachordoma
       - Parafollicular cell carcinoma
+      - Paraganglioma, NOS
       - Paraganglioma, benign
       - Paraganglioma, malignant
-      - Paraganglioma, NOS
       - Parasympathetic paraganglioma
       - Parietal cell adenocarcinoma
       - Parietal cell carcinoma
@@ -3308,29 +3335,30 @@ properties:
       - Pericanalicular fibroadenoma
       - Perifollicular fibroma
       - Perineural MPNST
-      - Perineurioma, malignant
       - Perineurioma, NOS
+      - Perineurioma, malignant
       - Periosteal chondroma
       - Periosteal chondrosarcoma
       - Periosteal fibroma
       - Periosteal fibrosarcoma
       - Periosteal osteosarcoma
       - Periosteal sarcoma, NOS
+      - Peripheral T-cell lymphoma, AILD (Angioimmunoblastic Lymphadenopathy with
+        Dysproteinemia)
+      - Peripheral T-cell lymphoma, NOS
+      - Peripheral T-cell lymphoma, large cell
+      - Peripheral T-cell lymphoma, pleomorphic medium and large cell
+      - Peripheral T-cell lymphoma, pleomorphic small cell
       - Peripheral neuroectodermal tumor
       - Peripheral odontogenic fibroma
       - Peripheral primitive neuroectodermal tumor, NOS
-      - Peripheral T-cell lymphoma, AILD (Angioimmunoblastic Lymphadenopathy with Dysproteinemia)
-      - Peripheral T-cell lymphoma, large cell
-      - Peripheral T-cell lymphoma, NOS
-      - Peripheral T-cell lymphoma, pleomorphic medium and large cell
-      - Peripheral T-cell lymphoma, pleomorphic small cell
       - Pheochromoblastoma
-      - Pheochromocytoma, malignant
       - Pheochromocytoma, NOS
+      - Pheochromocytoma, malignant
+      - Phyllodes tumor, NOS
       - Phyllodes tumor, benign
       - Phyllodes tumor, borderline
       - Phyllodes tumor, malignant
-      - Phyllodes tumor, NOS
       - Pick tubular adenoma
       - Pigmented adenoma
       - Pigmented basal cell carcinoma
@@ -3341,13 +3369,12 @@ properties:
       - Pilar tumor
       - Pilocytic astrocytoma
       - Piloid astrocytoma
-      - Pilomatricoma, malignant
       - Pilomatricoma, NOS
+      - Pilomatricoma, malignant
       - Pilomatrix carcinoma
-      - Pilomatrixoma, malignant
       - Pilomatrixoma, NOS
+      - Pilomatrixoma, malignant
       - Pilomyxoid astrocytoma
-      - PIN III
       - Pindborg tumor
       - Pineal parenchymal tumor of intermediate differentiation
       - Pinealoma
@@ -3365,16 +3392,16 @@ properties:
       - Plasmacytic leukemia
       - Plasmacytic lymphoma [obs]
       - Plasmacytoma of bone
-      - Plasmacytoma, extramedullary (not occurring in bone)
       - Plasmacytoma, NOS
+      - Plasmacytoma, extramedullary (not occurring in bone)
       - Pleomorphic adenoma
       - Pleomorphic carcinoma
       - Pleomorphic cell sarcoma
       - Pleomorphic leiomyoma
       - Pleomorphic lipoma
       - Pleomorphic liposarcoma
-      - Pleomorphic rhabdomyosarcoma, adult type
       - Pleomorphic rhabdomyosarcoma, NOS
+      - Pleomorphic rhabdomyosarcoma, adult type
       - Pleomorphic xanthoastrocytoma
       - Pleuropulmonary blastoma
       - Plexiform fibrohistiocytic tumor
@@ -3384,7 +3411,6 @@ properties:
       - Plexiform neurofibroma
       - Plexiform neuroma
       - Plexiform schwannoma
-      - PNET, NOS
       - Pneumoblastoma
       - Polar spongioblastoma
       - Polycythemia rubra vera
@@ -3399,28 +3425,27 @@ properties:
       - Poorly cohesive carcinoma
       - Porocarcinoma
       - Post transplant lymphoproliferative disorder, NOS
-      - PP/PYY producing tumor
-      - PPNET
       - Pre-B ALL
-      - Pre-pre-B ALL
       - Pre-T ALL
+      - Pre-pre-B ALL
       - Precancerous melanosis, NOS
       - Precursor B-cell lymphoblastic leukemia
       - Precursor B-cell lymphoblastic lymphoma
+      - Precursor T-cell lymphoblastic leukemia
+      - Precursor T-cell lymphoblastic lymphoma
       - Precursor cell lymphoblastic leukemia, NOS
       - Precursor cell lymphoblastic leukemia, not phenotyped
       - Precursor cell lymphoblastic lymphoma, NOS
-      - Precursor T-cell lymphoblastic leukemia
-      - Precursor T-cell lymphoblastic lymphoma
       - Preleukaemia [obs]
       - Preleukemic syndrome [obs]
       - Primary amyloidosis
-      - Primary cutaneous anaplastic large cell lymphoma
-      - Primary cutaneous CD30+ large T-cell lymphoma
       - Primary cutaneous CD30+ T-cell lymphoproliferative disorder
+      - Primary cutaneous CD30+ large T-cell lymphoma
       - Primary cutaneous CD4-positive small/medium T-cell lymphoma
-      - Primary cutaneous CD8-positive aggressive epidermotropic cytotoxic T-cell lymphoma
+      - Primary cutaneous CD8-positive aggressive epidermotropic cytotoxic T-cell
+        lymphoma
       - Primary cutaneous DLBCL, leg type
+      - Primary cutaneous anaplastic large cell lymphoma
       - Primary cutaneous follicle centre lymphoma
       - Primary cutaneous gamma-delta T-cell lymphoma
       - Primary cutaneous neuroendocrine carcinoma
@@ -3447,21 +3472,20 @@ properties:
       - Psammomatous schwannoma
       - Pseudomucinous adenocarcinoma
       - Pseudomucinous cystadenocarcinoma, NOS
-      - Pseudomucinous cystadenoma, borderline malignancy
       - Pseudomucinous cystadenoma, NOS
+      - Pseudomucinous cystadenoma, borderline malignancy
       - Pseudomyxoma peritonei
       - Pseudomyxoma peritonei with unknown primary site
       - Pseudosarcomatous carcinoma
-      - PTLD, NOS
       - Pulmonary adenomatosis
       - Pulmonary blastoma
       - Queyrat erythroplasia
-      - Racemose hemangioma
       - RAEB
       - RAEB I
       - RAEB II
       - RAEB-T
       - RARS
+      - Racemose hemangioma
       - Rathke pouch tumor
       - Recklinghausen disease (except of bone)
       - Refractory anemia
@@ -3478,8 +3502,8 @@ properties:
       - Regressing nevus
       - Renal carcinoma, collecting duct type
       - Renal cell adenocarcinoma
-      - Renal cell carcinoma, chromophobe type
       - Renal cell carcinoma, NOS
+      - Renal cell carcinoma, chromophobe type
       - Renal cell carcinoma, sarcomatoid
       - Renal cell carcinoma, spindle cell
       - Reninoma
@@ -3487,14 +3511,14 @@ properties:
       - Renomedullary interstitial cell tumor
       - Reserve cell carcinoma
       - Reticulohistiocytoma
-      - Reticulosarcoma, diffuse [obs]
       - Reticulosarcoma, NOS [obs]
-      - Reticulum cell sarcoma, diffuse [obs]
+      - Reticulosarcoma, diffuse [obs]
       - Reticulum cell sarcoma, NOS [obs]
+      - Reticulum cell sarcoma, diffuse [obs]
       - Retinal anlage tumor
+      - Retinoblastoma, NOS
       - Retinoblastoma, differentiated
       - Retinoblastoma, diffuse
-      - Retinoblastoma, NOS
       - Retinoblastoma, spontaneously regressed
       - Retinoblastoma, undifferentiated
       - Retinocytoma
@@ -3513,6 +3537,7 @@ properties:
       - Round cell osteosarcoma
       - Round cell sarcoma
       - SALT lymphoma
+      - SETTLE
       - Sarcoma botryoides
       - Sarcoma, NOS
       - Sarcomatoid carcinoma
@@ -3520,8 +3545,8 @@ properties:
       - Sarcomatosis, NOS
       - Schmincke tumor
       - Schneiderian carcinoma
-      - Schneiderian papilloma, inverted
       - Schneiderian papilloma, NOS
+      - Schneiderian papilloma, inverted
       - Schwannoma, NOS
       - Scirrhous adenocarcinoma
       - Scirrhous carcinoma
@@ -3538,8 +3563,8 @@ properties:
       - Secretory carcinoma of breast
       - Secretory meningioma
       - Seminoma with high mitotic index
-      - Seminoma, anaplastic
       - Seminoma, NOS
+      - Seminoma, anaplastic
       - Serotonin producing carcinoid
       - Serous adenocarcinofibroma
       - Serous adenocarcinoma, NOS
@@ -3550,8 +3575,8 @@ properties:
       - Serous cystadenocarcinoma, NOS
       - Serous cystadenofibroma of borderline malignancy
       - Serous cystadenofibroma, NOS
-      - Serous cystadenoma, borderline malignancy
       - Serous cystadenoma, NOS
+      - Serous cystadenoma, borderline malignancy
       - Serous cystoma
       - Serous microcystic adenoma
       - Serous papillary cystic tumor of borderline malignancy
@@ -3566,8 +3591,9 @@ properties:
       - Sertoli cell tumor with lipid storage
       - Sertoli cell tumor, NOS
       - Sertoli-Leydig cell tumor of intermediate differentiation
-      - Sertoli-Leydig cell tumor, intermediate differentiation, with heterologous elements
       - Sertoli-Leydig cell tumor, NOS
+      - Sertoli-Leydig cell tumor, intermediate differentiation, with heterologous
+        elements
       - Sertoli-Leydig cell tumor, poorly differentiated
       - Sertoli-Leydig cell tumor, poorly differentiated, with heterologous elements
       - Sertoli-Leydig cell tumor, retiform
@@ -3576,27 +3602,26 @@ properties:
       - Sertoli-Leydig cell tumor, well differentiated
       - Sessile serrated adenoma
       - Sessile serrated polyp
-      - SETTLE
       - Sex cord tumor with annular tubules
       - Sex cord tumor, NOS
+      - Sex cord-gonadal stromal tumor, NOS
       - Sex cord-gonadal stromal tumor, incompletely differentiated
       - Sex cord-gonadal stromal tumor, mixed forms
-      - Sex cord-gonadal stromal tumor, NOS
       - Sezary disease
       - Sezary syndrome
       - Sialoblastoma
       - Signet ring cell adenocarcinoma
       - Signet ring cell carcinoma
+      - Sinonasal papilloma, NOS
       - Sinonasal papilloma, exophytic
       - Sinonasal papilloma, fungiform
-      - Sinonasal papilloma, NOS
       - Skin appendage adenoma
       - Skin appendage carcinoma
       - Skin appendage tumor, benign
       - Skin-associated lymphoid tissue lymphoma
+      - Small cell carcinoma, NOS
       - Small cell carcinoma, fusiform cell
       - Small cell carcinoma, intermediate cell
-      - Small cell carcinoma, NOS
       - Small cell neuroendocrine carcinoma
       - Small cell osteosarcoma
       - Small cell sarcoma
@@ -3620,10 +3645,10 @@ properties:
       - Solitary mastocytoma of skin
       - Solitary myeloma
       - Solitary plasmacytoma
-      - Somatostatin cell tumor, malignant
       - Somatostatin cell tumor, NOS
-      - Somatostatinoma, malignant
+      - Somatostatin cell tumor, malignant
       - Somatostatinoma, NOS
+      - Somatostatinoma, malignant
       - Spermatocytic seminoma
       - Spermatocytoma
       - Spindle cell angioendothelioma
@@ -3655,6 +3680,7 @@ properties:
       - Squamous cell carcinoma in situ with questionable stromal invasion
       - Squamous cell carcinoma in situ, NOS
       - Squamous cell carcinoma with horn formation
+      - Squamous cell carcinoma, NOS
       - Squamous cell carcinoma, acantholytic
       - Squamous cell carcinoma, adenoid
       - Squamous cell carcinoma, clear cell type
@@ -3664,14 +3690,13 @@ properties:
       - Squamous cell carcinoma, metastatic, NOS
       - Squamous cell carcinoma, microinvasive
       - Squamous cell carcinoma, nonkeratinizing, NOS
-      - Squamous cell carcinoma, NOS
       - Squamous cell carcinoma, pseudoglandular
       - Squamous cell carcinoma, sarcomatoid
       - Squamous cell carcinoma, small cell, nonkeratinizing
       - Squamous cell carcinoma, spindle cell
       - Squamous cell epithelioma
-      - Squamous cell papilloma, inverted
       - Squamous cell papilloma, NOS
+      - Squamous cell papilloma, inverted
       - Squamous intraepithelial neoplasia, grade I
       - Squamous intraepithelial neoplasia, grade II
       - Squamous intraepithelial neoplasia, grade III
@@ -3681,17 +3706,17 @@ properties:
       - Squamous papilloma
       - Squamous papillomatosis
       - Stem cell leukemia
-      - Steroid cell tumor, malignant
       - Steroid cell tumor, NOS
+      - Steroid cell tumor, malignant
       - Stromal endometriosis
       - Stromal myosis, NOS
       - Stromal sarcoma, NOS
       - Stromal tumor with minor sex cord elements
-      - Stromal tumor, benign
       - Stromal tumor, NOS
+      - Stromal tumor, benign
       - Struma ovarii and carcinoid
-      - Struma ovarii, malignant
       - Struma ovarii, NOS
+      - Struma ovarii, malignant
       - Strumal carcinoid
       - Subacute granulocytic leukemia [obs]
       - Subacute leukemia, NOS [obs]
@@ -3715,21 +3740,21 @@ properties:
       - Sweat gland adenocarcinoma
       - Sweat gland adenoma
       - Sweat gland carcinoma
+      - Sweat gland tumor, NOS
       - Sweat gland tumor, benign
       - Sweat gland tumor, malignant
-      - Sweat gland tumor, NOS
       - Sympathetic paraganglioma
       - Sympathicoblastoma
       - Symplastic leiomyoma
       - Syncytial meningioma
+      - Synovial sarcoma, NOS
       - Synovial sarcoma, biphasic
       - Synovial sarcoma, epithelioid cell
       - Synovial sarcoma, monophasic fibrous
-      - Synovial sarcoma, NOS
       - Synovial sarcoma, spindle cell
+      - Synovioma, NOS
       - Synovioma, benign
       - Synovioma, malignant
-      - Synovioma, NOS
       - Syringadenoma, NOS
       - Syringocystadenoma papilliferum
       - Syringofibroadenoma
@@ -3757,60 +3782,60 @@ properties:
       - Teratoid medulloepithelioma
       - Teratoid medulloepithelioma, benign
       - Teratoma with malignant transformation
+      - Teratoma, NOS
       - Teratoma, benign
       - Teratoma, differentiated
       - Teratoma, malignant, NOS
-      - Teratoma, NOS
       - Terminal duct adenocarcinoma
       - Testicular adenoma
       - Testicular stromal tumor
       - Theca cell tumor
       - Theca cell-granulosa cell tumor
+      - Thecoma, NOS
       - Thecoma, luteinized
       - Thecoma, malignant
-      - Thecoma, NOS
       - Therapy related myeloid neoplasm
+      - Therapy-related acute myeloid leukemia, NOS
       - Therapy-related acute myeloid leukemia, alkylating agent related
       - Therapy-related acute myeloid leukemia, epipodophyllotoxin-related
-      - Therapy-related acute myeloid leukemia, NOS
+      - Therapy-related myelodysplastic syndrome, NOS
       - Therapy-related myelodysplastic syndrome, alkylating agent related
       - Therapy-related myelodysplastic syndrome, epipodophyllotoxin-related
-      - Therapy-related myelodysplastic syndrome, NOS
       - Thymic carcinoma, NOS
       - Thymic large B-cell lymphoma
-      - Thymoma, atypical, malignant
-      - Thymoma, atypical, NOS
-      - Thymoma, benign
-      - Thymoma, cortical, malignant
-      - Thymoma, cortical, NOS
-      - Thymoma, epithelial, malignant
-      - Thymoma, epithelial, NOS
-      - Thymoma, lymphocyte-rich, malignant
-      - Thymoma, lymphocyte-rich, NOS
-      - Thymoma, lymphocytic, malignant
-      - Thymoma, lymphocytic, NOS
-      - Thymoma, malignant, NOS
-      - Thymoma, medullary, malignant
-      - Thymoma, medullary, NOS
-      - Thymoma, mixed type, malignant
-      - Thymoma, mixed type, NOS
       - Thymoma, NOS
-      - Thymoma, organoid, malignant
+      - Thymoma, atypical, NOS
+      - Thymoma, atypical, malignant
+      - Thymoma, benign
+      - Thymoma, cortical, NOS
+      - Thymoma, cortical, malignant
+      - Thymoma, epithelial, NOS
+      - Thymoma, epithelial, malignant
+      - Thymoma, lymphocyte-rich, NOS
+      - Thymoma, lymphocyte-rich, malignant
+      - Thymoma, lymphocytic, NOS
+      - Thymoma, lymphocytic, malignant
+      - Thymoma, malignant, NOS
+      - Thymoma, medullary, NOS
+      - Thymoma, medullary, malignant
+      - Thymoma, mixed type, NOS
+      - Thymoma, mixed type, malignant
       - Thymoma, organoid, NOS
-      - Thymoma, predominantly cortical, malignant
+      - Thymoma, organoid, malignant
       - Thymoma, predominantly cortical, NOS
-      - Thymoma, spindle cell, malignant
+      - Thymoma, predominantly cortical, malignant
       - Thymoma, spindle cell, NOS
-      - Thymoma, type A, malignant
+      - Thymoma, spindle cell, malignant
       - Thymoma, type A, NOS
-      - Thymoma, type AB, malignant
+      - Thymoma, type A, malignant
       - Thymoma, type AB, NOS
-      - Thymoma, type B1, malignant
+      - Thymoma, type AB, malignant
       - Thymoma, type B1, NOS
-      - Thymoma, type B2, malignant
+      - Thymoma, type B1, malignant
       - Thymoma, type B2, NOS
-      - Thymoma, type B3, malignant
+      - Thymoma, type B2, malignant
       - Thymoma, type B3, NOS
+      - Thymoma, type B3, malignant
       - Thymoma, type C
       - Tibial adamantinoma
       - Trabecular adenocarcinoma
@@ -3825,14 +3850,14 @@ properties:
       - Transitional cell carcinoma, micropapillary
       - Transitional cell carcinoma, sarcomatoid
       - Transitional cell carcinoma, spindle cell
-      - Transitional cell papilloma, benign
-      - Transitional cell papilloma, inverted, benign
-      - Transitional cell papilloma, inverted, NOS
       - Transitional cell papilloma, NOS
+      - Transitional cell papilloma, benign
+      - Transitional cell papilloma, inverted, NOS
+      - Transitional cell papilloma, inverted, benign
       - Transitional meningioma
       - Transitional papilloma
-      - Transitional papilloma, inverted, benign
       - Transitional papilloma, inverted, NOS
+      - Transitional papilloma, inverted, benign
       - Transitional pineal tumor
       - Trichilemmal carcinoma
       - Trichilemmocarcinoma
@@ -3852,18 +3877,18 @@ properties:
       - Tubulo-papillary adenoma
       - Tubulopapillary adenocarcinoma
       - Tubulovillous adenoma, NOS
+      - Tumor cells, NOS
       - Tumor cells, benign
       - Tumor cells, malignant
-      - Tumor cells, NOS
       - Tumor cells, uncertain whether benign or malignant
       - Tumor embolus
+      - Tumor, NOS
       - Tumor, benign
       - Tumor, malignant, NOS
       - Tumor, metastatic
-      - Tumor, NOS
       - Tumor, secondary
-      - Tumorlet, benign
       - Tumorlet, NOS
+      - Tumorlet, benign
       - Turban tumor
       - Typical carcinoid
       - Unclassified tumor, benign
@@ -3877,8 +3902,9 @@ properties:
       - Urothelial carcinoma, NOS
       - Urothelial papilloma, NOS
       - Urticaria pigmentosa
-      - Vaginal intraepithelial neoplasia, grade III
       - VAIN III
+      - VIN III
+      - Vaginal intraepithelial neoplasia, grade III
       - Vascular leiomyoma
       - Venous hemangioma
       - Verrucous carcinoma, NOS
@@ -3890,9 +3916,8 @@ properties:
       - Villous adenocarcinoma
       - Villous adenoma, NOS
       - Villous papilloma
-      - VIN III
-      - Vipoma, malignant
       - Vipoma, NOS
+      - Vipoma, malignant
       - Von Recklinghausen disease (except of bone)
       - Vulvar intraepithelial neoplasia, grade III
       - Waldenstrom macroglobulinemia
@@ -3910,32 +3935,39 @@ properties:
       - Wolffian duct tumor
       - Xanthofibroma
       - Yolk sac tumor
+      - c-ALL
+
   prior_malignancy:
     term:
       $ref: "_terms.yaml#/prior_malignancy"
     enum:
-      - "Yes"
       - "No"
-      - Unknown
       - Not Reported
+      - Unknown
+      - "Yes"
+
   prior_treatment:
     term:
       $ref: "_terms.yaml#/prior_treatment"
     enum:
-      - "Yes"
       - "No"
-      - Unknown
       - Not Reported
+      - Unknown
+      - "Yes"
+
   progression_free_survival:
-    description: "Number of days between the date used for index and the first date the patient is known to be free of disease progression."
+    description: Number of days between the date used for index and the first date
+      the patient is known to be free of disease progression.
     type: integer
+
   progression_free_survival_event:
-    description: "The event used to define the patient's disease progression."
+    description: The event used to define the patient's disease progression.
     enum:
       - Death
       - Disease Progression
       - No Event
       - Unknown
+
   residual_disease:
     term:
       $ref: "_terms.yaml#/residual_disease"
@@ -3944,19 +3976,18 @@ properties:
       - R1
       - R2
       - RX
+
   tissue_or_organ_of_origin:
     term:
       $ref: "_terms.yaml#/tissue_or_organ_of_origin"
     type: string
+
   tumor_grade:
     term:
       $ref: "_terms.yaml#/tumor_grade"
     enum:
-      -  GX Grade cannot be assessed (undetermined grade)
-      -  G1 Well differentiated (low grade)
-      -  G2 Moderately differentiated (intermediate grade)
-      -  G3 Poorly differentiated (high grade)
-      -  G4 Undifferentiated (high grade)
-
-  cases:
-    $ref: "_definitions.yaml#/to_one"
+      - G1 Well differentiated (low grade)
+      - G2 Moderately differentiated (intermediate grade)
+      - G3 Poorly differentiated (high grade)
+      - G4 Undifferentiated (high grade)
+      - GX Grade cannot be assessed (undetermined grade)

@@ -3,12 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "family_history"
 title: Family History
 type: object
+nodeTerms: null
 namespace: http://gdc.nci.nih.gov
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Record of a patient's background regarding cancer events of blood relatives.
+description: Record of a patient's background regarding cancer events of blood relatives.
 additionalProperties: false
 submittable: true
 validators: null
@@ -28,41 +28,20 @@ links:
     multiplicity: many_to_one
     required: true
 
-uniqueKeys:
-  #unclear if want submitter ID for clinical
-  - [id]
-  - [project_id, submitter_id]
-
 required:
   - submitter_id
   - type
 
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  relative_with_cancer_history:
-    term:
-      $ref: "_terms.yaml#/relative_with_cancer_history"
-    enum:
-      - "yes"
-      - "no"
-      - unknown
-      - not reported
-
-  relationship_type:
-    term:
-      $ref: "_terms.yaml#/relationship_type"
-    type: string
-
-  relationship_gender:
-    term:
-      $ref: "_terms.yaml#/gender"
-    enum:
-      - female
-      - male
-      - unknown
-      - unspecified
-      - not reported
+  cases:
+    $ref: "_definitions.yaml#/to_one"
 
   relationship_age_at_diagnosis:
     term:
@@ -75,13 +54,34 @@ properties:
     term:
       $ref: "_terms.yaml#/relationship_age_at_diagnosis_gt89"
     enum:
-      - "Yes"
       - "No"
+      - "Yes"
+
+  relationship_gender:
+    term:
+      $ref: "_terms.yaml#/gender"
+    enum:
+      - female
+      - male
+      - not reported
+      - unknown
+      - unspecified
 
   relationship_primary_diagnosis:
     term:
       $ref: "_terms.yaml#/primary_diagnosis"
     type: string
 
-  cases:
-    $ref: "_definitions.yaml#/to_one"
+  relationship_type:
+    term:
+      $ref: "_terms.yaml#/relationship_type"
+    type: string
+
+  relative_with_cancer_history:
+    term:
+      $ref: "_terms.yaml#/relative_with_cancer_history"
+    enum:
+      - "no"
+      - not reported
+      - unknown
+      - "yes"

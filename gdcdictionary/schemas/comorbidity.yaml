@@ -1,14 +1,15 @@
-schema: "http://json-schema.org/draft-04/schema#"
+$schema: "http://json-schema.org/draft-04/schema#"
 
 id: "comorbidity"
 title: Comorbidity
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Diagnosed medical conditions that are not directly related to or pre-date a patient's oncologic history.
+description: Diagnosed medical conditions that are not directly related to or pre-date
+  a patient's oncologic history.
 additionalProperties: false
 submittable: true
 validators: null
@@ -46,11 +47,14 @@ uniqueKeys:
   - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  cases:
+    $ref: "_definitions.yaml#/to_one"
+
   comorbidity:
-    description: >
-      Text term to identify a coexistent disease or condition in a person.
+    description: Text term to identify a coexistent disease or condition in a person.
     enum:
       - Acute renal failure
       - Adrenocortical Insufficiency
@@ -66,6 +70,7 @@ properties:
       - Blood Clots
       - Bone Fracture(s)
       - Bronchitis
+      - COPD
       - Calcium Channel Blockers
       - Cancer
       - Cataracts
@@ -73,42 +78,41 @@ properties:
       - Chronic renal failure
       - Congestive Heart Failure (CHF)
       - Connective Tissue Disorder
-      - COPD
       - Coronary Artery Disease
       - Cryptogenic Organizing Pneumonia
+      - DVT/PE
       - Deep vein thrombosis / Thromboembolism
       - Depression
       - Diabetes
       - Diabetic Neuropathy
       - Diet controlled Diabetes
-      - DVT/PE
       - Dyslipidemia
       - Epilepsy
-      - Gastroesophageal reflux disease
       - GERD
+      - Gastroesophageal reflux disease
       - Glaucoma
-      - Gout
       - Gonadal dysfunction
+      - Gout
+      - HIV / AIDS
+      - HUS/TTP
       - Headache
       - Heart disease
       - Hemorrhagic Cystitis
       - Hepatitis
       - Hepatitis B Infection
       - Hepatitis C Infection
-      - HIV / AIDS
-      - HUS/TTP
-      - Hypercholesterolemia
       - Hypercalcemia
+      - Hypercholesterolemia
       - Hyperglycemia
       - Hyperlipidemia
       - Hypertension
       - Hypothyroidism
+      - ITP
       - Inflammatory Bowel Disease
       - Insulin controlled Diabetes
       - Interstitial Pneumontis or ARDS
       - Iron Overload
       - Ischemic heart disease
-      - ITP
       - Joint replacement
       - Kidney Disease
       - Liver Cirrhosis (Liver Disease)
@@ -125,18 +129,18 @@ properties:
       - Other cancer within 5 years
       - Other nonmalignant systemic disease
       - Other pulmonary complications
-      - Pancreatitis
       - Pain (various)
+      - Pancreatitis
       - Peptic Ulcer (Ulcer)
-      - Peripheral neuropathy
       - Peripheral Vascular Disease
+      - Peripheral neuropathy
       - Pregnancy in patient or partner
       - Psoriasis
       - Pulmonary Fibrosis
       - Pulmonary Hemorrhage
-      - Renal failure (requiring dialysis)
-      - Renal dialysis
       - Renal Insufficiency
+      - Renal dialysis
+      - Renal failure (requiring dialysis)
       - Rheumatologic Disease
       - Sarcoidosis
       - Seizure
@@ -148,11 +152,9 @@ properties:
       - Ulcerative Colitis
 
   days_to_comorbidity:
-    description: >
-      Number of days between the date used for index and the date the patient was diagnosed with a comorbidity.
+    description: Number of days between the date used for index and the date the patient
+      was diagnosed with a comorbidity.
     type: integer
 
-  cases:
-    $ref: "_definitions.yaml#/to_one"
   followups:
     $ref: "_definitions.yaml#/to_one"

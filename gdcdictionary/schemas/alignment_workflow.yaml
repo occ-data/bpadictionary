@@ -3,12 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "alignment_workflow"
 title: Alignment Workflow
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: analysis
 program: '*'
 project: '*'
-description: >
-  A description of the specific bioinformatics workflow or pipeline used for sequence alignment.
+description: A description of the specific bioinformatics workflow or pipeline used
+  for sequence alignment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,11 +17,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
-  - file_state
-  - error_type
 
 links:
   - name: input_submitted_unaligned_reads_files
@@ -44,13 +43,15 @@ required:
   - workflow_description
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/workflow_properties"
 
   input_submitted_unaligned_reads_files:
     $ref: "_definitions.yaml#/to_many"
+
   output_submitted_aligned_reads_files:
     $ref: "_definitions.yaml#/to_one"

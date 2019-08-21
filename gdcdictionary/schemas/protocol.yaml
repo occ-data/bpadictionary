@@ -3,13 +3,13 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "protocol"
 title: Protocol
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: metadata_file
-project: '*'
 program: '*'
-description: >
-  Data file containing the metadata for the study performed. A space for protocols, panel data,
-  or any data related to the study design.
+project: '*'
+description: Data file containing the metadata for the study performed. A space for
+  protocols, panel data, or any data related to the study design.
 additionalProperties: false
 submittable: true
 validators: null
@@ -17,9 +17,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -47,28 +47,27 @@ required:
   - data_category
   - data_type
   - data_format
+  - file_size
+  - md5sum
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
+
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
-      - Experimental Metadata
       - Biospecimen Metadata
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Collection and Shipping SOP
-      - Testing Protocol
-      - Testing Kit/Panel Information
-      - Sample Preparation SOP
+      - Experimental Metadata
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
@@ -77,7 +76,14 @@ properties:
       - PDF
       - TXT
 
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
+    enum:
+      - Collection and Shipping SOP
+      - Sample Preparation SOP
+      - Testing Kit/Panel Information
+      - Testing Protocol
+
   studies:
-    $ref: "_definitions.yaml#/to_many"
-  core_metadata_collections:
     $ref: "_definitions.yaml#/to_many"

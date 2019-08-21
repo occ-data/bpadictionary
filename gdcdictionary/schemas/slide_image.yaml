@@ -3,12 +3,12 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "slide_image"
 title: Slide Image
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing image of a slide.
+description: Data file containing image of a slide.
 additionalProperties: false
 submittable: true
 validators: null
@@ -16,9 +16,9 @@ validators: null
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -50,30 +50,34 @@ required:
   - data_format
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
+
+  aliquots:
+    $ref: "_definitions.yaml#/to_one"
+
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
       - Slide Image
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Diagnostic Slide Image
-      - Tissue Slide Image
-      - Blood Slide Image
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
     type: string
 
-  aliquots:
-    $ref: "_definitions.yaml#/to_one"
-  core_metadata_collections:
-    $ref: "_definitions.yaml#/to_one"
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
+    enum:
+      - Blood Slide Image
+      - Diagnostic Slide Image
+      - Tissue Slide Image

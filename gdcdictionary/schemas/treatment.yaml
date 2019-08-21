@@ -3,12 +3,14 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "treatment"
 title: Treatment
 type: object
+nodeTerms: null
 namespace: https://data.bloodpac.org
 category: clinical
 program: '*'
 project: '*'
-description: >
-  Any medication, treatment or procedure taken by, prescribed to, or administered to a patient, including cancer-directed treatments, palliative or supportive care, non-cancer-directed prescription medications, and over-the-counter agents.
+description: Any medication, treatment or procedure taken by, prescribed to, or administered
+  to a patient, including cancer-directed treatments, palliative or supportive care,
+  non-cancer-directed prescription medications, and over-the-counter agents.
 additionalProperties: false
 submittable: true
 validators: null
@@ -43,18 +45,22 @@ links:
         multiplicity: many_to_one
         required: false
 
-uniqueKeys:
-  - [id]
-  - [project_id, submitter_id]
-
 required:
   - submitter_id
   - type
   - therapeutic_agents
   - treatment_class
 
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
 properties:
+
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  cases:
+    $ref: "_definitions.yaml#/to_one"
 
   days_to_treatment_end:
     term:
@@ -66,20 +72,25 @@ properties:
       $ref: "_terms.yaml#/days_to_treatment_start"
     type: number
 
+  diagnoses:
+    $ref: "_definitions.yaml#/to_one"
+
   dosage:
-    description: >
-      The dosage of the medication; please also provide 'dosage_units'.
+    description: The dosage of the medication; please also provide 'dosage_units'.
     type: number
 
   dosage_units:
-    description: >
-      The units corresponding to the dosage of the medication; please also provide 'dosage'.
+    description: The units corresponding to the dosage of the medication; please also
+      provide 'dosage'.
     type: string
 
+  followups:
+    $ref: "_definitions.yaml#/to_one"
+
   regimen_or_line_of_therapy:
-    description: >
-      General name for a the group of treatments of which this treatment was a part. This reference
-      name can be used to identify treatments involved in a certain outcome later one.
+    description: General name for a the group of treatments of which this treatment
+      was a part. This reference name can be used to identify treatments involved
+      in a certain outcome later one.
     type: string
 
   therapeutic_agents:
@@ -168,13 +179,14 @@ properties:
       - Unknown
 
   treatment_class:
-    description: >
-      Indicate whether the treatment or therapeutic agent is cancer-directed, cancer-related supportive care, non-cancer-related prescription, or over-the-counter agent (not prescribed)
+    description: Indicate whether the treatment or therapeutic agent is cancer-directed,
+      cancer-related supportive care, non-cancer-related prescription, or over-the-counter
+      agent (not prescribed)
     enum:
-      - "Cancer-directed"
-      - "Cancer-related Supportive Care"
-      - "Non-cancer-related Prescription"
-      - "Over-the-counter Agent"
+      - Cancer-directed
+      - Cancer-related Supportive Care
+      - Non-cancer-related Prescription
+      - Over-the-counter Agent
 
   treatment_intent_type:
     term:
@@ -201,8 +213,8 @@ properties:
       - Cryoablation
       - Embolization
       - Hormone Therapy
-      - Internal Radiation
       - Immunotherapy (Including Vaccines)
+      - Internal Radiation
       - Other
       - Pharmaceutical Therapy
       - Radiation Therapy
@@ -210,10 +222,3 @@ properties:
       - Surgery
       - Targeted Molecular Therapy
       - Unknown
-
-  diagnoses:
-    $ref: "_definitions.yaml#/to_one"
-  cases:
-    $ref: "_definitions.yaml#/to_one"
-  followups:
-    $ref: "_definitions.yaml#/to_one"
