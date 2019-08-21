@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "fragment_analyzer_trace_peak"
-title: Fragment Analyzer Trace Peak
+id: "fragment_analyzer_peak"
+title: Fragment Analyzer Peak
 type: object
 namespace: https://data.bloodpac.org
 category: notation
@@ -22,7 +22,7 @@ systemProperties:
 
 links:
   - name: fragment_analyzer_traces
-    backref: fragment_analyzer_trace_peaks
+    backref: fragment_analyzer_peaks
     label: data_from
     target_type: fragment_analyzer_trace
     multiplicity: many_to_one
