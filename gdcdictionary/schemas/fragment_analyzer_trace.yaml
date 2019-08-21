@@ -79,7 +79,9 @@ properties:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
-      - Quantification Assay Trace
+      - Quantification Assay QC
+      - Library Building QC
+      - DNA Extraction QC
 
   data_format:
     term:
