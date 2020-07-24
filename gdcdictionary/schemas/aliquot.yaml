@@ -40,13 +40,13 @@ links:
     required: true
     subgroup:
       - name: samples
-        backref: analytes
+        backref: aliquots
         label: derived_from
         multiplicity: many_to_many
         target_type: sample
         required: false
       - name: studies
-        backref: analytes
+        backref: aliquots
         label: analyzed_for
         target_type: study
         multiplicity: many_to_many
