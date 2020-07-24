@@ -30,7 +30,6 @@ required:
   - hours_to_freezer_upper
   - preservation_method
   - storage_temperature
-  - samples
 
 uniqueKeys:
   - [id]
