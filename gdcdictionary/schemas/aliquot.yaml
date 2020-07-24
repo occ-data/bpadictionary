@@ -37,12 +37,21 @@ uniqueKeys:
   - [project_id, submitter_id]
 
 links:
-  - name: samples
-    backref: aliquots
-    label: derived_from
-    multiplicity: many_to_many
-    target_type: sample
+  - exclusive: false
     required: true
+    subgroup:
+      - name: samples
+        backref: analytes
+        label: derived_from
+        multiplicity: many_to_many
+        target_type: sample
+        required: false
+      - name: studies
+        backref: analytes
+        label: analyzed_for
+        target_type: study
+        multiplicity: many_to_many
+        required: false
 
 constraints: null
 
@@ -131,4 +140,7 @@ properties:
     type: number
 
   samples:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
+
+  studies:
+    $ref: "_definitions.yaml#/to_many"

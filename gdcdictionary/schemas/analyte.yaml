@@ -30,18 +30,21 @@ required:
   - aliquots
 
 links:
-  - name: aliquots
-    backref: analytes
-    label: derived_from
-    target_type: aliquot
-    multiplicity: many_to_many
+  - exclusive: false
     required: true
-  - name: studies
-    backref: analytes
-    label: analyzed_for
-    target_type: study
-    multiplicity: many_to_many
-    required: false
+    subgroup:
+      - name: aliquots
+        backref: analytes
+        label: derived_from
+        target_type: aliquot
+        multiplicity: many_to_many
+        required: false
+      - name: studies
+        backref: analytes
+        label: analyzed_for
+        target_type: study
+        multiplicity: many_to_many
+        required: false
 
 uniqueKeys:
   - [id]
