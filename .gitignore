@@ -62,6 +62,7 @@ target/
 
 #DS_store
 .DS_store
+.DS_Store
 
 #SSL ( THe *.crt is optional )
 *.key
