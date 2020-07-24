@@ -283,6 +283,30 @@ ann_arbor_tumor_stage:
     cde_version: null
     term_url: null
 
+assay_instrument:
+  description: "The specific instrument type used to perform the assay. If applicable, please also indicate the instrument mode and model in 'assay_instrument_mode' and 'assay_instrument_model'."
+
+assay_instrument_mode:
+  description: "The specific mode an instrument was run in (e.g., High Sensitivity). Please, also indicate the instrument and model in 'assay_instrument' and 'assay_instrument_model'."
+
+assay_instrument_model:
+  description: "The specific model of instrument used to perform the assay. Please also indicate the instrument and mode in 'assay_instrument' and 'assay_instrument_mode'."
+
+assay_kit_name:
+  description: "The name of the kit used for the test or assay; please also indicate the kit vendor and version in 'assay_kit_vendor' and 'assay_kit_version'."
+
+assay_kit_vendor:
+  description: "The name of the vendor or manufacturer of the kit used for the test; please also indicate the kit name and version in 'assay_kit_name' and 'assay_kit_version'."
+
+assay_kit_version:
+  description: "The version of the kit used for the test; please also indicate the kit name and vendor in 'assay_kit_name' and 'assay_kit_vendor'."
+
+assay_method:
+  description: "General methodology used to perform the assay."
+
+assay_target:
+  description: "Target for the assay: can be a specific gene, protein, or otherwise."
+
 base_caller_name: # TOREVIEW
   description: >
     Name of the base caller.
@@ -637,6 +661,12 @@ encoding:
     cde_id: null
     cde_version: null
     term_url: "http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/1%20Basic%20Statistics.html"
+
+equipment_manufacturer:
+  description: "The name of the manufacturer of the equipment used for the test; please also indicate the model number in 'equipment_model'."
+
+equipment_model:
+  description: "The equipment name and model number used for the test; please also indicate the manufacturer name in 'equipment_manufacturer'."
 
 estrogen_receptor_percent_positive_ihc:
   description: >

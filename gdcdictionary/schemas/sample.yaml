@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "sample"
 title: Sample
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: biospecimen
 program: '*'
 project: '*'
@@ -84,31 +84,35 @@ properties:
     description: >
       The lower limit on the amount of time, in hours, between the blood draw and the fractionation
       into its components. If the exact time is known, make this value equal to that of the upper
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
+      limit. If the time is completely unknown or if no fractionation was performed on
+      this sample, enter the appropriate value in hours_to_fractionation_lower_other.
+    type: number
 
   hours_to_fractionation_upper:
     description: >
       The upper limit on the amount of time, in hours, between the blood draw and the fractionation
       into its components. If the exact time is known, make this value equal to that of the lower
-      limit. If the time is completely unknown, enter Unknown. If no fractionation was performed on
-      this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
+      limit. If the time is completely unknown or if no fractionation was performed on
+      this sample, enter the appropriate value in hours_to_fractionation_upper_other.
+    type: number
+
+  hours_to_fractionation_lower_other:
+    description: >
+      If the lower limit on the amount of time, in hours, between the blood draw and the fractionation
+      into its components is completely unknown or if no fractionation was performed on
+      this sample, enter that here.
+    enum:
+      - Not Applicable
+      - Unknown
+
+  hours_to_fractionation_upper_other:
+    description: >
+      If the upper limit on the amount of time, in hours, between the blood draw and the fractionation
+      into its components is completely unknown or if no fractionation was performed on
+      this sample, enter that here.
+    enum:
+      - Not Applicable
+      - Unknown
 
   sample_quantity:
     description: "For solid samples, the mass of the sample in milligrams (mg)."

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "pcr_assay_file"
 title: PCR Assay File
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: data_file
 program: '*'
 project: '*'

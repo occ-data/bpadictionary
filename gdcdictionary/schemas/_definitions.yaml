@@ -206,6 +206,8 @@ data_file_properties:
     $ref: "#/data_file_error_type"
   object_id:
     $ref: "#/object_id"
+  state:
+    $ref: "#/state"
 
 workflow_properties:
   $ref: "#/ubiquitous_properties"

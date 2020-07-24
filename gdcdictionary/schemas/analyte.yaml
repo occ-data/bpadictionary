@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "analyte"
 title: Analyte
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: biospecimen
 program: '*'
 project: '*'
@@ -30,18 +30,21 @@ required:
   - aliquots
 
 links:
-  - name: aliquots
-    backref: analytes
-    label: derived_from
-    target_type: aliquot
-    multiplicity: many_to_many
+  - exclusive: false
     required: true
-  - name: studies
-    backref: analytes
-    label: analyzed_for
-    target_type: study
-    multiplicity: many_to_many
-    required: false
+    subgroup:
+      - name: aliquots
+        backref: analytes
+        label: derived_from
+        target_type: aliquot
+        multiplicity: many_to_many
+        required: false
+      - name: studies
+        backref: analytes
+        label: analyzed_for
+        target_type: study
+        multiplicity: many_to_many
+        required: false
 
 uniqueKeys:
   - [id]
@@ -55,6 +58,7 @@ properties:
       The name or general description of the method used to isolate the analyte. Alternatively, if
       you have provided a protocol, put the file_name here.
     type: string
+
   analyte_type:
     term:
       $ref: "_terms.yaml#/analyte_type"
@@ -65,6 +69,7 @@ properties:
       - Protein
       - Morphology
       - Cell Count
+
   cell_type:
     description: >
       In the case of single cell analysis, this is the type of cell being analyzed.
@@ -83,51 +88,56 @@ properties:
       - Traditional CTC
       - Traditional CTC Cluster
       - White Blood Cell
+
   cell_identifier:
     description: >
       The identifying name or number for the cell being identified.
     type: string
+
   days_to_assay:
     description: >
       The amount of time, in days, between the date used for index and the assay used to address this analyte.
     type: integer
+
   frame_identifier:
     description: >
       In an analysis of a slide, the frame denotes the region of the slide that is being examined.
       Within a frame are multiple cells.
     type: string
+
   llod:
     description: >
       The lower limit of detection. lowest quantity of a substance that can be distinguished from
       the absence of that substance (a blank value) within a stated confidence limit (generally 1%).
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
+    type: number
+
   run_identifier:
     description: >
       The identifier given to the run during which this particular analyte was tested or evaluated.
       If you analyze multiple analytes through the same experimentation run, this is a good way to
       keep track.
     type: string
+
   specificity:
     description: "The true negative rate."
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
+    type: number
+
   sensitivity:
     description: "The true positive rate."
-    type:
-      - number
-      - string
-    oneOf:
-      - enum: ['WT']
-      - type: number
+    type: number
+
+  specificity_WT:
+    description: "If the true negative rate is 'WT' enter true here."
+    type: boolean
+
+  sensitivity_WT:
+    description: "The true positive rate is 'WT' enter true here."
+    type: boolean
+
+  llod_WT:
+    description: >
+      If the lower limit of detection is 'WT' enter true here.
+    type: boolean
 
   aliquots:
     $ref: "_definitions.yaml#/to_many"

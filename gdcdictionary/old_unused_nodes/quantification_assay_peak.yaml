@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "quantification_assay_peak"
 title: Quantification Assay Peak
 type: object
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 category: notation
 program: '*'
 project: '*'

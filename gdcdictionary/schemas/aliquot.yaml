@@ -4,7 +4,7 @@ id: "aliquot"
 title: Aliquot
 type: object
 category: biospecimen
-namespace: https://www.bloodpac.org
+namespace: https://data.bloodpac.org
 program: '*'
 project: '*'
 description: >
@@ -37,12 +37,21 @@ uniqueKeys:
   - [project_id, submitter_id]
 
 links:
-  - name: samples
-    backref: aliquots
-    label: derived_from
-    multiplicity: many_to_many
-    target_type: sample
+  - exclusive: false
     required: true
+    subgroup:
+      - name: samples
+        backref: analytes
+        label: derived_from
+        multiplicity: many_to_many
+        target_type: sample
+        required: false
+      - name: studies
+        backref: analytes
+        label: analyzed_for
+        target_type: study
+        multiplicity: many_to_many
+        required: false
 
 constraints: null
 
@@ -55,53 +64,65 @@ properties:
       - Serum Card
       - Slide
       - Vial
+
   aliquot_quantity:
     description: "The quantity in micrograms (ug) of the aliquot derived from the sample and used for experimentation."
     type: number
+
   aliquot_volume:
     description: "The volume in microliters (uL) of the aliquot derived from the sample and used for experimentation."
     type: number
+
   clinical_or_contrived:
     description: "Is the aliquot clinical or contrived?"
     enum:
       - Clinical
       - Contrived
+
   contrivance_method:
     description: >
       The name or general description of the contrivance(s) added to the biological aliquot.
       Alternatively, if you have provided a contrivance protocol, enter its file_name here.
     type: string
+
   hours_to_freezer_lower:
     description: >
       The lower limit on the amount of time, in hours, that it took between the sample being
       fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the upper limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
+      make this value equal to that of the upper limit. If the time is completely unknown or if no
+      fractionation was performed on this sample, enter the appropriate value in hours_to_freezer_lower_other.
+    type: number
+
   hours_to_freezer_upper:
     description: >
       The upper limit on the amount of time, in hours, that it took between the sample being
       fractionated and the aliquot being frozen or otherwise preserved. If the exact time is known,
-      make this value equal to that of the lower limit. If the time is completely unknown, enter
-      Unknown. If no fractionation was performed on this sample, enter Not Applicable.
-    type:
-      - number
-      - string
-    oneOf:
-      - enum:
-          - Not Applicable
-          - Unknown
-      - type: number
+      make this value equal to that of the lower limit. If the time is completely unknown or if no
+      fractionation was performed on this sample, enter the appropriate value in hours_to_freezer_upper_other.
+    type: number
+
+  hours_to_freezer_lower_other:
+    description: >
+      If the lower limit on the amount of time, in hours, that it took between the sample being
+      fractionated and the aliquot being frozen or otherwise preserved is completely unknown or
+      if no fractionation was performed on this sample, enter the appropriate value here.
+    enum:
+      - Not Applicable
+      - Unknown
+
+  hours_to_freezer_upper_other:
+    description: >
+      If the upper limit on the amount of time, in hours, that it took between the sample being
+      fractionated and the aliquot being frozen or otherwise preserved is completely unknown or
+      if no fractionation was performed on this sample, enter the appropriate value here.
+    enum:
+      - Not Applicable
+      - Unknown
+
   methanol_added:
     description: "In the preparation of a slide, was methanol added as a fixative? True/False."
     type: boolean
+
   preservation_method:
     term:
       $ref: "_terms.yaml#/preservation_method"
@@ -113,9 +134,13 @@ properties:
       - Snap Frozen
       - Frozen
       - Unknown
+
   storage_temperature:
     description: "The temperature, in centrigrade, at which the aliquot was preserved and/or stored."
     type: number
 
   samples:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
+
+  studies:
+    $ref: "_definitions.yaml#/to_many"

@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "mass_cytometry_image"
 title: Mass Cytometry Image
 type: object
-namespace: https://www.bloodpac.org/
+namespace: https://data.bloodpac.org/
 category: data_file
 program: '*'
 project: '*'
@@ -64,11 +64,13 @@ properties:
       $ref: "_terms.yaml#/data_category"
     enum:
       - Mass Cytometry
+
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
       - Single Channel IMC Image
+
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
@@ -76,8 +78,10 @@ properties:
       - PNG
       - JPG
       - TIF
+
   assay_target:
-    description: "The protein marker identified in this assay."
+    term:
+      $ref: "_terms.yaml#/assay_target"
     type: string
 
   mass_cytometry_assays:
