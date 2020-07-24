@@ -23,21 +23,12 @@ systemProperties:
   - error_type
 
 links:
-  - exclusive: true
+  - name: input_submitted_unaligned_reads_files
+    backref: associated_molecular_tagging_workflows_unaligned
+    label: performed_on
+    target_type: submitted_unaligned_reads
+    multiplicity: many_to_many
     required: true
-    subgroup:
-      - name: input_submitted_aligned_reads_files
-        backref: associated_molecular_tagging_workflows_aligned
-        label: performed_on
-        target_type: submitted_aligned_reads
-        multiplicity: many_to_many
-        required: false
-      - name: input_submitted_unaligned_reads_files
-        backref: associated_molecular_tagging_workflows_unaligned
-        label: performed_on
-        target_type: submitted_unaligned_reads
-        multiplicity: many_to_many
-        required: false
   - name: output_submitted_aligned_reads_files
     backref: molecular_tagging_workflows
     label: generate
@@ -51,6 +42,8 @@ required:
   - workflow_name
   - workflow_version
   - workflow_description
+  - input_submitted_unaligned_reads_files
+  - output_submitted_aligned_reads_files
 
 uniqueKeys:
   - [ id ]
@@ -59,8 +52,6 @@ uniqueKeys:
 properties:
   $ref: "_definitions.yaml#/workflow_properties"
 
-  input_submitted_aligned_reads_files:
-    $ref: "_definitions.yaml#/to_many"
   input_submitted_unaligned_reads_files:
     $ref: "_definitions.yaml#/to_many"
   output_submitted_aligned_reads_files:
