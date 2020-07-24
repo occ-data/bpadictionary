@@ -27,7 +27,6 @@ required:
   - type
   - analyte_type
   - analyte_isolation_method
-  - aliquots
 
 links:
   - exclusive: false
