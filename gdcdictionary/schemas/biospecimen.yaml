@@ -55,8 +55,8 @@ required:
   - method_of_procurement
   - procured_or_purchased
   - tissue_type
-  - days_to_collection_not_reported
-  - days_to_procurement_not_reported
+  # - days_to_collection_not_reported
+  # - days_to_procurement_not_reported
 
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"

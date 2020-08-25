@@ -26,8 +26,8 @@ required:
   - type
   - aliquot_container
   - clinical_or_contrived
-  - hours_to_freezer_lower
-  - hours_to_freezer_upper
+  #- hours_to_freezer_lower
+  #- hours_to_freezer_upper
   - preservation_method
   - storage_temperature
 
