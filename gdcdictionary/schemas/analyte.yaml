@@ -105,9 +105,7 @@ properties:
     type: string
 
   llod:
-    description: >
-      The lower limit of detection. lowest quantity of a substance that can be distinguished from
-      the absence of that substance (a blank value) within a stated confidence limit (generally 1%).
+    description: "The lower limit of detection. The lowest quantity of a substance that can be distinguished from the absence of that substance (a blank value) within a stated confidence limit (generally 1%). If the lower limit of detection is not a number ('WT', for example), see 'llod_other'."
     type: number
 
   run_identifier:
@@ -118,25 +116,24 @@ properties:
     type: string
 
   specificity:
-    description: "The true negative rate."
+    description: "The true negative rate. If this value is not a number ('WT', for example), see 'specificty_other'."
     type: number
 
   sensitivity:
-    description: "The true positive rate."
+    description: "The true positive rate. If this value is not a number ('WT', for example), see 'sensitivity_other'."
     type: number
 
-  specificity_WT:
-    description: "If the true negative rate is 'WT' enter true here."
-    type: boolean
+  specificity_other:
+    description: "If the true negative rate is something other than a number, for example, 'WT', enter the text here."
+    type: string
 
-  sensitivity_WT:
+  sensitivity_other:
     description: "The true positive rate is 'WT' enter true here."
-    type: boolean
+    type: string
 
-  llod_WT:
-    description: >
-      If the lower limit of detection is 'WT' enter true here.
-    type: boolean
+  llod_other:
+    description: "If the lower limit of detection is not a number ('WT', for example), enter the text here."
+    type: string
 
   aliquots:
     $ref: "_definitions.yaml#/to_many"
