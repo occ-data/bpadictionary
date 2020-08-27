@@ -124,15 +124,15 @@ properties:
     type: number
 
   specificity_other:
-    description: "If the true negative rate is something other than a number, for example, 'WT', enter the text here."
+    description: "If the true negative rate is something other than a number (for example, 'WT'), enter the text here."
     type: string
 
   sensitivity_other:
-    description: "The true positive rate is 'WT' enter true here."
+    description: "If the true positive rate is not a numnber (for example, 'WT'), enter the text here."
     type: string
 
   llod_other:
-    description: "If the lower limit of detection is not a number ('WT', for example), enter the text here."
+    description: "If the lower limit of detection is not a number (for example, 'WT'), enter the text here."
     type: string
 
   aliquots:
