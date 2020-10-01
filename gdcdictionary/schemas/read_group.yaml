@@ -88,6 +88,8 @@ properties:
       - Ion Torrent Proton
       - PacBio RS
       - Ion S5 XL System, Ion 530 Chip
+      - Ion S5 XL System, Ion 540 Chip
+      - Ion S5 XL System, Ion 550 Chip
       - Other
   is_paired_end:
     term:
