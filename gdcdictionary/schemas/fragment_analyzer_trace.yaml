@@ -36,19 +36,19 @@ links:
         backref: fragment_analyzer_traces
         label: data_from
         target_type: quantification_assay
-        multiplicity: many_to_one
+        multiplicity: many_to_many
         required: false
       - name: read_groups
         backref: fragment_analyzer_traces
         label: data_from
         target_type: read_group
-        multiplicity: many_to_one
+        multiplicity: many_to_many
         required: false
       - name: analytes
         backref: fragment_analyzer_traces
         label: data_from
         target_type: analyte
-        multiplicity: many_to_one
+        multiplicity: many_to_many
         required: false
 
 required:
@@ -109,13 +109,13 @@ properties:
     type: boolean
 
   quantification_assays:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
 
   analytes:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
 
   read_groups:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
