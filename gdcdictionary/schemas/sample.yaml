@@ -54,10 +54,10 @@ properties:
     term:
       $ref: "_terms.yaml#/composition"
     enum:
-      - Buccal Cells
-      - Buffy Coat
       - Bone Marrow Components
       - Bone Marrow Components NOS
+      - Buccal Cells
+      - Buffy Coat
       - Control Analyte
       - Cell
       - Circulating Tumor Cell (CTC)
@@ -70,15 +70,15 @@ properties:
       - Mononuclear Cells from Bone Marrow Normal
       - Peripheral Blood Components NOS
       - Peripheral Blood Nucleated Cells
-      - Pleural Effusion
-      - Plasma
       - Peripheral Whole Blood
-      - Serum
+      - Plasma
+      - Pleural Effusion
       - Saliva
-      - Sputum
+      - Serum
       - Solid Tissue
-      - Whole Bone Marrow
+      - Sputum
       - Unknown
+      - Whole Bone Marrow
 
   hours_to_fractionation_lower:
     description: >
