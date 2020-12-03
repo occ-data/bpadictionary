@@ -519,6 +519,7 @@ properties:
       - "Tumor"
       - "Normal"
       - "Abnormal"
+      - "Peripheral Blood"
       - "Peritumoral"
       - "Unknown"
 
