@@ -1446,6 +1446,7 @@ properties:
   overall_survival:
     description: "Number of days between the date used for index and the patient's date of death or the date the patient was last known to be alive."
     type: integer
+
   primary_diagnosis:
     term:
       $ref: "_terms.yaml#/primary_diagnosis"
@@ -3948,15 +3949,17 @@ properties:
     term:
       $ref: "_terms.yaml#/tissue_or_organ_of_origin"
     type: string
+
   tumor_grade:
     term:
       $ref: "_terms.yaml#/tumor_grade"
     enum:
-      -  GX Grade cannot be assessed (undetermined grade)
-      -  G1 Well differentiated (low grade)
-      -  G2 Moderately differentiated (intermediate grade)
-      -  G3 Poorly differentiated (high grade)
-      -  G4 Undifferentiated (high grade)
+      - "GX Grade cannot be assessed (undetermined grade)"
+      - "G1 Well differentiated (low grade)"
+      - "G2 Moderately differentiated (intermediate grade)"
+      - "G3 Poorly differentiated (high grade)"
+      - "G4 Undifferentiated (high grade)"
+      - "Unknown"
 
   cases:
     $ref: "_definitions.yaml#/to_one"
