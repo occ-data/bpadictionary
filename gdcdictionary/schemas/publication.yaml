@@ -7,7 +7,7 @@ namespace: https://data.bloodpac.org
 category: administrative
 program: '*'
 project: '*'
-description: "Publication for a project."
+description: "Metadata describing a publication for a project."
 additionalProperties: false
 submittable: true
 validators: null
@@ -20,17 +20,25 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: projects
-    backref: publications
-    label: refers_to
-    target_type: project
-    multiplicity: many_to_many
+  - exclusive: false
     required: true
+    subgroup:
+      - name: studies
+        backref: publications
+        label: refers_to
+        target_type: study
+        multiplicity: many_to_many
+        required: false
+      - name: projects
+        backref: publications
+        label: refers_to
+        target_type: project
+        multiplicity: many_to_many
+        required: false
 
 required:
   - submitter_id
   - type
-  - projects
 
 uniqueKeys:
   - [ id ]
@@ -40,9 +48,84 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
   pmid:
-    type: string
-  doi:
+    description: The PubMed ID of the publication.
     type: string
 
+  doi:
+    description: The digital object identifier (DOI) for the publication.
+    type: string
+
+  accession_id:
+    description: The BloodPAC-specific accession ID of the publication, for example, BPDC000123.
+    type: string
+
+  title:
+    description: The title of the publication.
+    type: string
+
+  abstract:
+    description: The abstract of the publication.
+    type: string
+
+  authors:
+    description: The authors of the publication; enter as a comma-separated list (array).
+    type: array
+    items:
+      type: string
+
+  author_affiliations: The author affiliations; enter as a comma-separated list (array).
+    description:
+    type: array
+    items:
+      type: string
+
+  journal:
+    description: The name of the publishing journal.
+    type: string
+
+  publication_url:
+    description: The URL of the article, if published online.
+    type: string
+
+  data_availability_date:
+    description: The data availability date.
+    type: string
+
+  data_description:
+    description: A brief, free-text description of the data available.
+    type: string
+
+  sponsors:
+    description: The sponsors of the published study.
+    type: string
+
+  acknowledgements:
+    description: Acknowledgements on the publication.
+    type: string
+
+  condition:
+    description: A brief description of the condition studied in the publication, if applicable, e.g., Lung or Breast Cancer.
+    type: string
+
+  study_codes:
+    description: Any numbers or codes associated with the publication, entered as a comma-separated list (array).
+    type: array
+    items:
+      type: string
+
+  study_type:
+    description: A brief, free-text description of the type of study.
+    type: string
+
+  websites:
+    description: A list of websites associated with the study, entered as a comma-separated list (array).
+    type: array
+    items:
+      type: string
+
   projects:
+    description: The link to the project node; the "code" or "id" of the record in the project node that this publication links to.
     $ref: "_definitions.yaml#/to_many_project"
+  studies:
+    description: The link to the study node; the "submitter_id" or "id" of the record in the study node that this publication links to.
+    $ref: "_definitions.yaml#/to_many"
