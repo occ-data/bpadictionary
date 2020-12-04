@@ -73,8 +73,8 @@ properties:
     items:
       type: string
 
-  author_affiliations: The author affiliations; enter as a comma-separated list (array).
-    description:
+  author_affiliations:
+    description: The author affiliations; enter as a comma-separated list (array).
     type: array
     items:
       type: string
