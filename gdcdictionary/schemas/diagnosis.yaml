@@ -34,7 +34,6 @@ required:
   - submitter_id
   - type
   - classification_of_tumor
-  - days_to_diagnosis
   - morphology
   - primary_diagnosis
   - tissue_or_organ_of_origin
