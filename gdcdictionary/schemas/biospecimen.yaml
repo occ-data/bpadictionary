@@ -412,6 +412,7 @@ properties:
     description: >
       The primary disease of the patient from which the biospecimen was taken.
     enum:
+      - "Advanced Adenoma"
       - "Blood Cancer"
       - "Breast Cancer"
       - "Colorectal Cancer"
