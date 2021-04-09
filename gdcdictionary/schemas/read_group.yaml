@@ -125,7 +125,7 @@ properties:
       - PCR
       - Affinity Enrichment
       - Poly-T Enrichment
-      - RNA Depletion
+      - rRNA Depletion
       - Targeted Sequencing
       - Other
   library_strand:
