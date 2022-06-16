@@ -86,6 +86,7 @@ properties:
       - miRNA-Seq
       - Total RNA-Seq
       - DNA Panel
+      - ctDNA
 
   read_groups:
     $ref: "_definitions.yaml#/to_many"
