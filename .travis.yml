@@ -1,11 +1,16 @@
 language: python
 python:
-- '3.6'
+- '3.9'
+install:
+  - pip install poetry
+  - poetry install -vv
 before_script:
-- yes | python setup.py install
+- yes | python setup.py install | poetry install
 - git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
 script:
 - "./run_tests.sh"
+before_deploy:
+- poetry build -f sdist
 deploy:
   provider: s3
   access_key_id: AKIAJFMIA7GOK3XQMEVQ
