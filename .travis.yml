@@ -1,16 +1,19 @@
 language: python
 python:
 - '3.9'
+before_install:
+  - curl -sSL https://install.python-poetry.org | python3 -
+  - export PATH="$HOME/.poetry/bin:$PATH"
 install:
-  - pip install poetry
-  - poetry install -vv
+  - poetry install
 before_script:
 - yes | python setup.py install | poetry install
 - git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
 script:
 - "./run_tests.sh"
 before_deploy:
-- poetry build -f sdist
+  - mkdir -p artifacts
+  - poetry build -f sdist
 deploy:
   provider: s3
   access_key_id: AKIAJFMIA7GOK3XQMEVQ
