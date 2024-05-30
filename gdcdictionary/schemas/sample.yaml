@@ -61,7 +61,9 @@ properties:
       - Control Analyte
       - Cell
       - Circulating Tumor Cell (CTC)
+      - Clinical
       - Derived Cell Line
+      - Derived or Contrived Cell Line
       - EBV Immortalized
       - Fibroblasts from Bone Marrow Normal
       - Granulocytes

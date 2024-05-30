@@ -910,6 +910,13 @@ properties:
     description: "The height of the patient in centimeters."
     type: number
 
+  # Fields for prometheus-3a
+  molecular_residual_disease_detected:
+    description: "Is there evidence of molecular residual disease?"
+    enum:
+      - "Yes"
+      - "No"
+
   progression_or_recurrence:
     description: "Indicator to identify whether a patient has had a recurrent or relapsed malignancy or a progression of disease."
     enum:
@@ -960,6 +967,7 @@ properties:
   weight:
     description: "The weight of the patient measured in kilograms."
     type: number
+
 
   cases:
     $ref: "_definitions.yaml#/to_one"
