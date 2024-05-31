@@ -7,7 +7,7 @@ install:
   - sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 
 before_script:
-  - python install setup.py
+  - yes | pip install setup.py
   - git clone https://github.com/uc-cdis/dictionaryutils
   - cd dictionaryutils
 
