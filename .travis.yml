@@ -1,20 +1,32 @@
 language: python
 python:
-- '3.6'
-install:
+  - '3.6'
+
+before_install:
   - sudo apt-get update
   - sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+
+install:
+  - sudo apt-get remove -y python-pip  # Removing system pip to avoid conflicts
   - pip uninstall poetry -y
   - curl -sSL https://install.python-poetry.org -o install-poetry.py
   - python install-poetry.py || cat /home/travis/build/occ-data/bpadictionary/poetry-installer-error-*.log
-  - export PATH="$HOME/.local/bin:$PATH"
+  - export PATH="$HOME/.local/bin:$PATH"  # Ensure Poetry is available in the PATH
+  - poetry --version  # Check Poetry version for debugging
+  - poetry self update  # Ensure Poetry is up to date
+
 before_script:
-- yes | python setup.py install
-- git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
-- poetry install
-- poetry lock
+  - git clone https://github.com/occ-data/bpadictionary.git
+  - cd bpadictionary
+  - echo "0.1.0" > VERSION  # Create a VERSION file if it doesn't exist
+  - poetry lock --no-update
+  - poetry install
+  - yes | python setup.py install
+  - git clone https://github.com/uc-cdis/dictionaryutils
+
 script:
-- "./run_tests.sh"
+  - "./run_tests.sh"
+
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
