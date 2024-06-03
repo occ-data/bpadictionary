@@ -5,7 +5,8 @@ install:
   - sudo apt-get update
   - sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
   - pip uninstall poetry -y
-  - curl -sSL https://install.python-poetry.org | python -
+  - curl -sSL https://install.python-poetry.org -o install-poetry.py
+  - python install-poetry.py || cat /home/travis/build/occ-data/bpadictionary/poetry-installer-error-*.log
   - export PATH="$HOME/.local/bin:$PATH"
 before_script:
 - yes | python setup.py install
