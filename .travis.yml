@@ -8,17 +8,11 @@ before_install:
 
 install:
   - sudo apt-get remove -y python-pip  # Removing system pip to avoid conflicts
-  - pip uninstall poetry -y
-  - curl -sSL https://install.python-poetry.org | python - --version 1.1.13
-  - export PATH="$HOME/.local/bin:$PATH"  # Ensure Poetry is available in the PATH
-  - poetry --version  # Check Poetry version for debugging
 
 before_script:
   - git clone https://github.com/occ-data/bpadictionary.git
   - cd bpadictionary
   - echo "0.1.0" > VERSION  # Create a VERSION file if it doesn't exist
-  - poetry lock --no-update
-  - poetry install
   - yes | python setup.py install
   - git clone https://github.com/uc-cdis/dictionaryutils
   - cd dictionaryutils
