@@ -21,6 +21,7 @@ before_script:
   - poetry install
   - yes | python setup.py install
   - git clone https://github.com/uc-cdis/dictionaryutils
+  - cd dictionaryutils
 
 script:
   - "./run_tests.sh"
