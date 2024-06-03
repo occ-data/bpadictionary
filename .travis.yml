@@ -7,6 +7,7 @@ install:
 before_script:
 - yes | python setup.py install
 - git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
+- poetry install
 - poetry lock
 script:
 - "./run_tests.sh"
