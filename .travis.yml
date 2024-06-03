@@ -6,9 +6,9 @@ install:
   - sudo apt-get update
   - sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 before_script:
-- poetry lock --no-update
 - yes | python setup.py install
 - git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
+- poetry lock --no-update
 script:
 - "./run_tests.sh"
 deploy:
