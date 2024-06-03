@@ -9,8 +9,7 @@ before_install:
 install:
   - sudo apt-get remove -y python-pip  # Removing system pip to avoid conflicts
   - pip uninstall poetry -y
-  - curl -sSL https://install.python-poetry.org -o install-poetry.py
-  - python install-poetry.py || cat /home/travis/build/occ-data/bpadictionary/poetry-installer-error-*.log
+  - curl -sSL https://install.python-poetry.org | python - --version 1.1.13
   - export PATH="$HOME/.local/bin:$PATH"  # Ensure Poetry is available in the PATH
   - poetry --version  # Check Poetry version for debugging
   - poetry self update  # Ensure Poetry is up to date
