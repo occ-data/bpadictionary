@@ -504,6 +504,17 @@ properties:
       The numerical value representing the diagnostic test measurement of the 'analyte_name'; also indicate the 'test_units'.
     type: number
 
+  # Fields for prometheus-3a
+  fasting_hours:
+    description: "Fasting Status - 'When was the last time you had a meal?' Hours from last meal."
+    type: number
+
+  tumor_tissue_molecular_alterations_detected:
+    description: "Molecular alterations in Tumor Tissue Results Yes/No"
+    enum:
+      - "Yes"
+      - "No"
+
   cases:
     $ref: "_definitions.yaml#/to_one"
   followups:

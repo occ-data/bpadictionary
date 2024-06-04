@@ -82,6 +82,7 @@ properties:
     enum:
       - "Female"
       - "Male"
+      - "Intersex"
       - "Unknown"
       - "Unspecified"
 
@@ -96,6 +97,19 @@ properties:
       - "Native Hawaiian or Other Pacific Islander"
       - "Other"
       - "Unknown"
+
+  self_identified_gender:
+    description: >
+      The sex or gender assignment preferred by the participant.
+    enum:
+      - "Female"
+      - "Female-to-Male Transsexual"
+      - "Intersex"
+      - "Male"
+      - "Male-to-Female Transsexual"
+      - "Other"
+      - "Unknown"
+      - "Unspecified"
 
   vital_status:
     term:

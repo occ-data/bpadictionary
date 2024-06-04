@@ -3960,5 +3960,60 @@ properties:
       - "G4 Undifferentiated (high grade)"
       - "Unknown"
 
+  # Fields for prometheus-3a
+  days_to_metastatic_diagnosis:
+    description: "Number of days between the date used for index and the date of the patient's metastasis initially identified and diagnose."
+    type: integer
+
+  days_to_last_surgery:
+    description: "Time from last surgery in days"
+    type: integer
+
+  metastatic_site:
+    description: "Location of metastatic disease"
+    type: string
+
+  cancer_type:
+    description: "Type of Cancer identified at diagnosis, Including specific histopathology information."
+    type: string
+
+  cancer_stage:
+    description: "Stage of Cancer identified at diagnosis, Including specific TNM staging vocabulary."
+    type: string
+
+  cancer_staging_system:
+    description: "Identification of the staging system used to measure cancers' status and progression."
+    type: string
+
+  cancer_grade:
+    description: "Associated cancer grade (e.g. 0, 1, 2, 3, 4)."
+    enum:
+      - Grade 0
+      - Grade 1
+      - Grade 2
+      - Grade 3
+      - Grade 4
+
+  cancer_grading_system:
+    description: "Identification of the staging system used to determine cancer grades."
+    type: string
+
+  metastatic_disease_status:
+    description: "Indication of whether disease is metastatic at the moment participant is enrolled."
+    enum:
+      - "Yes"
+      - "No"
+
+  tumor_detectable_at_draw:
+    description: "Is the tumor detectable by the standard of care ie blood draw, imaging, exam, at the time of draw?"
+    enum:
+      - "Yes"
+      - "No"
+
+  bmi:
+    term:
+      $ref: "_terms.yaml#/bmi"
+    type: number
+
   cases:
     $ref: "_definitions.yaml#/to_one"
