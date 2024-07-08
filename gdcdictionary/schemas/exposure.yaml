@@ -52,6 +52,26 @@ properties:
     term:
       $ref: "_terms.yaml#/cigarettes_per_day"
     type: number
+  exposure_type:
+    description: >
+      Type of Exposure
+    enum:
+      - "Alcohol"
+      - "Tobacco Smoking"
+      - "Cigarette Smoking"
+
+  exposure_agent:
+    description: >
+      Chemical/agents exposed to from list of exposure types from controlled vocabulary
+    enum:
+      - "Agent Orange Exposure"
+      - "Tobacco Exposure"
+      - "Alcohol Exposure"
+      - "Occupational Chemical Exposure"
+      - "Infectious Agent Exposure"
+      - "Radiation Exposure"
+      - "Medication Exposure"
+
   tobacco_smoking_status:
     term:
       $ref: "_terms.yaml#/tobacco_smoking_status"

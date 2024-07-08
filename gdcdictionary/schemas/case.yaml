@@ -71,5 +71,29 @@ properties:
       The number of days between the date used for index and the date the patient was lost to follow-up.
     type: integer
 
+  promtheus_id:
+    description: >
+      Id for promethus record
+    type: string
+
+  apollo_id:
+    description: >
+      Apollo id for promethus record
+    type: string
+
+  metabolomic_data_available:
+    description: >
+      Apollo id for promethus record
+    enum:
+      - "Yes"
+      - "No"
+
+  exposure_data_available:
+    description: >
+      Apollo id for promethus record
+    enum:
+      - "Yes"
+      - "No"
+
   studies:
     $ref: "_definitions.yaml#/to_many"
