@@ -411,7 +411,7 @@ properties:
       - "Urine"
 
   test_sample_composition_other:
-    desciption: >
+    description: >
       If 'Other (specify)' was chosen for 'test_sample_composition', enter a description of the sample used for the test here
     type: string
 
