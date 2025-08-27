@@ -138,6 +138,7 @@ properties:
       - "Dermal"
       - "Descending Colon"
       - "Diaphragm"
+      - "Direct From Prior Resection Cavity"
       - "Duodenum"
       - "Ear"
       - "Ear Canal"
@@ -310,6 +311,7 @@ properties:
       - "Sternum"
       - "Stomach"
       - "Stomach (Mucosa Only)"
+      - "Subarachnoid/Cisternal"
       - "Subcutaneous Tissue"
       - "Synovium"
       - "Temporal Cortex"
@@ -340,6 +342,7 @@ properties:
       - "Vein"
       - "Venous"
       - "Vertebra"
+      - "Ventricular"
       - "Vulva"
       - "White Blood Cells"
       - "Wrist"
@@ -414,6 +417,7 @@ properties:
     enum:
       - "Advanced Adenoma"
       - "Blood Cancer"
+      - "Brain Cancer"
       - "Breast Cancer"
       - "Colorectal Cancer"
       - "Gastric Cancer"
@@ -450,7 +454,10 @@ properties:
     enum:
       - "Biopsy"
       - "Blood Draw"
+      - "Intraoperative"
+      - "Lumbar Puncture"
       - "Not Applicable"
+      - "Ommaya/External Cathete"
       - "Unknown"
 
   primary_site:
@@ -513,6 +520,11 @@ properties:
       The temperature, in centigrade, at which the biospecimen was kept while it was being transported from the procurement site to its processing destination.
     type: number
 
+  storage_tube_type:
+    description: >
+      The kind of receptacle used for shipping/storage. Applicable if specimen transferred from collection tube to a second, e.g. preservative, tube.
+    type: number
+
   tissue_type:
     term:
       $ref: "_terms.yaml#/tissue_type"
@@ -523,6 +535,28 @@ properties:
       - "Peripheral Blood"
       - "Peritumoral"
       - "Unknown"
+
+  tube_transfer_indicator:
+    description: >
+      True/False Indicates whether there was a tube transfer for the specimen.
+    type: boolean
+
+  tube_transfer_time_lower:
+    description: >
+      The lower limit on the amount of time, in hours, between
+      initial specimen collection and transfer to new tube (applicable if specimen transferred from collection tube to a second, e.g. preservative, tube)
+    type: number
+
+  tube_transfer_time_upper:
+    description: >
+      The upper limit on the amount of time, in hours, between
+      initial specimen collection and transfer to new tube (applicable if specimen transferred from collection tube to a second, e.g. preservative, tube)
+    type: number
+
+  tube_transfer_temperature:
+    description: "Temperature, in centigrade, the specimen is kept at while awaiting transfer to new tube. (applicable if specimen transferred from collection tube to a second, e.g. preservative, tube)."
+    type: number
+
 
   tumor_code:
     term:

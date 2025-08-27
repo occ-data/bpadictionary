@@ -52,6 +52,11 @@ uniqueKeys:
 properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  analyte_absolute_input:
+    description: >
+      Nanograms of nucleic acid (input to assay)
+    type: number
+
   analyte_isolation_method:
     description: >
       The name or general description of the method used to isolate the analyte. Alternatively, if
