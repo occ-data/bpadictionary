@@ -92,14 +92,14 @@ properties:
       - Unknown
       - Whole Bone Marrow
 
-  hours_to_centrifugation:
+  hours_to_centrifugation_lower:
     description: >
-      The number of hours between the sample collection and the centrifugation into its components.
+      The lower limit on the amount of time, in hours, between the sample collection and the centrifugation into its components. Note this is only required if centrifugation was performed and if the exact time is unknown. If only one time value is known for hours_to_centrifugation then only use `hours_to_centrifugation_lower`
     type: number
 
-  hours_to_centrifugation_limits:
+  hours_to_centrifugation_upper:
     description: >
-      The lower and upper limit on the amount of time, in hours, between the sample collection and the centrifugation into its components. Note this is only required if centrifugation was performed and if the exact time is unknown.
+      The upper limit on the amount of time, in hours, between the sample collection and the centrifugation into its components. Note this is only required if centrifugation was performed and if the exact time is unknown.  If only one time value is known for hours_to_centrifugation then only use `hours_to_centrifugation_lower`
     type: string
 
   hours_to_fractionation_lower:
