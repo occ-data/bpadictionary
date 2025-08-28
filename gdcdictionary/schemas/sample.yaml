@@ -50,6 +50,16 @@ properties:
       if you have provided a detailed protocol, enter its file_name here.
     type: string
 
+  centrifugated_indicator:
+    description: >
+      True/False Indicates whether the specimen was centrifugated.
+    type: boolean
+
+  centrifugation_method:
+    description: >
+      The name or description of the method used to obtain the CSF fraction sample. (e.g., Novartis Protocol #001, 2,000 g centrifuge at 4°C with gentle deceleration). Detailed protocol should be provided as a supplemental file when possible.
+    type: string
+
   composition:
     term:
       $ref: "_terms.yaml#/composition"
@@ -81,6 +91,16 @@ properties:
       - Sputum
       - Unknown
       - Whole Bone Marrow
+
+  hours_to_centrifugation_lower:
+    description: >
+      The lower limit on the amount of time, in hours, between the sample collection and the centrifugation into its components. Note this is only required if centrifugation was performed and if the exact time is unknown. If only one time value is known for hours_to_centrifugation then only use `hours_to_centrifugation_lower`
+    type: number
+
+  hours_to_centrifugation_upper:
+    description: >
+      The upper limit on the amount of time, in hours, between the sample collection and the centrifugation into its components. Note this is only required if centrifugation was performed and if the exact time is unknown.  If only one time value is known for hours_to_centrifugation then only use `hours_to_centrifugation_lower`
+    type: string
 
   hours_to_fractionation_lower:
     description: >

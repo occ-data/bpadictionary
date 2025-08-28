@@ -46,6 +46,11 @@ properties:
     enum:
       - Targeted Sequencing
       - Copy Number Analysis
+      - Other
+
+  assay_method_other:
+    description: "General name or description of the method used to characterize the analyte not defined in `assay_method`."
+    type: string
 
   assay_target:
     term:
