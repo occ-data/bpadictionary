@@ -44,6 +44,12 @@ links:
         target_type: study
         multiplicity: many_to_many
         required: false
+      - name: biospecimens
+        backref: analytes
+        label: derived_from
+        target_type: biospecimen
+        multiplicity: many_to_many
+        required: true
 
 uniqueKeys:
   - [id]
@@ -143,4 +149,6 @@ properties:
   aliquots:
     $ref: "_definitions.yaml#/to_many"
   studies:
+    $ref: "_definitions.yaml#/to_many"
+  biospecimens:
     $ref: "_definitions.yaml#/to_many"
