@@ -100,7 +100,7 @@ properties:
 
   self_identified_sex:
     description: >
-      The sex or sex assignment preferred by the participant.
+      The sex or gender assignment preferred by the participant.
     enum:
       - "Female"
       - "Female-to-Male Transsexual"

@@ -48,7 +48,7 @@ schema:
       name: sex
       type: string
       title: Sex  # use title for nice display label
-      description: "Identification of sex is based upon self-report and may come from a form, questionnaire, interview, etc"
+      description: "The sex or gender of the participant assigned at birth"
       cde_id: 2200604
       search: terms_facet
       constraints:
