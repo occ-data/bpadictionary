@@ -31,7 +31,7 @@ links:
 required:
   - submitter_id
   - type
-  - index_date
+  - index_event
   - studies
 
 uniqueKeys:
