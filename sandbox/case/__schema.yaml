@@ -45,10 +45,10 @@ schema:
       constraints:
         unique: false  # local overriding for uniqueness
     -
-      name: gender
+      name: sex
       type: string
-      title: Gender  # use title for nice display label
-      description: "Identification of gender is based upon self-report and may come from a form, questionnaire, interview, etc"
+      title: Sex  # use title for nice display label
+      description: "The sex or gender of the participant assigned at birth"
       cde_id: 2200604
       search: terms_facet
       constraints:

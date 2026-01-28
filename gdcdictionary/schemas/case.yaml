@@ -48,10 +48,10 @@ properties:
       the patient. Work with your collaborators to decide on the patient's id.
     type: string
 
-  index_date:
+  index_event:
     description: >
-      The reference or anchor date used during date obfuscation, where a single date is obscured by
-      creating one or more date ranges in relation to this date.
+      Specifies the clinical or study-related event that serves as the anchor date for date
+      obfuscation. All derived or shifted dates are calculated relative to the selected event.
     enum:
       - Diagnosis
       - First Patient Visit
@@ -70,27 +70,32 @@ properties:
     description: >
       The number of days between the date used for index and the date the patient was lost to follow-up.
     type: integer
-
-  promtheus_id:
+  
+  days_to_sample_collection:
     description: >
-      Id for promethus record
+      The number of days Duration from Sample Collection
+    type: integer
+
+  prometheus_id:
+    description: >
+      Id for prometheus record
     type: string
 
   apollo_id:
     description: >
-      Apollo id for promethus record
+      Apollo id for prometheus record
     type: string
 
   metabolomic_data_available:
     description: >
-      Apollo id for promethus record
+      A yes/no indicator related to whether metabolomic data is available for the patient
     enum:
       - "Yes"
       - "No"
 
   exposure_data_available:
     description: >
-      Apollo id for promethus record
+      A yes/no indicator related to whether exposure data is available for the patient
     enum:
       - "Yes"
       - "No"

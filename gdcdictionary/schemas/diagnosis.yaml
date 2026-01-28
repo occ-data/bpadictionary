@@ -37,7 +37,7 @@ required:
   - morphology
   - primary_diagnosis
   - tissue_or_organ_of_origin
-  - tumor_grade
+  - cancer_grade
 
 
 uniqueKeys:
@@ -3949,16 +3949,6 @@ properties:
       $ref: "_terms.yaml#/tissue_or_organ_of_origin"
     type: string
 
-  tumor_grade:
-    term:
-      $ref: "_terms.yaml#/tumor_grade"
-    enum:
-      - "GX Grade cannot be assessed (undetermined grade)"
-      - "G1 Well differentiated (low grade)"
-      - "G2 Moderately differentiated (intermediate grade)"
-      - "G3 Poorly differentiated (high grade)"
-      - "G4 Undifferentiated (high grade)"
-      - "Unknown"
 
   # Fields for prometheus-3a
   days_to_metastatic_diagnosis:
@@ -3986,7 +3976,7 @@ properties:
     type: string
 
   cancer_grade:
-    description: "Associated cancer grade (e.g. 0, 1, 2, 3, 4)."
+    description: "Associated cancer grade (e.g. 0, 1, 2, 3, 4). The values represents, Grade 0 - Grade cannot be assessed (undetermined grade), Grade 1 - Well differentiated (low grade), Grade 2 - Moderately differentiated (intermediate grade), Grade 3 - Poorly differentiated (high grade), Grade 4 - Undifferentiated (high grade)"
     enum:
       - Grade 0
       - Grade 1

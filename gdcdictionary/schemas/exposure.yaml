@@ -76,14 +76,14 @@ properties:
     term:
       $ref: "_terms.yaml#/tobacco_smoking_status"
     enum:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
-      - "6"
-      - "7"
-      - Unknown
+      - "Lifelong Non-Smoker"
+      - "Current Smoker"
+      - "Current Reformed Smoker, Duration Not Specified"
+      - "Current Reformed Smoker for ≤ 15 years"
+      - "Current Reformed Smoker for > 15 years"
+      - "Smoker at Diagnosis"
+      - "Smoking History Not Documented"
+      - "Unknown"
   years_smoked:
     term:
       $ref: "_terms.yaml#/years_smoked"

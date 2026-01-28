@@ -794,13 +794,11 @@ freezing_method:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432607&version=1.0"
 
-gender:
+sex:
   description: >
-    Text designations that identify gender. Gender is described as the assemblage of properties that
-    distinguish people on the basis of their societal roles. [Explanatory Comment 1: Identification
-    of gender is based upon self-report and may come from a form, questionnaire, interview, etc.]
+    The sex or gender of the participant assigned at birth
   termDef:
-    term: Person Gender Text Type
+    term: Person Sex Text Type
     source: caDSR
     cde_id: 2200604
     cde_version: 3.0
@@ -1749,17 +1747,6 @@ treatment_type:
     cde_id: 5102381
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102381&version=1.0"
-
-tumor_grade:
-  description: >
-    Numeric value to express the degree of abnormality of cancer cells, a measure of differentiation
-    and aggressiveness.
-  termDef:
-    term: Neoplasm Histologic Grade
-    source: caDSR
-    cde_id: 2785839
-    cde_version: 2.0
-    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2785839&version=2.0"
 
 tumor_code: # TOREVIEW
   description: >
