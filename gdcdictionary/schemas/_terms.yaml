@@ -1748,17 +1748,6 @@ treatment_type:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102381&version=1.0"
 
-tumor_grade:
-  description: >
-    Numeric value to express the degree of abnormality of cancer cells, a measure of differentiation
-    and aggressiveness.
-  termDef:
-    term: Neoplasm Histologic Grade
-    source: caDSR
-    cde_id: 2785839
-    cde_version: 2.0
-    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2785839&version=2.0"
-
 tumor_code: # TOREVIEW
   description: >
     A specification of a cancer through cellular origin and localization.

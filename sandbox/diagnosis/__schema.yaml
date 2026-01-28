@@ -133,14 +133,6 @@ schema:
           - Nottingham grading system
           - Glioblastoma pathology nuclear grade
     -
-      name: tumor_grade  # don't we need this?
-      title: Tumor grade
-      description: "Numeric value to express the degree of abnormality of cancer cells, a measure of differentiation and aggressiveness."
-      type: string
-      constraints:
-        required: false
-        allowed: [ GX, G1, G2, G3, G4 ]
-    -
       name: vital_status  # do we need this?
       title: Vital status
       description: Indicate whether the patient was living or deceased at the date of last contact
