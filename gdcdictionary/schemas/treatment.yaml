@@ -216,7 +216,7 @@ properties:
     description: "The total number of unique systemic medical interventions, including the current intervention, in treating metastatic disease."
     type: integer
 
-  complete_resection_no_clear_margins:
+  complete_resection_clear_margins:
     description: "Was there a complete surgical resection with clear margins?"
     enum:
       - "Yes"

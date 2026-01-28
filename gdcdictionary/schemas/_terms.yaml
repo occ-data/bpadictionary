@@ -794,13 +794,11 @@ freezing_method:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432607&version=1.0"
 
-gender:
+sex:
   description: >
-    Text designations that identify gender. Gender is described as the assemblage of properties that
-    distinguish people on the basis of their societal roles. [Explanatory Comment 1: Identification
-    of gender is based upon self-report and may come from a form, questionnaire, interview, etc.]
+    The sex or gender of the participant assigned at birth
   termDef:
-    term: Person Gender Text Type
+    term: Person Sex Text Type
     source: caDSR
     cde_id: 2200604
     cde_version: 3.0
