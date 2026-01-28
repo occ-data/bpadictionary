@@ -46,8 +46,8 @@ schema:
         required: false
         unique: false
         allowed: [ parent, sibling, offspring, grandparent ]
-    - name: relationship_gender
-      description: "Provide the patient's relationship gender using the defined categories."
+    - name: relationship_sex
+      description: "Provide the patient's relationship sex or gender assigned at birth using the defined categories."
       type: string
       constraints:
         required: false
